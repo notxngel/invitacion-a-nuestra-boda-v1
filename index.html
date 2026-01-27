@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Angel y Clara</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Nuestro CSS (Aquí es donde darás estilo) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">A & C</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#story">Historia</a></li>
+                <li><a href="#details">Detalles</a></li>
+                <li><a href="#rsvp" class="rsvp-link">Confirmar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN HERO (La portada) -->
+    <section id="home" class="hero">
+        <!-- Imagen de Fondo -->
+        <div class="hero-background"></div>
+
+        <!-- Contenido Principal -->
+        <div class="hero-content">
+            <p class="subtitle bounce-in">¡NOS CASAMOS!</p>
+            <h1 class="title fade-in">Angel & Clara</h1>
+            <div class="divider"></div>
+            <p class="date">18 de Agosto de 2026 • En algun lugar de New Jersey</p>
+
+            <!-- Cuenta Regresiva -->
+            <div id="countdown" class="countdown">
+                <div class="countdown-item">
+                    <span id="days">0</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">0</span>
+                    <span class="label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">0</span>
+                    <span class="label">Minutos</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">0</span>
+                    <span class="label">Segundos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flecha animada abajo -->
+        <div class="scroll-indicator">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Aquí pondremos las siguientes secciones (Historia, Detalles, etc.) -->
+
+    <!-- SECCIÓN HISTORIA -->
+    <section id="story" class="story-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Historia</h2>
+                <p>Los momentos que nos trajeron aquí</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Línea central (visualizada con CSS) -->
+                
+                <!-- Evento 1 -->
+                <div class="timeline-event">
+                    <div class="event-image">
+                        <div class="image-frame">
+                            <img src="images/nuestraAmistad.jpeg" alt="Nuestra Amistad">
+                        </div>
+                    </div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <span class="event-year">2023</span>
+                        <h3>Donde Comenzó</h3>
+                        <p>Nos conocimos en la iglesia, nuestras amistades también formaron parte de esta bonita historia y han sido testimonio de nuestro amor. Durante nuestra etapa de amistad nos dimos cuenta de que teníamos una conexión genuina.<br><span>- Angel: "Quería conocerla más"</span></p>
+                    </div>
+                </div>
+
+                <!-- Evento 2 (Invertido)-->
+                <div class="timeline-event reverse">
+                    <div class="event-image">
+                        <div class="image-frame">
+                            <img src="images/citaANewYork.jpeg" alt="Cita en Nueva York">
+                        </div>
+                    </div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <span class="event-year">2024</span>
+                        <h3>Cita en Nueva York</h3>
+                        <p>Nuestro viaje a la ciudad que nunca duerme. Entre rascacielos y luces de neón, disfrutamos de momentos inolvidables juntos.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 3 -->
+                <div class="timeline-event">
+                    <div class="event-image">
+                        <div class="image-frame">
+                            <img src="images/proposal.jpg" alt="La Propuesta">
+                        </div>
+                    </div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <span class="event-year">2024</span>
+                        <h3>La Propuesta</h3>
+                        <p>Bajo las estrellas en una playa tranquila, Angel hizo la pregunta más importante y Clara dijo que sí.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DETALLES -->
+    <section id="details" class="details-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Detalles del Evento</h2>
+                <p>Todo lo que necesitas saber</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Tarjeta Ceremonia -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- MapPin Icon -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <h3>La Ceremonia</h3>
+                    <p class="card-time">16:00 PM</p>
+                    <p class="card-location">Jardines del Real</p>
+                    <p class="card-desc">Una hermosa ceremonia al aire libre rodeada de naturaleza. Se ruega puntualidad.</p>
+                </div>
+
+                <!-- Tarjeta Banquete -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Wine Icon (Copa) -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"></path><path d="M7 10h10"></path><path d="M12 15v7"></path><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"></path></svg>
+                    </div>
+                    <h3>El Banquete</h3>
+                    <p class="card-time">18:00 PM</p>
+                    <p class="card-location">Salón Cristal</p>
+                    <p class="card-desc">Cena de tres tiempos seguida de brindis y pastel. Opciones vegetarianas disponibles.</p>
+                </div>
+
+                <!-- Tarjeta Fiesta -->
+                <div class="card">
+                    <div class="card-icon">
+                        <!-- Music Icon -->
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    </div>
+                    <h3>La Fiesta</h3>
+                    <p class="card-time">21:00 PM</p>
+                    <p class="card-location">Pista de Baile</p>
+                    <p class="card-desc">Música en vivo, barra libre y baile hasta el amanecer. ¡Trae tus zapatos cómodos!</p>
+                </div>
+            </div>
+
+            <!-- Caja de Info Adicional -->
+            <div class="info-box">
+                <div class="info-item">
+                    <h4>Código de Vestimenta</h4>
+                    <p>Formal / Etiqueta Rigurosa. Queremos verlos brillar.</p>
+                </div>
+                <div class="info-item">
+                    <h4>Niños</h4>
+                    <p>Amamos a sus pequeños, pero esta será una celebración sólo para adultos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN RSVP (Confirmación) -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>R.S.V.P.</h2>
+                <p>¿Nos acompañas en este día especial?</p>
+            </div>
+            
+            <div class="rsvp-form-container">
+                <form id="rsvpForm" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Número de Invitados</label>
+                        <select id="guests" name="guests">
+                            <option value="1">1 Persona</option>
+                            <option value="2">2 Personas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>¿Asistirás?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="si" checked> 
+                                <span>¡Sí, ahí estaré!</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="no"> 
+                                <span>Lo siento, no podré ir</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje para los novios (Opcional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Déjanos tus mejores deseos..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Confirmar Asistencia</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Angel & Clara. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Nuestro JavaScript (Lógica de la cuenta regresiva) -->
+    <script src="script.js"></script>
+</body>
+</html>
