@@ -3,245 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Invitación de boda de Angel y Clara. 17 de Septiembre de 2026 en Garden Vista Ballroom, Passaic NJ.">
     <title>Boda de Angel y Clara</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <!-- Open Graph / WhatsApp / Redes Sociales -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://notxngel.github.io/invitacion-a-nuestra-boda-v1/">
+    <meta property="og:title"       content="Boda de Angel &amp; Clara — 17 de Septiembre 2026">
+    <meta property="og:description" content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
+    <meta property="og:image"       content="https://notxngel.github.io/invitacion-a-nuestra-boda-v1/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale"      content="es_ES">
+    <!-- Twitter Card (también funciona en iMessage) -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Boda de Angel &amp; Clara — 17 de Septiembre 2026">
+    <meta name="twitter:description" content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
+    <meta name="twitter:image"       content="https://notxngel.github.io/invitacion-a-nuestra-boda-v1/og-image.png">
     <!-- Fuentes de Google -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Nuestro CSS (Aquí es donde darás estilo) -->
+    <!-- Estilos -->
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">A & C</a>
-            <ul class="nav-menu">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#story">Historia</a></li>
-                <li><a href="#details">Detalles</a></li>
-                <li><a href="#rsvp" class="rsvp-link">Confirmar</a></li>
+    <!-- =====================================================
+        BLOQUE: NAVBAR (Menú de Navegación)
+        ===================================================== -->
+    <nav class="navbar" aria-label="Navegación principal">
+        <div class="navbar__container">
+            <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Angel y Clara">A &amp; C</a>
+            <ul class="navbar__menu" role="list">
+                <li><a href="#home" class="navbar__link">Inicio</a></li>
+                <li><a href="#photo-album" class="navbar__link">Momentos</a></li>
+                <li><a href="#details" class="navbar__link">Detalles</a></li>
+                <li><a href="javascript:void(0)" class="navbar__link navbar__link--cta" onclick="openRSVP()" aria-haspopup="dialog">Confirmar</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- SECCIÓN HERO (La portada) -->
-    <section id="home" class="hero">
+    <!-- =====================================================
+        BLOQUE: HERO (Portada principal)
+        ===================================================== -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
         <!-- Imagen de Fondo -->
-        <div class="hero-background"></div>
+        <div class="hero__background" role="img" aria-label="Fotografía de fondo de la boda"></div>
 
         <!-- Contenido Principal -->
-        <div class="hero-content">
-            <p class="subtitle bounce-in">¡NOS CASAMOS!</p>
-            <h1 class="title fade-in">Angel & Clara</h1>
-            <div class="divider"></div>
-            <p class="date">18 de Agosto de 2026 • En algun lugar de New Jersey</p>
+        <div class="hero__content">
+            <p class="hero__eyebrow bounce-in">¡NOS CASAMOS!</p>
+            <h1 id="hero-title" class="hero__title fade-in">Angel &amp; Clara</h1>
+            <div class="hero__divider" aria-hidden="true"></div>
+
+            <div class="hero__details">
+                <p class="hero__date">17 de Septiembre de 2026</p>
+                <div class="hero__sub-details">
+                    <span class="hero__time">5:00 PM</span>
+                    <span class="hero__separator" aria-hidden="true">•</span>
+                    <span class="hero__location">Passaic, New Jersey</span>
+                </div>
+                <p class="hero__address"><a href="https://www.gardenvistaballroom.com/" target="_blank" class="hero__venue-link">Garden Vista Ballroom</a></p>
+            </div>
 
             <!-- Cuenta Regresiva -->
-            <div id="countdown" class="countdown">
-                <div class="countdown-item">
-                    <span id="days">0</span>
-                    <span class="label">Días</span>
+            <div id="countdown" class="countdown" aria-label="Cuenta regresiva para la boda">
+                <div class="countdown__item">
+                    <span id="days" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label">Días</span>
                 </div>
-                <div class="countdown-item">
-                    <span id="hours">0</span>
-                    <span class="label">Horas</span>
+                <div class="countdown__item">
+                    <span id="hours" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label">Horas</span>
                 </div>
-                <div class="countdown-item">
-                    <span id="minutes">0</span>
-                    <span class="label">Minutos</span>
+                <div class="countdown__item">
+                    <span id="minutes" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label">Minutos</span>
                 </div>
-                <div class="countdown-item">
-                    <span id="seconds">0</span>
-                    <span class="label">Segundos</span>
+                <div class="countdown__item">
+                    <span id="seconds" class="countdown__number" aria-live="polite">0</span>
+                    <span class="countdown__label">Segundos</span>
                 </div>
             </div>
+
+            <!-- Botón CTA Hero -->
+            <button class="btn btn--ghost" onclick="openRSVP()" aria-haspopup="dialog">
+                Confirmar Asistencia
+            </button>
         </div>
 
-        <!-- Flecha animada abajo -->
-        <div class="scroll-indicator">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Flecha animada -->
+        <div class="hero__scroll-indicator" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
     </section>
 
-    <!-- Aquí pondremos las siguientes secciones (Historia, Detalles, etc.) -->
-
-    <!-- SECCIÓN HISTORIA -->
-    <section id="story" class="story-section">
+    <!-- =====================================================
+        BLOQUE: ALBUM (Álbum de Fotos Estilo Polaroid)
+        ===================================================== -->
+    <section id="photo-album" class="album" aria-labelledby="album-title">
         <div class="container">
-            <div class="section-title">
-                <h2>Nuestra Historia</h2>
-                <p>Los momentos que nos trajeron aquí</p>
+            <div class="section-header">
+                <h2 id="album-title" class="section-header__title">Momentos que nos trajeron aquí</h2>
+                <p class="section-header__subtitle">Un día que cambio nuestras vidas para siempre</p>
             </div>
 
-            <div class="timeline">
-                <!-- Línea central (visualizada con CSS) -->
-                
-                <!-- Evento 1 -->
-                <div class="timeline-event">
-                    <div class="event-image">
-                        <div class="image-frame">
-                            <img src="images/nuestraAmistad.jpeg" alt="Nuestra Amistad">
+            <!-- Contenedor del Carrusel -->
+            <div class="album__slider" id="albumSlider">
+                <button class="album__btn album__btn--prev" id="btnPrev" aria-label="Anterior">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="album__track" id="albumTrack">
+
+                    <!-- Polaroid 1: La gran pregunta -->
+                    <article class="polaroid">
+                        <div class="polaroid__frame">
+                            <img src="images/theMoment.webp" alt="La gran pregunta del momento de la propuesta" loading="lazy" class="polaroid__img">
+                            <p class="polaroid__caption">La gran pregunta</p>
                         </div>
+                    </article>
+
+                    <!-- Polaroid 2: Dijo que sí -->
+                    <article class="polaroid">
+                        <div class="polaroid__frame">
+                            <img src="images/dijoquesi.webp" alt="Clara dijo que sí a la propuesta" loading="lazy" class="polaroid__img">
+                            <p class="polaroid__caption">¡Dijo que sí!</p>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 3: Nosotros (CENTRO) -->
+                    <article class="polaroid">
+                        <div class="polaroid__frame">
+                            <img src="images/Us.webp" alt="Angel y Clara juntos" loading="lazy" class="polaroid__img">
+                            <p class="polaroid__caption">Tú y yo, siempre</p>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 4: Promesa -->
+                    <article class="polaroid">
+                        <div class="polaroid__frame">
+                            <img src="images/proposalimg2.webp" alt="Promesa eterna de amor" loading="lazy" class="polaroid__img">
+                            <p class="polaroid__caption">Para siempre</p>
+                        </div>
+                    </article>
+                    <!-- Polaroid 6: Amor -->
+                    <article class="polaroid">
+                        <div class="polaroid__frame">
+                            <img src="images/ilove.webp" alt="Con todo mi amor" loading="lazy" class="polaroid__img">
+                            <p class="polaroid__caption">Con todo mi corazón</p>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 7: Juntos -->
+                    <article class="polaroid">
+                        <div class="polaroid__frame">
+                            <img src="images/us2.webp" alt="Juntos es mi lugar favorito" loading="lazy" class="polaroid__img">
+                            <p class="polaroid__caption">Mi lugar favorito</p>
+                        </div>
+                    </article>
+
+                </div>
+                <button class="album__btn album__btn--next" id="btnNext" aria-label="Siguiente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+        BLOQUE: DETAILS (Detalles del Evento - Timeline)
+        ===================================================== -->
+    <section id="details" class="details" aria-labelledby="details-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="details-title" class="section-header__title">Detalles del Evento</h2>
+                <p class="section-header__subtitle">Todo lo que necesitas saber</p>
+            </div>
+
+            <!-- TIMELINE (Línea de Tiempo Vertical) -->
+            <div class="timeline" role="list" aria-label="Programa del día">
+
+                <!-- 1. Ceremonia -->
+                <div class="timeline__row" role="listitem">
+                    <div class="timeline__time" aria-label="Hora: 5:00 PM">5:00 PM
                     </div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <span class="event-year">2023</span>
-                        <h3>Donde Comenzó</h3>
-                        <p>Nos conocimos en la iglesia, nuestras amistades también formaron parte de esta bonita historia y han sido testimonio de nuestro amor. Durante nuestra etapa de amistad nos dimos cuenta de que teníamos una conexión genuina.<br><span>- Angel: "Quería conocerla más"</span></p>
+                    <div class="timeline__dot" aria-hidden="true"></div>
+                    <div class="timeline__card">
+                        <div class="timeline__icon-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                            </svg>
+                            <h3 class="timeline__event-name">La Ceremonia</h3>
+                        </div>
+                        <p class="timeline__place">Garden Vista Ballroom</p>
+                        <p class="timeline__description">Una hermosa ceremonia seguida de un coctel de bienvenida.</p>
                     </div>
                 </div>
 
-                <!-- Evento 2 (Invertido)-->
-                <div class="timeline-event reverse">
-                    <div class="event-image">
-                        <div class="image-frame">
-                            <img src="images/citaANewYork.jpeg" alt="Cita en Nueva York">
+                <!-- 2. Banquete -->
+                <div class="timeline__row" role="listitem">
+                    <div class="timeline__time" aria-label="Hora: 7:00 PM">7:00 PM</div>
+                    <div class="timeline__dot" aria-hidden="true"></div>
+                    <div class="timeline__card">
+                        <div class="timeline__icon-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                                <path d="M8 3v18"/><path d="M8 8h13"/><path d="M21 8v13H8"/><path d="M3 21h18"/>
+                            </svg>
+                            <h3 class="timeline__event-name">El Banquete</h3>
                         </div>
-                    </div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <span class="event-year">2024</span>
-                        <h3>Cita en Nueva York</h3>
-                        <p>Nuestro viaje a la ciudad que nunca duerme. Entre rascacielos y luces de neón, disfrutamos de momentos inolvidables juntos.</p>
+                        <p class="timeline__place">Garden Vista Ballroom</p>
+                        <p class="timeline__description">Cena de tres tiempos, brindis y pastel en el salón principal.</p>
                     </div>
                 </div>
 
-                <!-- Evento 3 -->
-                <div class="timeline-event">
-                    <div class="event-image">
-                        <div class="image-frame">
-                            <img src="images/proposal.jpg" alt="La Propuesta">
+                <!-- 3. Fiesta -->
+                <div class="timeline__row" role="listitem">
+                    <div class="timeline__time" aria-label="Hora: 10:00 PM">10:00 PM</div>
+                    <div class="timeline__dot" aria-hidden="true"></div>
+                    <div class="timeline__card">
+                        <div class="timeline__icon-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                            <h3 class="timeline__event-name" >La Fiesta</h3>
+                        </div>
+                        <p class="timeline__place">Pista de Baile</p>
+                        <p class="timeline__description">Barra libre y baile hasta el amanecer.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Información Adicional -->
+                <div class="timeline__row timeline__row--info" role="listitem">
+                    <div class="timeline__time">Info</div>
+                    <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
+                    <div class="timeline__card">
+                        <div class="timeline__info-group timeline__info-group--spaced">
+                            <h4 class="timeline__info-title">Código de Vestimenta</h4>
+                            <p>Formal / Etiqueta Rigurosa.</p>
+                        </div>
+                        <div class="timeline__info-group">
+                            <h4 class="timeline__info-title">No Niños</h4>
+                            <p>Celebración sólo para adultos.</p>
                         </div>
                     </div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <span class="event-year">2024</span>
-                        <h3>La Propuesta</h3>
-                        <p>Bajo las estrellas en una playa tranquila, Angel hizo la pregunta más importante y Clara dijo que sí.</p>
-                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+        BLOQUE: UBICACIONES (Mapas)
+        ===================================================== -->
+    <section id="locations" class="locations" aria-labelledby="locations-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="locations-title" class="section-header__title">¿Cómo Llegar?</h2>
+                <p class="section-header__subtitle">Te esperamos en</p>
+            </div>
+
+            <div class="location-card map-in">
+                <div class="location-card__header">
+                    <h3 class="location-card__title">Garden Vista Ballroom</h3>
+                    <p class="location-card__address">29 Macarthur Ave, Passaic, NJ 07055</p>
+                    <a href="https://maps.google.com/maps/dir//Garden+Vista+Ballroom,+Passaic,+NJ" target="_blank" rel="noopener" class="btn btn--dark location-card__btn">
+                        Abrir en Google Maps
+                    </a>
+                </div>
+                <div class="location-card__map-container">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Garden%20Vista%20Ballroom,%20Passaic,%20NJ&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade" 
+                        class="location-card__iframe"
+                        title="Mapa de Garden Vista Ballroom">
+                    </iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DETALLES -->
-    <section id="details" class="details-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Detalles del Evento</h2>
-                <p>Todo lo que necesitas saber</p>
-            </div>
-
-            <div class="cards-grid">
-                <!-- Tarjeta Ceremonia -->
-                <div class="card">
-                    <div class="card-icon">
-                        <!-- MapPin Icon -->
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    </div>
-                    <h3>La Ceremonia</h3>
-                    <p class="card-time">16:00 PM</p>
-                    <p class="card-location">Jardines del Real</p>
-                    <p class="card-desc">Una hermosa ceremonia al aire libre rodeada de naturaleza. Se ruega puntualidad.</p>
-                </div>
-
-                <!-- Tarjeta Banquete -->
-                <div class="card">
-                    <div class="card-icon">
-                        <!-- Wine Icon (Copa) -->
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"></path><path d="M7 10h10"></path><path d="M12 15v7"></path><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"></path></svg>
-                    </div>
-                    <h3>El Banquete</h3>
-                    <p class="card-time">18:00 PM</p>
-                    <p class="card-location">Salón Cristal</p>
-                    <p class="card-desc">Cena de tres tiempos seguida de brindis y pastel. Opciones vegetarianas disponibles.</p>
-                </div>
-
-                <!-- Tarjeta Fiesta -->
-                <div class="card">
-                    <div class="card-icon">
-                        <!-- Music Icon -->
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                    </div>
-                    <h3>La Fiesta</h3>
-                    <p class="card-time">21:00 PM</p>
-                    <p class="card-location">Pista de Baile</p>
-                    <p class="card-desc">Música en vivo, barra libre y baile hasta el amanecer. ¡Trae tus zapatos cómodos!</p>
-                </div>
-            </div>
-
-            <!-- Caja de Info Adicional -->
-            <div class="info-box">
-                <div class="info-item">
-                    <h4>Código de Vestimenta</h4>
-                    <p>Formal / Etiqueta Rigurosa. Queremos verlos brillar.</p>
-                </div>
-                <div class="info-item">
-                    <h4>Niños</h4>
-                    <p>Amamos a sus pequeños, pero esta será una celebración sólo para adultos.</p>
+    <!-- =====================================================
+        BLOQUE: RSVP (Sección de Confirmación)
+        ===================================================== -->
+    <section id="rsvp" class="rsvp" aria-labelledby="rsvp-title" hidden>
+        <div class="container rsvp__container">
+            <div class="rsvp__letter">
+                <div class="rsvp__letter-inner">
+                    <h2 id="rsvp-title" class="rsvp__letter-title">Confirmación</h2>
+                    <p class="rsvp__letter-subtitle">Esperamos que nos puedas acompañar</p>
+                    <div class="rsvp__letter-divider"></div>
+                    <p class="rsvp__letter-text">
+                        Por favor, confírmanos tu asistencia antes de que se acabe el plazo.<br>
+                        <strong>Fecha límite: 1 de Agosto</strong>
+                    </p>
+                    <button class="btn btn--dark rsvp__letter-btn" onclick="openRSVP()" aria-haspopup="dialog">
+                        Abrir Formulario
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN RSVP (Confirmación) -->
-    <section id="rsvp" class="rsvp-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>R.S.V.P.</h2>
-                <p>¿Nos acompañas en este día especial?</p>
+    <!-- =====================================================
+        BLOQUE: MODAL (Ventana Emergente RSVP)
+        ===================================================== -->
+    <div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="closeRSVP(event)">
+        <div class="modal__content card">
+            <button
+                class="modal__close"
+                aria-label="Cerrar formulario de confirmación"
+                onclick="closeRSVP(event)"
+            >&times;</button>
+
+            <div class="modal__header">
+                <h2 id="modal-title" class="modal__title">Confirmación</h2>
+                <p class="modal__subtitle">Será un placer contar contigo</p>
+                <p class="modal__deadline">Por favor confirma antes del <strong>31 de Mayo</strong></p>
             </div>
-            
-            <div class="rsvp-form-container">
-                <form id="rsvpForm" class="rsvp-form">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo</label>
-                        <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required>
+
+            <form id="rsvpForm" class="form" novalidate>
+                <!-- Campos de nombre generados según cupos del link (?c=N) -->
+                <div id="guestNamesContainer"></div>
+
+                <fieldset class="form__group">
+                    <legend class="form__label">¿Asistirás?</legend>
+                    <div class="form__radio-group">
+                        <label class="form__radio-option">
+                            <input type="radio" name="attendance" value="si" checked>
+                            <span>¡Sí, ahí estaré!</span>
+                        </label>
+                        <label class="form__radio-option">
+                            <input type="radio" name="attendance" value="no">
+                            <span>Lo siento, no podré ir</span>
+                        </label>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="guests">Número de Invitados</label>
-                        <select id="guests" name="guests">
-                            <option value="1">1 Persona</option>
-                            <option value="2">2 Personas</option>
+                </fieldset>
+
+                <div class="form__group">
+                    <label class="form__label" for="phone">Teléfono Móvil (WhatsApp)</label>
+                    <input type="tel" class="form__input" id="phone" name="phone" inputmode="tel" placeholder="Ej. +1 123 456 7890" required>
+                    <span class="form__error" id="error-phone"></span>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="dietary">Restricciones Alimentarias</label>
+                    <div style="position: relative;">
+                        <select class="form__input" id="dietary" name="dietary" onchange="toggleDietaryDetails()" style="appearance: none; background: transparent; cursor: pointer;">
+                            <option value="Ninguna">Ninguna</option>
+                            <option value="Vegetariano">Vegetariano</option>
+                            <option value="Vegano">Vegano</option>
+                            <option value="Alergia/Intolerancia">Alergia/Intolerancia</option>
                         </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>¿Asistirás?</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="attendance" value="si" checked> 
-                                <span>¡Sí, ahí estaré!</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="attendance" value="no"> 
-                                <span>Lo siento, no podré ir</span>
-                            </label>
+                        <!-- Flecha personalizada para select -->
+                        <div style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--color-gold);">
+                            ▼
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="message">Mensaje para los novios (Opcional)</label>
-                        <textarea id="message" name="message" rows="3" placeholder="Déjanos tus mejores deseos..."></textarea>
-                    </div>
+                <div class="form__group" id="dietary-details-group" style="display: none; margin-top: -0.5rem;">
+                    <label class="form__label" for="dietary-details">Especifica por favor:</label>
+                    <input type="text" class="form__input" id="dietary-details" name="dietary-details" placeholder="Ej. Alergia al maní, celíaco, etc.">
+                    <span class="form__error" id="error-dietary-details"></span>
+                </div>
 
-                    <button type="submit" class="submit-btn">Confirmar Asistencia</button>
-                </form>
-            </div>
+                <div class="form__group">
+                    <label class="form__label" for="message">Mensaje (Opcional)</label>
+                    <textarea class="form__input" id="message" name="message" rows="3" placeholder="Déjanos tus mejores deseos..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn btn--submit">Enviar Confirmación</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
+    <!-- =====================================================
+        BLOQUE: FOOTER
+        ===================================================== -->
     <footer class="footer">
-        <p>&copy; 2026 Angel & Clara. Todos los derechos reservados.</p>
+        <div class="footer__container fade-in">
+            <span class="footer__eyebrow">Con cariño y gratitud</span>
+            <h2 class="footer__title">Angel <span>&amp;</span> Clara</h2>
+            <div class="footer__date">17.09.2026</div>
+            <div class="footer__separator"></div>
+            <p class="footer__text">&copy; 2026 Angel &amp; Clara.</p>
+            <p class="footer__text footer__text--small">Hecho con amor para nuestros invitados</p>
+        </div>
     </footer>
 
-    <!-- Nuestro JavaScript (Lógica de la cuenta regresiva) -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
