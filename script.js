@@ -1,7 +1,7 @@
 // script.js — Invitación de Boda de Angel y Clara
 
-// Fecha de la boda: 17 de Septiembre de 2026
-const weddingDate = new Date("2026-09-17T17:00:00");
+// Fecha de la boda: 16 de Julio de 2026
+const weddingDate = new Date("2026-07-16T17:00:00");
 
 function updateCountdown() {
   const now = new Date();
@@ -273,8 +273,6 @@ rsvpForm.addEventListener("submit", async (e) => {
   const formData = new FormData(rsvpForm);
   const mensajeUsuario = formData.get("message") || "";
   const telefono = formData.get("phone") || "";
-  const dieta = formData.get("dietary") || "Ninguna";
-  const dietaDetalles = formData.get("dietary-details") || "";
 
   // Armamos los datos que recibirá Make / Notion
   const data = {
@@ -282,7 +280,6 @@ rsvpForm.addEventListener("submit", async (e) => {
     title: titular, // (Respaldo)
     Title: titular, // (Respaldo)
     Telefono: telefono,
-    Restricciones: dieta === "Alergia/Intolerancia" ? `Alergia/Intolerancia: ${dietaDetalles}` : dieta,
     Invitados: todosLosNombres.length, // Número de personas
     Asistencia: formData.get("attendance"), // "si" o "no"
     Mensaje:
@@ -393,7 +390,7 @@ function mostrarExito() {
             </p>
             <p style="color: #57534e; line-height: 1.6;">
                 Nos alegra mucho contar contigo en este día tan especial. 
-                ¡Nos vemos el 17 de septiembre! 🥂
+                ¡Nos vemos el 16 de julio! 🥂
             </p>
             
             ${calendarButtonsHTML}
@@ -410,26 +407,6 @@ function mostrarExito() {
         </div>
     `;
 }
-
-
-// Toggle para mostrar campo extra de dieta
-window.toggleDietaryDetails = function() {
-    const dietarySelect = document.getElementById('dietary');
-    const detailsGroup = document.getElementById('dietary-details-group');
-    const detailsInput = document.getElementById('dietary-details');
-    
-    if (dietarySelect && dietarySelect.value === 'Alergia/Intolerancia') {
-        detailsGroup.style.display = 'block';
-        detailsInput.setAttribute('required', 'true');
-    } else if (detailsGroup) {
-        detailsGroup.style.display = 'none';
-        detailsInput.removeAttribute('required');
-        detailsInput.value = '';
-        detailsInput.classList.remove('is-invalid');
-        const spanError = document.getElementById('error-dietary-details');
-        if (spanError) spanError.innerHTML = '';
-    }
-};
 
 function mostrarError(mensaje = "Hubo un error. Intenta de nuevo") {
   const submitBtn = document.querySelector(".btn--submit");

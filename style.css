@@ -787,81 +787,73 @@ body {
 }
 
 /* ==========================================================================
-   12. BLOQUE: RSVP (Sección de Confirmación tipo carta)
+   12. BLOQUE: RSVP (Sección de Confirmación)
    ========================================================================== */
 .rsvp {
   padding: 3rem 0;
   background-color: transparent;
 }
 
-.rsvp__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rsvp__letter {
-  background-color: #fdfcf8; /* Color papel marfil claro */
-  padding: var(--space-xl);
-  max-width: 40rem; /* Ancho ajustado para parecer postal o carta grande */
-  width: 100%;
+.rsvp__card {
+  max-width: 40rem;
   margin: 0 auto;
   text-align: center;
-  box-shadow:
-    var(--shadow-lg),
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-2xl) var(--space-xl);
   position: relative;
-  border: 1px solid #eaeaea; /* Borde físico extra fino */
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
-/* Doble borde interno dorado para darle lujo de carta de invitación */
-.rsvp__letter::before {
-  content: "";
+.rsvp__card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Acento dorado superior */
+.rsvp__card-accent {
   position: absolute;
-  inset: 0.5rem;
-  border: 1px solid rgba(197, 160, 89, 0.5); /* Borde dorado translúcido */
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
 }
 
-.rsvp__letter-inner {
-  padding: var(--space-2xl) var(--space-md);
-  position: relative;
-  z-index: 1;
-}
-
-.rsvp__letter-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 8vw, 3.5rem);
-  color: var(--color-dark);
-  text-transform: uppercase;
-  margin: 0 0 0.5rem 0;
+.rsvp__card-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
   line-height: 1;
 }
 
-.rsvp__letter-subtitle {
+.rsvp__card-subtitle {
+  font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
   color: var(--color-gold);
-  margin: 0 0 2rem 0;
+  margin: 0 0 var(--space-lg) 0;
 }
 
-.rsvp__letter-divider {
+.rsvp__card-divider {
   width: 4rem;
   height: 1px;
   background-color: var(--color-gold);
-  margin: 0 auto 2rem auto;
+  margin: 0 auto var(--space-lg) auto;
+  opacity: 0.6;
 }
 
-.rsvp__letter-text {
-  font-size: 1.1rem;
+.rsvp__card-text {
+  font-size: 1rem;
   color: var(--color-text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-xl);
   line-height: 1.8;
 }
 
-.rsvp__letter-btn {
-  padding: 1.2em 3.5em; /* Un poco más ancho para este botón principal */
+.rsvp__card-btn {
+  padding: 1.1em 3em;
 }
 
 /* ==========================================================================
@@ -1279,6 +1271,208 @@ body {
   .modal__content {
     padding: var(--space-lg);
     width: 95%;
+  }
+}
+
+/* ==========================================================================
+   17b. MEDIA QUERIES — PANTALLAS MUY PEQUEÑAS (max-width: 360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  /* --- Navbar --- */
+  .navbar__container {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .navbar__logo {
+    font-size: 1rem;
+  }
+
+  .navbar__menu {
+    gap: 0.25em;
+    padding: 0;
+  }
+
+  .navbar__link {
+    font-size: 0.6rem;
+    padding: 0.3em 0.15em;
+  }
+
+  .navbar__link--cta {
+    padding: 0.2em 0.4em !important;
+    font-size: 0.6rem;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    padding: 5rem 0 2rem;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .hero__date {
+    font-size: clamp(1rem, 5vw, 1.6rem);
+  }
+
+  .hero__sub-details {
+    font-size: 0.8rem;
+  }
+
+  .hero__address {
+    font-size: 0.7rem;
+  }
+
+  /* --- Countdown --- */
+  .countdown {
+    gap: 0.3em;
+  }
+
+  .countdown__number {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .countdown__label {
+    font-size: 0.65rem;
+  }
+
+  /* --- Container --- */
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  /* --- Section Headers --- */
+  .section-header__title {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  .section-header__subtitle {
+    font-size: 0.8rem;
+  }
+
+  /* --- Álbum --- */
+  .polaroid {
+    flex: 0 0 12rem;
+  }
+
+  /* --- Timeline --- */
+  .timeline__time {
+    font-size: 0.7rem;
+    min-width: 3rem;
+  }
+
+  .timeline__event-name {
+    font-size: 0.95rem;
+  }
+
+  .timeline__place,
+  .timeline__description {
+    font-size: 0.8rem;
+  }
+
+  .timeline__info-title {
+    font-size: 0.95rem;
+  }
+
+  .timeline__card p {
+    font-size: 0.8rem;
+  }
+
+  /* --- Location --- */
+  .location-card__title {
+    font-size: 1.1rem;
+  }
+
+  .location-card__address {
+    font-size: 0.8rem;
+  }
+
+  .location-card__btn {
+    font-size: 0.75rem;
+    padding: 0.7em 1.5em;
+  }
+
+  /* --- RSVP Card --- */
+  .rsvp__card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .rsvp__card-icon {
+    font-size: 2rem;
+  }
+
+  .rsvp__card-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .rsvp__card-text {
+    font-size: 0.85rem;
+  }
+
+  .rsvp__card-btn {
+    padding: 0.9em 2em;
+    font-size: 0.75rem;
+  }
+
+  /* --- Modal --- */
+  .modal__content {
+    padding: var(--space-md);
+    width: 96%;
+  }
+
+  .modal__title {
+    font-size: 1.3rem;
+  }
+
+  .modal__subtitle {
+    font-size: 0.7rem;
+  }
+
+  .modal__deadline {
+    font-size: 0.75rem;
+  }
+
+  .modal__close {
+    top: var(--space-sm);
+    right: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  /* --- Form --- */
+  .form__label {
+    font-size: 0.8rem;
+  }
+
+  .form__input {
+    font-size: 0.85rem;
+    padding: 0.6em 0.8em;
+  }
+
+  .btn--submit {
+    font-size: 0.8rem;
+    padding: 0.9em 1.5em;
+  }
+
+  /* --- Footer --- */
+  .footer__title {
+    font-size: clamp(1.8rem, 10vw, 3rem);
+  }
+
+  .footer__eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .footer__date {
+    font-size: 0.8rem;
+  }
+
+  .footer__text {
+    font-size: 0.7rem;
   }
 }
 
