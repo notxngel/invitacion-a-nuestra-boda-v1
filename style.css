@@ -23,7 +23,7 @@
   --color-text-muted: #57534e;
   --color-text-light: #78716c;
   --color-border: #e7e5e4;
-  --color-bg-overlay: rgba(0, 0, 0, 0.8);
+  --color-bg-overlay: rgba(0, 0, 0, 0.45);
 
   /* Capas de Profundidad (Z-Index) */
   --z-back: -1;
@@ -80,6 +80,7 @@ body {
   background:
     url("images/floral_bg.webp") repeat,
     #faf8f2; /* Textura floral elegante y color crema combinados */
+  background-attachment: fixed;
   line-height: 1.6;
 }
 
@@ -229,13 +230,14 @@ body {
   transform: translateX(-50%);
   width: 90%;
   max-width: 1200px;
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   z-index: var(--z-nav);
   padding: 1rem 2rem;
   border-radius: 50px; /* Floating pill effect */
-  border: 1px solid rgba(197, 160, 89, 0.2); /* Borde sutil dorado */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde cristalino */
 }
 
 .navbar__container {
@@ -798,10 +800,12 @@ body {
   max-width: 40rem;
   margin: 0 auto;
   text-align: center;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
   padding: var(--space-2xl) var(--space-xl);
   position: relative;
   overflow: hidden;
@@ -889,6 +893,12 @@ body {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   max-height: 90vh;
   overflow-y: auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
   /* Resetea border-top del .card para el modal */
   border-top: 4px solid var(--color-gold);
 }
@@ -973,18 +983,23 @@ body {
   width: 100%;
   padding: 0.75em;
   min-height: 44px;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: 1rem;
   box-sizing: border-box;
   transition:
     border-color var(--transition-fast),
+    background var(--transition-fast),
     box-shadow var(--transition-fast);
 }
 
 .form__input:focus {
   outline: none;
+  background: rgba(255, 255, 255, 0.8);
   border-color: var(--color-gold);
   box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
 }
