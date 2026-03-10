@@ -338,11 +338,16 @@
 
             <div class="rsvp__card">
                 <div class="rsvp__card-accent" aria-hidden="true"></div>
-                <div class="rsvp__card-icon" aria-hidden="true">💍</div>
-                <p class="rsvp__card-subtitle">Esperamos que nos puedas acompañar</p>
+                <div class="rsvp__card-icon" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+                <p class="rsvp__card-subtitle">Esperamos contar con tu presencia</p>
                 <div class="rsvp__card-divider" aria-hidden="true"></div>
                 <p class="rsvp__card-text">
-                    ¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confírmarnos tu asistencia antes de que se acabe el plazo.<br>
+                    ¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confírmarnos tu asistencia.<br>
                     <strong>Fecha límite: 31 de Mayo</strong>
                 </p>
                 <button class="btn btn--dark rsvp__card-btn" onclick="openRSVP()" aria-haspopup="dialog">
@@ -370,6 +375,10 @@
             </div>
 
             <form id="rsvpForm" class="form" novalidate>
+                <!-- Honeypot anti-bot (campo invisible para humanos) -->
+                <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
                 <!-- Campos de nombre generados según cupos del link (?c=N) -->
                 <div id="guestNamesContainer"></div>
 

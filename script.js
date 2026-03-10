@@ -216,8 +216,11 @@ setupValidationListeners();
 // 4. ENVÍO DEL FORMULARIO RSVP → MAKE → NOTION
 // =============================================================
 
-const MAKE_WEBHOOK_URL =
-  "https://hook.us2.make.com/1csu9bqqywlg9i4fz4uxv7ge34vdvcan";
+// --- Seguridad: URL ofuscada para dificultar abuso directo ---
+const _wh = atob("aHR0cHM6Ly9ob29rLnVzMi5tYWtlLmNvbS8xY3N1OWJxcXl3bGc5aTRmejR1eHY3Z2UzNHZkdmNhbg==");
+
+// --- Seguridad: Rate limiter (máx 1 envío cada 30 segundos) ---
+let _lastSubmit = 0;
 
 // Seleccionamos el formulario del HTML
 const rsvpForm = document.getElementById("rsvpForm");
@@ -226,6 +229,21 @@ const rsvpForm = document.getElementById("rsvpForm");
 rsvpForm.addEventListener("submit", async (e) => {
   // LÍNEA CLAVE: Evita que el formulario recargue la página (comportamiento por defecto)
   e.preventDefault();
+
+  // --- Seguridad: Rate limiting ---
+  const now = Date.now();
+  if (now - _lastSubmit < 30000) {
+    mostrarError("Por favor espera unos segundos antes de intentar de nuevo.");
+    return;
+  }
+
+  // --- Seguridad: Honeypot (si se llenó el campo oculto, es un bot) ---
+  const honeypot = document.getElementById("website");
+  if (honeypot && honeypot.value !== "") {
+    // Simular éxito para el bot, sin enviar nada real
+    mostrarExito();
+    return;
+  }
 
   // --- Validación general antes de enviar ---
   const requiredInputs = Array.from(
@@ -297,16 +315,13 @@ rsvpForm.addEventListener("submit", async (e) => {
 
     // ✉️ fetch() — La función que "sale" a internet y envía los datos
     // Es como cuando un mensajero lleva un sobre a otra dirección
-    const response = await fetch(MAKE_WEBHOOK_URL, {
-      method: "POST", // POST = "estoy enviando información nueva"
+    const response = await fetch(_wh, {
+      method: "POST",
       headers: {
-        // Le avisamos al servidor que los datos vienen en formato JSON
         "Content-Type": "application/json",
       },
-      // JSON.stringify convierte nuestro objeto JS a texto JSON
-      // (el formato universal para enviar datos por internet)
       body: JSON.stringify(data),
-      signal: controller.signal // Le damos el control de aborto al fetch
+      signal: controller.signal
     });
     
     clearTimeout(timeoutId); // Limpiar el timeout si terminó a tiempo
@@ -315,7 +330,8 @@ rsvpForm.addEventListener("submit", async (e) => {
     if (response.ok) {
       // --- Novedad: Sello de guardado ---
       localStorage.setItem('rsvpStatus', 'sent');
-      mostrarExito(); // Mostramos el mensaje de éxito
+      _lastSubmit = Date.now();
+      mostrarExito();
     } else {
       // El servidor respondió pero con un error
       throw new Error(`Error del servidor: ${response.status}`);
@@ -347,7 +363,7 @@ function mostrarExito() {
 
   // Permite ver el botón secreto de reinicio de pruebas solo si el URL lo autoriza
   const urlParams = new URLSearchParams(window.location.search);
-  const isAdmin = urlParams.get('admin') === 'true';
+  const isAdmin = urlParams.get('dbg') === 'r7xQ3';
   const botonPruebasHTML = isAdmin 
     ? `<p style="margin-top: 1.5rem; font-size: 0.75rem; color: #d1d5db; text-decoration: underline; cursor: pointer;" onclick="localStorage.removeItem('rsvpStatus'); location.reload();">
           (Pruebas: Enviar otra respuesta)
@@ -372,7 +388,7 @@ function mostrarExito() {
   } else {
       calendarButtonsHTML = `
             <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Angel+y+Clara&dates=20260917T210000Z/20260918T050000Z&details=%C2%A1Te+esperamos+para+celebrar+nuestra+boda!&location=Garden+Vista+Ballroom,+29+Macarthur+Ave,+Passaic,+NJ+07055" target="_blank" rel="noopener" class="btn btn--dark" style="background-color: #4285F4; border-color: #4285F4; color: white;">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Angel+y+Clara&dates=20260716T210000Z/20260717T050000Z&details=%C2%A1Te+esperamos+para+celebrar+nuestra+boda!&location=Garden+Vista+Ballroom,+29+Macarthur+Ave,+Passaic,+NJ+07055" target="_blank" rel="noopener" class="btn btn--dark" style="background-color: #4285F4; border-color: #4285F4; color: white;">
                     🗓️ Añadir a Google Calendar
                 </a>
             </div>
