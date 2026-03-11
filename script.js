@@ -381,7 +381,7 @@ function mostrarExito() {
       calendarButtonsHTML = `
             <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
                 <a href="boda.ics" class="btn btn--dark" style="background-color: #000; border-color: #000; color: white;">
-                    🗓️ Añadir a Apple Calendar
+                    Añadir a Apple Calendar
                 </a>
             </div>
       `;
@@ -389,7 +389,7 @@ function mostrarExito() {
       calendarButtonsHTML = `
             <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Angel+y+Clara&dates=20260716T210000Z/20260717T050000Z&details=%C2%A1Te+esperamos+para+celebrar+nuestra+boda!&location=Garden+Vista+Ballroom,+29+Macarthur+Ave,+Passaic,+NJ+07055" target="_blank" rel="noopener" class="btn btn--dark" style="background-color: #4285F4; border-color: #4285F4; color: white;">
-                    🗓️ Añadir a Google Calendar
+                    Añadir a Google Calendar
                 </a>
             </div>
       `;
@@ -406,14 +406,14 @@ function mostrarExito() {
             </p>
             <p style="color: #57534e; line-height: 1.6;">
                 Nos alegra mucho contar contigo en este día tan especial. 
-                ¡Nos vemos el 16 de julio! 🥂
+                ¡Nos vemos el 16 de julio!
             </p>
             
             ${calendarButtonsHTML}
 
             <button
-                class="btn btn--ghost"
-                style="margin-top: 1.5rem; color: #6B7280; border: none; text-decoration: underline;"
+                class="btn"
+                style="margin-top: 1.5rem; color: #6B7280; text-decoration: underline; background: transparent; border: none;"
                 onclick="cerrarYReiniciar()"
             >
                 Cerrar Formulario
