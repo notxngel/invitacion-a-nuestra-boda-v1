@@ -1,31 +1,20 @@
-/* ==========================================================================
-    WEDDING INVITATION — STYLE SHEET
-    Metodología:  BEM (Block__Element--Modifier)
-    Unidades:     rem para fuentes | em para espaciados
-    Organización: Variables → Reset → Utilities → Componentes → Secciones
-                → Animaciones → Media Queries (unificadas al final)
-   ========================================================================== */
-
-/* ==========================================================================
-    1. VARIABLES DE DISEÑO (Design Tokens)
-   ========================================================================== */
 :root {
-  /* Tipografía */
+  
   --font-serif: "Playfair Display", serif;
   --font-sans: "Lato", sans-serif;
 
-  /* Paleta de Color Global Tintada de Oliva */
+  
   --color-white: #ffffff;
-  --color-gold: #a87f3b; /* Oro Oscurecido para mayor legibilidad sobre fondos claros */
+  --color-gold: #a87f3b; 
   --color-gold-hover: #8b682d;
-  --color-dark: #41533b; /* Deep Olive Green en lugar de Charcoal (#333) */
-  --color-text-main: #2d3a29; /* Casi negro con tinte verde oliva */
-  --color-text-muted: #535e4d; /* Gris con tinte oliva */
-  --color-text-light: #778170; /* Gris claro estilizado */
+  --color-dark: #41533b; 
+  --color-text-main: #2d3a29; 
+  --color-text-muted: #535e4d; 
+  --color-text-light: #778170; 
   --color-border: #e7e5e4;
   --color-bg-overlay: rgba(0, 0, 0, 0.45);
 
-  /* Capas de Profundidad (Z-Index) */
+  
   --z-back: -1;
   --z-base: 1;
   --z-elevated: 10;
@@ -33,36 +22,34 @@
   --z-nav: 100;
   --z-modal: 999;
 
-  /* Sombras */
+  
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
 
-  /* Espaciado base (1 rem = 16px por defecto del navegador) */
-  --space-xs: 0.25rem; /* ~  4px */
-  --space-sm: 0.5rem; /* ~  8px */
-  --space-md: 1rem; /* ~ 16px */
-  --space-lg: 1.5rem; /* ~ 24px */
-  --space-xl: 2rem; /* ~ 32px */
-  --space-2xl: 3rem; /* ~ 48px */
+  
+  --space-xs: 0.25rem; 
+  --space-sm: 0.5rem; 
+  --space-md: 1rem; 
+  --space-lg: 1.5rem; 
+  --space-xl: 2rem; 
+  --space-2xl: 3rem; 
 
-  /* Radios de borde */
+  
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
 
-  /* Transiciones */
+  
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ==========================================================================
-2. CONFIGURACIÓN BASE
-   ========================================================================== */
+/* Base */
 html {
   scroll-behavior: smooth;
-  /* Garantiza que 1rem = la preferencia del navegador del usuario */
+  
   font-size: 100%;
 }
 
@@ -79,29 +66,19 @@ body {
   color: var(--color-text-main);
   background:
     url("images/body_bg_olive_subtle.png") repeat,
-    #fffbfa; /* Textura botánica sutil crema/oliva/rosa */
+    #fffbfa; 
   background-attachment: fixed;
   line-height: 1.6;
 }
 
-/* ==========================================================================
-3. UTILIDADES GLOBALES
-   ========================================================================== */
-
-/* Contenedor invisible para centrar contenido respetando márgenes */
 .container {
   width: 100%;
-  max-width: 75rem; /* 1200px */
+  max-width: 75rem; 
   margin: 0 auto;
   padding: 0 var(--space-md);
   position: relative;
 }
 
-/* ==========================================================================
-4. COMPONENTES BASE (Tarjeta, Botones)
-   ========================================================================== */
-
-/* --- CARD (Tarjeta reutilizable) --- */
 .card {
   background-color: var(--color-white);
   padding: var(--space-lg);
@@ -115,9 +92,6 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-
-
-/* --- BOTONES (btn) --- */
 .btn {
   padding: 1.2em 2.5em;
   min-height: 44px;
@@ -135,9 +109,6 @@ body {
   gap: 0.5rem;
 }
 
-
-
-/* Modificador: Dark (fondo sólido verde oliva) */
 .btn--dark {
   background: var(--color-dark);
   border: 1px solid var(--color-dark);
@@ -154,7 +125,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Modificador: Submit (botón de formulario sólido oro) */
 .btn--submit {
   width: 100%;
   background-color: var(--color-gold);
@@ -173,9 +143,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* ==========================================================================
-5. ENCABEZADO DE SECCIÓN (section-header)
-   ========================================================================== */
 .section-header {
   text-align: center;
   margin: 0 auto var(--space-2xl);
@@ -201,9 +168,7 @@ body {
   text-transform: capitalize;
 }
 
-/* ==========================================================================
-    6. BLOQUE: NAVBAR
-   ========================================================================== */
+/* Navbar */
 .navbar {
   position: fixed;
   top: 1rem;
@@ -216,28 +181,26 @@ body {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.08);
   z-index: var(--z-nav);
   padding: 1rem 2rem;
-  border-radius: 50px; /* Floating pill effect */
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde cristalino */
+  border-radius: 50px; 
+  border: 1px solid rgba(255, 255, 255, 0.5); 
 }
 
 .navbar__container {
   display: flex;
-  justify-content: center; /* Center menu when logo is hidden */
+  justify-content: center; 
   align-items: center;
   width: 100%;
 }
 
-/* Elemento: Logo */
 .navbar__logo {
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 1.5rem;
   color: var(--color-text-main);
   text-decoration: none;
-  display: none; /* Oculto en móvil, visible en escritorio */
+  display: none; 
 }
 
-/* Elemento: Menú */
 .navbar__menu {
   display: flex;
   gap: var(--space-md);
@@ -248,7 +211,6 @@ body {
   justify-content: center;
 }
 
-/* Elemento: Enlace */
 .navbar__link {
   text-decoration: none;
   color: var(--color-text-muted);
@@ -280,7 +242,6 @@ body {
   width: 80%;
 }
 
-/* Modificador: Enlace CTA (Confirmar) */
 .navbar__link--cta {
   background-color: var(--color-gold);
   color: var(--color-white) !important;
@@ -304,21 +265,18 @@ body {
   box-shadow: 0 6px 15px rgba(65, 83, 59, 0.3);
 }
 
-/* ==========================================================================
-    7. BLOQUE: HERO (Portada)
-   ========================================================================== */
+/* Hero */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 4rem; /* Despeja el navbar superior fijo (deja ese espacio libre arriba) */
+  padding-top: 4rem; 
   color: var(--color-white);
   overflow: hidden;
 }
 
-/* Elemento: Imagen de fondo con gradiente y desenfoque */
 .hero__background {
   position: absolute;
   inset: 0;
@@ -329,16 +287,14 @@ body {
   z-index: var(--z-back);
 }
 
-/* Elemento: Contenedor del contenido */
 .hero__content {
   text-align: center;
   z-index: var(--z-elevated);
   padding: 1.25em;
-  padding-bottom: 5rem; /* Evita que el botón choque con la flecha inferior */
+  padding-bottom: 5rem; 
   letter-spacing: 0.5rem;
 }
 
-/* Elemento: Texto pequeño sobre el título */
 .hero__eyebrow {
   font-size: 1.5rem;
   letter-spacing: 0.2em;
@@ -346,14 +302,12 @@ body {
   margin-bottom: 0.5em;
 }
 
-/* Elemento: Título principal H1 */
 .hero__title {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 8vw, 6rem);
   margin: 0 0 var(--space-lg);
 }
 
-/* Elemento: Línea divisora decorativa */
 .hero__divider {
   width: 6.25rem;
   height: 4px;
@@ -361,12 +315,10 @@ body {
   margin: 0 auto var(--space-xl);
 }
 
-/* Elemento: Bloque de detalles del evento */
 .hero__details {
   line-height: 1.6;
 }
 
-/* Elemento: Fecha */
 .hero__date {
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 5vw, 3.5rem);
@@ -374,7 +326,6 @@ body {
   margin: 0;
 }
 
-/* Elemento: Instruccion bajo la fecha */
 .hero__instruction {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.75);
@@ -385,19 +336,16 @@ body {
   font-weight: 300;
 }
 
-/* Elemento: Flecha de scroll */
 .hero__scroll-indicator {
   position: absolute;
-  bottom: var(--space-md); /* Mantenido anclado completamente al fondo */
+  bottom: var(--space-md); 
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 2s infinite;
   color: var(--color-white);
 }
 
-/* ==========================================================================
-    8. BLOQUE: COUNTDOWN (Cuenta Regresiva)
-   ========================================================================== */
+/* Cuenta regresiva */
 .countdown {
   display: flex;
   justify-content: center;
@@ -411,7 +359,6 @@ body {
   align-items: center;
 }
 
-/* Elemento: Número grande */
 .countdown__number {
   display: block;
   font-family: var(--font-serif);
@@ -420,7 +367,6 @@ body {
   line-height: 1;
 }
 
-/* Elemento: Etiqueta (Días, Horas…) */
 .countdown__label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -428,9 +374,7 @@ body {
   margin-top: 0.25em;
 }
 
-/* ==========================================================================
-    9. BLOQUE: ALBUM (Galería Polaroid)
-   ========================================================================== */
+/* Álbum */
 .album {
   padding: 2rem 0;
   background-color: transparent;
@@ -442,7 +386,6 @@ body {
   position: relative;
 }
 
-/* Botones del Carrusel */
 .album__btn {
   position: absolute;
   top: 50%;
@@ -469,7 +412,6 @@ body {
 .album__btn--prev { left: 1rem; }
 .album__btn--next { right: 1rem; }
 
-/* Elemento: Pista (grid de fotos) */
 .album__track {
   display: flex;
   overflow-x: auto;
@@ -478,18 +420,15 @@ body {
   gap: var(--space-xl);
   width: 100%;
   padding-bottom: 2rem;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
 .album__track::-webkit-scrollbar {
   display: none;
 }
 
-/* ==========================================================================
-    10. BLOQUE: POLAROID (Tarjeta de Foto)
-   ========================================================================== */
 .polaroid {
-  flex: 0 0 16.25rem; /* ~260px */
+  flex: 0 0 16.25rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -497,10 +436,9 @@ body {
   scroll-snap-align: center;
 }
 
-/* Elemento: Marco físico de la polaroid */
 .polaroid__frame {
   background: var(--color-white);
-  padding: 0.75rem 0.75rem 1rem; /* Borde y espacio inferior para el texto */
+  padding: 0.75rem 0.75rem 1rem; 
   box-shadow: var(--shadow-md);
   border-radius: 3px;
   will-change: transform;
@@ -509,7 +447,6 @@ body {
     box-shadow var(--transition-base);
 }
 
-/* Rotaciones naturales (efecto desordenado) */
 .polaroid:nth-child(odd) .polaroid__frame {
   transform: rotate(-2deg);
 }
@@ -523,7 +460,6 @@ body {
   transform: rotate(-1.5deg) translateY(4px);
 }
 
-/* Hover: levanta y endereza */
 .polaroid:hover .polaroid__frame {
   transform: scale(1.05) rotate(0deg) !important;
   box-shadow:
@@ -532,16 +468,14 @@ body {
   z-index: var(--z-elevated);
 }
 
-/* Elemento: Imagen de la polaroid */
 .polaroid__img {
   width: 100%;
-  aspect-ratio: 4 / 5; /* Forzar el mismo tamaño y proporción para todas */
+  aspect-ratio: 4 / 5; 
   object-fit: cover;
   display: block;
   object-position: center 20%;
 }
 
-/* Elemento: Texto al pie de la polaroid */
 .polaroid__caption {
   margin: 0.75rem 0 0 0;
   font-family: var(--font-serif);
@@ -552,9 +486,7 @@ body {
   text-align: center;
 }
 
-/* ==========================================================================
-    11. BLOQUE: TIMELINE (Línea de Tiempo del Evento)
-   ========================================================================== */
+/* Timeline */
 .details {
   padding: 2rem 0;
   background-color: transparent;
@@ -562,24 +494,22 @@ body {
 
 .timeline {
   position: relative;
-  max-width: 50rem; /* ~800px */
+  max-width: 50rem; 
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md);
 }
 
-/* Línea vertical continua */
 .timeline::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 1.5rem; /* Alineada a la izquierda en móvil */
+  left: 1.5rem; 
   width: 1px;
   background: linear-gradient(to bottom, transparent, var(--color-gold) 15%, var(--color-gold) 85%, transparent);
   z-index: 0;
 }
 
-/* Elemento: Fila de item de la timeline */
 .timeline__row {
   position: relative;
   display: flex;
@@ -594,10 +524,9 @@ body {
   transform: translateY(0);
 }
 
-/* Elemento: Punto en la línea */
 .timeline__dot {
   position: absolute;
-  left: 1.25rem; /* Ajustado para la línea más delgada */
+  left: 1.25rem; 
   top: 1.6rem;
   width: 0.5rem;
   height: 0.5rem;
@@ -608,21 +537,18 @@ body {
   box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
 }
 
-/* Modificador: Punto dorado (info row) */
 .timeline__dot--gold {
   background: var(--color-gold);
 }
 
-/* Elemento: Tarjeta de contenido (estilo minimalista) */
 .timeline__card {
-  margin-left: 3.125rem; /* espacio para la línea y el punto */
+  margin-left: 3.125rem; 
   flex: 1;
   background: transparent;
   padding: 0 0 1.5rem 0;
-  border: none; /* Quitamos el borde porque ya hay una línea central general */
+  border: none; 
 }
 
-/* Elemento: Encabezado con icono */
 .timeline__icon-header {
   display: flex;
   align-items: center;
@@ -630,14 +556,12 @@ body {
   margin-bottom: 0.5em;
 }
 
-/* Elemento: Nombre del evento */
 .timeline__event-name {
   margin: 0;
   font-size: 1.25rem;
   font-family: var(--font-serif);
 }
 
-/* Elemento: Lugar del evento */
 .timeline__place {
   font-size: 0.9rem;
   font-weight: 700;
@@ -647,7 +571,6 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* Elemento: Descripción */
 .timeline__description {
   font-size: 0.95rem;
   color: #666;
@@ -655,7 +578,6 @@ body {
   line-height: 1.5;
 }
 
-/* Elemento: Hora del evento */
 .timeline__time {
   min-width: 3rem;
   padding-top: 1.5rem;
@@ -665,10 +587,9 @@ body {
   font-family: var(--font-serif);
   font-size: 0.875rem;
   text-align: right;
-  display: none; /* En móvil está oculto para ahorrar espacio */
+  display: none; 
 }
 
-/* Elemento: Título de grupo info (vestimenta, niños, etc.) */
 .timeline__info-title {
   font-family: var(--font-serif);
   color: var(--color-gold);
@@ -680,9 +601,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ==========================================================================
-   11. BLOQUE: UBICACIONES (Mapa)
-   ========================================================================== */
+/* Ubicación */
 .locations {
   padding: 2rem 0;
   background-color: transparent;
@@ -731,7 +650,6 @@ body {
   filter: saturate(0.8) contrast(1.05);
 }
 
-/* Micro-animación para los mapas */
 .map-in {
   opacity: 0;
   transform: translateY(30px);
@@ -743,8 +661,6 @@ body {
   transform: translateY(0);
 }
 
-
-/* Elemento: Grupo de información (vestimenta/niños) */
 .timeline__info-group h4 {
   margin: 0 0 0.25em;
   font-family: var(--font-serif);
@@ -757,9 +673,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* ==========================================================================
-   12. BLOQUE: RSVP (Sección de Confirmación)
-   ========================================================================== */
+/* RSVP */
 .rsvp {
   padding: 3rem 0;
   background-color: transparent;
@@ -769,7 +683,7 @@ body {
   max-width: 40rem;
   margin: 0 auto;
   text-align: center;
-  /* Sobre transparente que deja ver las rosas del body */
+  
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -789,7 +703,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Acento dorado superior */
 .rsvp__card-accent {
   position: absolute;
   top: 0;
@@ -832,9 +745,7 @@ body {
   padding: 1.1em 3em;
 }
 
-/* ==========================================================================
-    13. BLOQUE: MODAL (Ventana Emergente)
-   ========================================================================== */
+/* Modal */
 .modal {
   position: fixed;
   inset: 0;
@@ -849,16 +760,14 @@ body {
   transition: opacity var(--transition-base);
 }
 
-/* Modificador: Modal visible */
 .modal.active {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Elemento: Caja de contenido */
 .modal__content {
   width: 90%;
-  max-width: 31.25rem; /* ~500px */
+  max-width: 31.25rem; 
   padding: var(--space-2xl);
   position: relative;
   transform: translateY(1.875rem);
@@ -877,7 +786,6 @@ body {
   transform: translateY(0);
 }
 
-/* Elemento: Botón de cierre */
 .modal__close {
   position: absolute;
   top: var(--space-md);
@@ -900,20 +808,17 @@ body {
   border-radius: 2px;
 }
 
-/* Elemento: Encabezado del modal */
 .modal__header {
   text-align: center;
   margin-bottom: var(--space-xl);
 }
 
-/* Elemento: Título del modal */
 .modal__title {
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 5vw, 2rem);
   margin-bottom: 0.25em;
 }
 
-/* Elemento: Subtítulo del modal */
 .modal__subtitle {
   color: var(--color-gold);
   text-transform: uppercase;
@@ -928,19 +833,14 @@ body {
   margin-top: 0.75rem;
 }
 
-/* ==========================================================================
-    14. BLOQUE: FORM (Formulario RSVP)
-   ========================================================================== */
-
-/* Elemento: Grupo de campo */
+/* Formulario */
 .form__group {
   margin-bottom: var(--space-lg);
   text-align: left;
-  border: none; /* Para el fieldset */
+  border: none; 
   padding: 0;
 }
 
-/* Elemento: Etiqueta */
 .form__label {
   display: block;
   margin-bottom: 0.5em;
@@ -948,7 +848,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Elemento: Input, Select y Textarea compartidos */
 .form__input {
   width: 100%;
   padding: 0.75em;
@@ -974,7 +873,6 @@ body {
   box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
 }
 
-/* Modificador: Input Inválido */
 .form__input.is-invalid {
   border-color: #b91c1c;
   background-color: #fef2f2;
@@ -984,12 +882,11 @@ body {
   box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.2);
 }
 
-/* Elemento: Mensaje de error tipo texto de apoyo */
 .form__error {
   color: #b91c1c;
   font-size: 0.85rem;
   margin-top: 0.4em;
-  display: none; /* Oculto por defecto */
+  display: none; 
   animation: fadeInError 0.3s ease;
 }
 
@@ -1010,7 +907,6 @@ body {
   }
 }
 
-/* Elemento: Grupo de radios */
 .form__radio-group {
   display: flex;
   flex-direction: column;
@@ -1018,7 +914,6 @@ body {
   margin-top: var(--space-sm);
 }
 
-/* Elemento: Opción de radio */
 .form__radio-option {
   display: flex;
   align-items: center;
@@ -1027,16 +922,14 @@ body {
   font-size: 0.95rem;
 }
 
-/* ==========================================================================
-    15. BLOQUE: FOOTER
-   ========================================================================== */
+/* Footer */
 .footer {
   background: transparent;
   color: var(--color-dark);
   text-align: center;
-  padding: 4rem 1rem 3rem; /* Reducido top padding para quitar espacio muerto */
+  padding: 4rem 1rem 3rem; 
   position: relative;
-  border-top: 2px solid rgba(197, 160, 89, 0.15); /* Separador suave desde la sección anterior */
+  border-top: 2px solid rgba(197, 160, 89, 0.15); 
 }
 
 .footer__container {
@@ -1056,7 +949,7 @@ body {
 
 .footer__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4rem); /* Reducido a proporciones elegantes */
+  font-size: clamp(2.5rem, 6vw, 4rem); 
   margin: 0;
   color: var(--color-dark);
   letter-spacing: 0.05em;
@@ -1078,7 +971,6 @@ body {
   color: var(--color-dark);
 }
 
-/* Separador elegante basado en 3 pequeños puntos dorados */
 .footer__separator {
   width: 3px;
   height: 3px;
@@ -1104,11 +996,6 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* ==========================================================================
-    16. ANIMACIONES
-   ========================================================================== */
-
-/* Entrada suave desde abajo */
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -1118,7 +1005,6 @@ body {
   }
 }
 
-/* Spinner de carga para botón */
 .spinner {
   width: 1.2rem;
   height: 1.2rem;
@@ -1145,7 +1031,6 @@ body {
   }
 }
 
-/* Rebote de la flecha de scroll */
 @keyframes bounce {
   0%,
   100% {
@@ -1156,25 +1041,21 @@ body {
   }
 }
 
-/* Clase helper: Aparece con retraso */
 .fade-in {
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.5s;
 }
 
-/* Clase helper: Aparece antes que el título */
 .bounce-in {
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.2s;
 }
 
-/* ==========================================================================
-   17. MEDIA QUERIES — MÓVIL (max-width: 600px)
-   ========================================================================== */
+/* Responsive */
 @media (max-width: 600px) {
-  /* --- Navbar --- */
+  
   .navbar__menu {
     gap: 0.5em;
     padding: 0 5px;
@@ -1191,11 +1072,11 @@ body {
     padding: 0.25em 0.5em !important;
   }
 
-  /* --- Hero --- */
+  
   .hero {
     height: auto;
     min-height: 100vh;
-    padding: 6rem 0 2.5rem; /* Aumentado top padding para que el navbar no lo cubra */
+    padding: 6rem 0 2.5rem; 
   }
 
   .hero__content {
@@ -1213,18 +1094,17 @@ body {
     letter-spacing: 0.3em;
   }
 
-
-  /* --- Countdown --- */
+  
   .countdown {
     gap: 0.5em;
     margin-top: var(--space-lg);
   }
 
   .countdown__label {
-    font-size: 0.75rem; /* Mejorado legibilidad */
+    font-size: 0.75rem; 
   }
 
-  /* --- Contenedor --- */
+  
   .container {
     padding: 0 var(--space-md);
   }
@@ -1233,18 +1113,18 @@ body {
     flex: 0 0 14rem;
   }
 
-  /* Ocultar botones prev/next en móvil para usar swipe natural */
+  
   .album__btn {
     display: none;
   }
 
-  /* --- Modal --- */
+  
   .modal__content {
     padding: var(--space-lg);
     width: 95%;
   }
 
-  /* --- Info Cards: destacar textos importantes en móvil --- */
+  
   .timeline__description,
   .timeline__info-group p {
     font-size: 0.85rem;
@@ -1255,7 +1135,7 @@ body {
     line-height: 1.55;
   }
 
-  /* Fecha más prominente en móvil */
+  
   .hero__date {
     font-size: clamp(2rem, 10vw, 3rem);
     color: var(--color-gold);
@@ -1264,11 +1144,8 @@ body {
   }
 }
 
-/* ==========================================================================
-   17b. MEDIA QUERIES — PANTALLAS MUY PEQUEÑAS (max-width: 360px)
-   ========================================================================== */
 @media (max-width: 360px) {
-  /* --- Navbar --- */
+  
   .navbar__container {
     padding: 0.4rem 0.5rem;
   }
@@ -1292,7 +1169,7 @@ body {
     font-size: 0.6rem;
   }
 
-  /* --- Hero --- */
+  
   .hero {
     padding: 5rem 0 2rem;
   }
@@ -1310,8 +1187,7 @@ body {
     font-size: clamp(1rem, 5vw, 1.6rem);
   }
 
-
-  /* --- Countdown --- */
+  
   .countdown {
     gap: 0.3em;
   }
@@ -1324,12 +1200,12 @@ body {
     font-size: 0.65rem;
   }
 
-  /* --- Container --- */
+  
   .container {
     padding: 0 var(--space-sm);
   }
 
-  /* --- Section Headers --- */
+  
   .section-header__title {
     font-size: clamp(1.4rem, 7vw, 2rem);
   }
@@ -1338,12 +1214,12 @@ body {
     font-size: 0.8rem;
   }
 
-  /* --- Álbum --- */
+  
   .polaroid {
     flex: 0 0 12rem;
   }
 
-  /* --- Timeline --- */
+  
   .timeline__time {
     font-size: 0.7rem;
     min-width: 3rem;
@@ -1366,7 +1242,7 @@ body {
     font-size: 0.8rem;
   }
 
-  /* --- Location --- */
+  
   .location-card__title {
     font-size: 1.1rem;
   }
@@ -1380,7 +1256,7 @@ body {
     padding: 0.7em 1.5em;
   }
 
-  /* --- RSVP Card --- */
+  
   .rsvp__card {
     padding: var(--space-lg) var(--space-md);
   }
@@ -1402,7 +1278,7 @@ body {
     font-size: 0.75rem;
   }
 
-  /* --- Modal --- */
+  
   .modal__content {
     padding: var(--space-md);
     width: 96%;
@@ -1426,7 +1302,7 @@ body {
     font-size: 1.6rem;
   }
 
-  /* --- Form --- */
+  
   .form__label {
     font-size: 0.8rem;
   }
@@ -1441,7 +1317,7 @@ body {
     padding: 0.9em 1.5em;
   }
 
-  /* --- Footer --- */
+  
   .footer__title {
     font-size: clamp(1.8rem, 10vw, 3rem);
   }
@@ -1459,21 +1335,18 @@ body {
   }
 }
 
-/* ==========================================================================
-   18. MEDIA QUERIES — ESCRITORIO (min-width: 768px)
-   ========================================================================== */
 @media (min-width: 768px) {
-  /* --- Global --- */
+  
   body {
     letter-spacing: 0.1em;
   }
 
-  /* --- Contenedor --- */
+  
   .container {
     padding: 0 var(--space-2xl);
   }
 
-  /* --- Navbar --- */
+  
   .navbar__container {
     justify-content: space-between;
   }
@@ -1486,18 +1359,18 @@ body {
     gap: var(--space-xl);
   }
 
-  /* --- Álbum (Polaroids) --- */
+  
   .polaroid__caption {
     opacity: 1;
     transform: none;
   }
 
-  /* --- Card --- */
+  
   .card {
     padding: var(--space-2xl);
   }
 
-  /* --- Timeline: layout zig-zag en escritorio --- */
+  
   .timeline::before {
     left: 50%;
     transform: translateX(-50%);
@@ -1525,14 +1398,14 @@ body {
     display: block;
   }
 
-  /* Filas impares: Lado izquierdo (Tarjeta) y Derecho (Hora) */
+  
   .timeline__row:nth-child(odd) {
     flex-direction: row-reverse;
   }
 
   .timeline__row:nth-child(odd) .timeline__card {
     text-align: right;
-    padding: 0 4rem 1.5rem 1.5rem; /* Separación de la línea central */
+    padding: 0 4rem 1.5rem 1.5rem; 
   }
 
   .timeline__row:nth-child(odd) .timeline__icon-header {
@@ -1541,23 +1414,22 @@ body {
 
   .timeline__row:nth-child(odd) .timeline__time {
     text-align: left;
-    padding: 1.5rem 1.5rem 0 4rem; /* Separación de la línea central */
+    padding: 1.5rem 1.5rem 0 4rem; 
   }
 
-  /* Filas pares: Lado derecho (Tarjeta) y Izquierdo (Hora) */
+  
   .timeline__row:nth-child(even) {
     flex-direction: row;
   }
 
   .timeline__row:nth-child(even) .timeline__card {
     text-align: left;
-    padding: 0 1.5rem 1.5rem 4rem; /* Separación de la línea central */
+    padding: 0 1.5rem 1.5rem 4rem; 
   }
 
   .timeline__row:nth-child(even) .timeline__time {
     text-align: right;
-    padding: 1.5rem 4rem 0 1.5rem; /* Separación de la línea central */
+    padding: 1.5rem 4rem 0 1.5rem; 
   }
-
 
 }

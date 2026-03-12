@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Invitación de boda de Angel y Clara. 16 de Julio de 2026 en Garden Vista Ballroom, Passaic NJ.">
     <title>Boda de Angel y Clara</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <!-- Open Graph / WhatsApp / Redes Sociales -->
-    <meta property="og:type"        content="website">
+<meta property="og:type"        content="website">
     <meta property="og:url"         content="https://notxngel.github.io/invitacion-a-nuestra-boda-v1/">
     <meta property="og:title"       content="Boda de Angel &amp; Clara — 16 de Julio 2026">
     <meta property="og:description" content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
@@ -17,26 +15,18 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale"      content="es_ES">
-    <!-- Twitter Card (también funciona en iMessage) -->
-    <meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="Boda de Angel &amp; Clara — 16 de Julio 2026">
     <meta name="twitter:description" content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
     <meta name="twitter:image"       content="https://notxngel.github.io/invitacion-a-nuestra-boda-v1/og-image.png">
-    <!-- Fuentes de Google -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Estilos -->
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css?v=20260312">
 </head>
 <body>
-
-    <!-- =====================================================
-        BLOQUE: NAVBAR (Menú de Navegación)
-        ===================================================== -->
-    <nav class="navbar" aria-label="Navegación principal">
+<nav class="navbar" aria-label="Navegación principal">
         <div class="navbar__container">
             <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Angel y Clara">A &amp; C</a>
             <ul class="navbar__menu" role="list">
@@ -47,16 +37,9 @@
             </ul>
         </div>
     </nav>
-
-    <!-- =====================================================
-        BLOQUE: HERO (Portada principal)
-        ===================================================== -->
-    <section id="home" class="hero" aria-labelledby="hero-title">
-        <!-- Imagen de Fondo -->
-        <div class="hero__background" role="img" aria-label="Fotografía de fondo de la boda"></div>
-
-        <!-- Contenido Principal -->
-        <div class="hero__content">
+<section id="home" class="hero" aria-labelledby="hero-title">
+<div class="hero__background" role="img" aria-label="Fotografía de fondo de la boda"></div>
+<div class="hero__content">
             <p class="hero__eyebrow bounce-in">¡NOS CASAMOS!</p>
             <h1 id="hero-title" class="hero__title fade-in">Angel &amp; Clara</h1>
             <div class="hero__divider" aria-hidden="true"></div>
@@ -65,9 +48,7 @@
                 <p class="hero__date">Julio 16, 2026</p>
                 <p class="hero__instruction">Desplázate para conocer los detalles del evento.</p>
             </div>
-
-            <!-- Cuenta Regresiva -->
-            <div id="countdown" class="countdown" aria-label="Cuenta regresiva para la boda">
+<div id="countdown" class="countdown" aria-label="Cuenta regresiva para la boda">
                 <div class="countdown__item">
                     <span id="days" class="countdown__number" aria-live="polite">0</span>
                     <span class="countdown__label">Días</span>
@@ -86,75 +67,55 @@
                 </div>
             </div>
 
-
         </div>
-
-        <!-- Flecha animada -->
-        <div class="hero__scroll-indicator" aria-hidden="true">
+<div class="hero__scroll-indicator" aria-hidden="true">
             <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
     </section>
-
-    <!-- =====================================================
-        BLOQUE: ALBUM (Álbum de Fotos Estilo Polaroid)
-        ===================================================== -->
-    <section id="photo-album" class="album" aria-labelledby="album-title">
+<section id="photo-album" class="album" aria-labelledby="album-title">
         <div class="container">
             <div class="section-header">
                 <h2 id="album-title" class="section-header__title">Momentos que nos trajeron aquí</h2>
                 <p class="section-header__subtitle">Un día que cambio nuestras vidas para siempre</p>
             </div>
-
-            <!-- Contenedor del Carrusel -->
-            <div class="album__slider" id="albumSlider">
+<div class="album__slider" id="albumSlider">
                 <button class="album__btn album__btn--prev" id="btnPrev" aria-label="Anterior">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
                 <div class="album__track" id="albumTrack">
-
-                    <!-- Polaroid 1: La gran pregunta -->
-                    <article class="polaroid">
+<article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/theMoment.webp" alt="La gran pregunta del momento de la propuesta" loading="lazy" class="polaroid__img">
                             <p class="polaroid__caption">La gran pregunta</p>
                         </div>
                     </article>
-
-                    <!-- Polaroid 2: Dijo que sí -->
-                    <article class="polaroid">
+<article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/dijoquesi.webp" alt="Clara dijo que sí a la propuesta" loading="lazy" class="polaroid__img">
                             <p class="polaroid__caption">¡Dijo que sí!</p>
                         </div>
                     </article>
-
-                    <!-- Polaroid 3: Nosotros (CENTRO) -->
-                    <article class="polaroid">
+<article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/Us.webp" alt="Angel y Clara juntos" loading="lazy" class="polaroid__img">
                             <p class="polaroid__caption">Tú y yo, siempre</p>
                         </div>
                     </article>
-
-                    <!-- Polaroid 4: Promesa -->
-                    <article class="polaroid">
+<article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/proposalimg2.webp" alt="Promesa eterna de amor" loading="lazy" class="polaroid__img">
                             <p class="polaroid__caption">Para siempre</p>
                         </div>
                     </article>
-                    <!-- Polaroid 6: Amor -->
-                    <article class="polaroid">
+<article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/ilove.webp" alt="Con todo mi amor" loading="lazy" class="polaroid__img">
                             <p class="polaroid__caption">Con todo mi corazón</p>
                         </div>
                     </article>
-
-                    <!-- Polaroid 7: Juntos -->
-                    <article class="polaroid">
+<article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/us2.webp" alt="Juntos es mi lugar favorito" loading="lazy" class="polaroid__img">
                             <p class="polaroid__caption">Mi lugar favorito</p>
@@ -168,22 +129,14 @@
             </div>
         </div>
     </section>
-
-    <!-- =====================================================
-        BLOQUE: DETAILS (Detalles del Evento - Timeline)
-        ===================================================== -->
-    <section id="details" class="details" aria-labelledby="details-title">
+<section id="details" class="details" aria-labelledby="details-title">
         <div class="container">
             <div class="section-header">
                 <h2 id="details-title" class="section-header__title">Detalles del Evento</h2>
                 <p class="section-header__subtitle">Todo lo que necesitas saber</p>
             </div>
-
-            <!-- TIMELINE (Línea de Tiempo Vertical) -->
-            <div class="timeline" role="list" aria-label="Programa del día">
-
-                <!-- 1. Ceremonia -->
-                <div class="timeline__row" role="listitem">
+<div class="timeline" role="list" aria-label="Programa del día">
+<div class="timeline__row" role="listitem">
                     <div class="timeline__time" aria-label="Hora: 2:00 PM">Por confirmar
                     </div>
                     <div class="timeline__dot" aria-hidden="true"></div>
@@ -198,9 +151,7 @@
                         <p class="timeline__description">Inicio puntual; agradecemos llegar con antelación.</p>
                     </div>
                 </div>
-
-                <!-- 2. Recepcion -->
-                <div class="timeline__row" role="listitem">
+<div class="timeline__row" role="listitem">
                     <div class="timeline__time" aria-label="Hora: 4:30 PM">Por confirmar</div>
                     <div class="timeline__dot" aria-hidden="true"></div>
                     <div class="timeline__card">
@@ -214,9 +165,7 @@
                         <p class="timeline__description">Recepción a las 5:00 PM; los esperamos para celebrar juntos.</p>
                     </div>
                 </div>
-
-                <!-- 3. Información Adicional -->
-                <div class="timeline__row timeline__row--info" role="listitem">
+<div class="timeline__row timeline__row--info" role="listitem">
                     <div class="timeline__time">Info</div>
                     <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
                     <div class="timeline__card">
@@ -230,8 +179,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 4. Regalos -->
-                <div class="timeline__row timeline__row--info" role="listitem">
+<div class="timeline__row timeline__row--info" role="listitem">
                     <div class="timeline__time">Info</div>
                     <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
                     <div class="timeline__card">
@@ -241,9 +189,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 7. Cupos -->
-                <div class="timeline__row timeline__row--info" role="listitem">
+<div class="timeline__row timeline__row--info" role="listitem">
                     <div class="timeline__time">Info</div>
                     <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
                     <div class="timeline__card">
@@ -257,11 +203,7 @@
             </div>
         </div>
     </section>
-
-    <!-- =====================================================
-        BLOQUE: UBICACIONES (Mapas)
-        ===================================================== -->
-    <section id="locations" class="locations" aria-labelledby="locations-title">
+<section id="locations" class="locations" aria-labelledby="locations-title">
         <div class="container">
             <div class="section-header">
                 <h2 id="locations-title" class="section-header__title">¿Cómo Llegar?</h2>
@@ -289,11 +231,7 @@
             </div>
         </div>
     </section>
-
-    <!-- =====================================================
-        BLOQUE: RSVP (Sección de Confirmación)
-        ================================================= -->
-    <section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
+<section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
         <div class="container">
             <div class="section-header">
                 <h2 id="rsvp-title" class="section-header__title">Confirmación</h2>
@@ -320,11 +258,7 @@
             </div>
         </div>
     </section>
-
-    <!-- =====================================================
-        BLOQUE: MODAL (Ventana Emergente RSVP)
-        ===================================================== -->
-    <div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="closeRSVP(event)">
+<div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="closeRSVP(event)">
         <div class="modal__content card">
             <button
                 class="modal__close"
@@ -339,12 +273,10 @@
             </div>
 
             <form id="rsvpForm" class="form" novalidate>
-                <!-- Honeypot anti-bot (campo invisible para humanos) -->
-                <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+<div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
                     <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
-                <!-- Campos de nombre generados según cupos del link (?c=N) -->
-                <div id="guestNamesContainer"></div>
+<div id="guestNamesContainer"></div>
 
                 <fieldset class="form__group">
                     <legend class="form__label">¿Asistirás?</legend>
@@ -375,11 +307,7 @@
             </form>
         </div>
     </div>
-
-    <!-- =====================================================
-        BLOQUE: FOOTER
-        ===================================================== -->
-    <footer class="footer">
+<footer class="footer">
         <div class="footer__container fade-in">
             <span class="footer__eyebrow">Con cariño y gratitud</span>
             <h2 class="footer__title">Angel <span>&amp;</span> Clara</h2>
@@ -389,8 +317,6 @@
             <p class="footer__text footer__text--small">Hecho con amor para nuestros invitados</p>
         </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+<script src="script.js?v=20260312"></script>
 </body>
 </html>
