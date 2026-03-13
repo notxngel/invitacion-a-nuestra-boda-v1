@@ -249,7 +249,7 @@ body {
 /* Elemento: Menú */
 .navbar__menu {
   display: flex;
-  gap: var(--space-xl); /* Mayor separación entre elementos */
+  gap: var(--space-md);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -261,20 +261,32 @@ body {
 .navbar__link {
   text-decoration: none;
   color: var(--color-text-muted);
-  font-size: 0.95rem;
-  padding: 0.6em 1.2em; /* Área clickeable más amplia */
-  border-radius: 20px; /* Estilo píldora para los enlaces */
+  font-size: 0.9rem;
+  padding: 0.5em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-weight: 700;
-  transition: all var(--transition-base);
+  transition: color var(--transition-base);
   position: relative;
 }
 
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0px;
+  left: 50%;
+  background-color: var(--color-gold);
+  transition: all var(--transition-base);
+  transform: translateX(-50%);
+}
+
 .navbar__link:hover {
-  color: var(--color-dark);
-  background-color: rgba(168, 127, 59, 0.1); /* Fondo sutil dorado al pasar el ratón */
-  transform: translateY(-2px);
+  color: var(--color-gold);
+}
+
+.navbar__link:hover::after {
+  width: 80%;
 }
 
 /* Modificador: Enlace CTA (Confirmar) */
