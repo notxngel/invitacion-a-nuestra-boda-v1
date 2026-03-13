@@ -97,11 +97,14 @@ setInterval(updateCountdown, 1000);
   window.addEventListener("scroll", () => {
     if (!isTicking) {
       window.requestAnimationFrame(() => {
-        // Aparece justo al salir de la primera sección (Hero)
+        const scrollY = window.scrollY;
         const heroBottom = heroSection.offsetHeight - 80; // Margen para que sea fluido
-        if (window.scrollY >= heroBottom) {
+        
+        if (scrollY >= heroBottom) {
+          // Aparece al salir del hero
           navbar.classList.add("is-visible");
-        } else {
+        } else if (scrollY < 100) {
+          // Se oculta solo al regresar completamente arriba
           navbar.classList.remove("is-visible");
         }
         isTicking = false;
