@@ -1,7 +1,7 @@
 // script.js — Invitación de Boda de Angel y Clara
 
-// Fecha de la boda: 16 de Julio de 2026
-const weddingDate = new Date("2026-07-16T17:00:00");
+// Fecha de la boda: 16 de Julio de 2026 (todo el día en general)
+const weddingDate = new Date("2026-07-16T00:00:00");
 
 function updateCountdown() {
   const now = new Date();
@@ -80,6 +80,34 @@ setInterval(updateCountdown, 1000);
 
   document.querySelectorAll(".timeline__row, .map-in").forEach(el => {
     observer.observe(el);
+  });
+})();
+
+/* ========================================================================
+   NAVBAR — Mostrar al salir del Hero
+   ======================================================================== */
+(function initNavbarScroll() {
+  const navbar = document.querySelector(".navbar");
+  const heroSection = document.getElementById("home");
+
+  if (!navbar || !heroSection) return;
+
+  let isTicking = false;
+
+  window.addEventListener("scroll", () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        // Aparece justo al salir de la primera sección (Hero)
+        const heroBottom = heroSection.offsetHeight - 80; // Margen para que sea fluido
+        if (window.scrollY >= heroBottom) {
+          navbar.classList.add("is-visible");
+        } else {
+          navbar.classList.remove("is-visible");
+        }
+        isTicking = false;
+      });
+      isTicking = true;
+    }
   });
 })();
 
@@ -216,39 +244,35 @@ setupValidationListeners();
 // 4. ENVÍO DEL FORMULARIO RSVP → MAKE → NOTION
 // =============================================================
 
-// --- Seguridad: URL ofuscada para dificultar abuso directo ---
-const _wh = atob("aHR0cHM6Ly9ob29rLnVzMi5tYWtlLmNvbS8xY3N1OWJxcXl3bGc5aTRmejR1eHY3Z2UzNHZkdmNhbg==");
-
-// --- Seguridad: Rate limiter (máx 1 envío cada 30 segundos) ---
-let _lastSubmit = 0;
+// --- Seguridad: URL expuesta en el frontend ---
+// Make debe configurarse para aceptar llamadas solo desde notxngel.github.io
+const _wh = "https://hook.us2.make.com/1csu9bqqywlg9i4fz4uxv7ge34vdvcan";
 
 // Seleccionamos el formulario del HTML
 const rsvpForm = document.getElementById("rsvpForm");
 
-// Escuchamos el evento 'submit' (cuando el usuario presiona "Enviar Confirmación")
-rsvpForm.addEventListener("submit", async (e) => {
-  // LÍNEA CLAVE: Evita que el formulario recargue la página (comportamiento por defecto)
-  e.preventDefault();
+// --- Funciones Auxiliares para el Submit ---
+let _lastSubmit = 0;
 
-  // --- Seguridad: Rate limiting ---
+function isSafeToSubmit() {
+  // Rate limiting extraido
   const now = Date.now();
   if (now - _lastSubmit < 30000) {
     mostrarError("Por favor espera unos segundos antes de intentar de nuevo.");
-    return;
+    return false;
   }
 
-  // --- Seguridad: Honeypot (si se llenó el campo oculto, es un bot) ---
+  // Honeypot extraido
   const honeypot = document.getElementById("website");
   if (honeypot && honeypot.value !== "") {
-    // Simular éxito para el bot, sin enviar nada real
-    mostrarExito();
-    return;
+    mostrarExito(); // Simular éxito para bots
+    return false;
   }
+  return true;
+}
 
-  // --- Validación general antes de enviar ---
-  const requiredInputs = Array.from(
-    document.querySelectorAll(".form__input[required]"),
-  );
+function handleValidation() {
+  const requiredInputs = Array.from(document.querySelectorAll(".form__input[required]"));
   let isValid = true;
   let firstInvalidInput = null;
 
@@ -256,100 +280,105 @@ rsvpForm.addEventListener("submit", async (e) => {
     if (input.value.trim() === "") {
       setInvalid(input, "Por favor, ingresa tu nombre.");
       isValid = false;
-      if (!firstInvalidInput) firstInvalidInput = input; // Guardamos el primero para hacerle focus
+      if (!firstInvalidInput) firstInvalidInput = input;
     }
   });
 
   if (!isValid) {
-    // Si hay error, enfocamos el primer input que falló y nos movemos hacia él
     firstInvalidInput.focus();
     firstInvalidInput.scrollIntoView({ behavior: "smooth", block: "center" });
-    return; // Deteine el proceso de envío
   }
+  return isValid;
+}
 
-  // --- Cambiar el botón para indicar que está cargando ---
+function toggleSubmitState(isSubmitting) {
   const submitBtn = document.getElementById("submitBtn") || document.querySelector(".btn--submit");
-  const originalBtnText = submitBtn.textContent;
-  submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
-  submitBtn.disabled = true;
+  if (!submitBtn) return;
+  
+  if (isSubmitting) {
+    submitBtn.dataset.originalText = submitBtn.textContent;
+    submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
+    submitBtn.disabled = true;
+  } else {
+    submitBtn.innerHTML = submitBtn.dataset.originalText || "Enviar Confirmación";
+    submitBtn.disabled = false;
+  }
+}
 
-  // --- Extraer Titular y Acompañantes moderno ---
+function extractGuestData() {
   const nameInput = document.getElementById("guest1");
   const titular = nameInput ? nameInput.value.trim() : "";
 
-  // Convertimos todos los inputs a un Array moderno usando funciones flecha
   const inputs = Array.from(document.querySelectorAll('input[id^="guest"]'));
   const todosLosNombres = inputs
     .map((input) => input.value.trim())
     .filter((val) => val !== "");
 
-  // Filtramos para obtener solo los acompañantes (excluyendo al titular)
-  const acompanantes = todosLosNombres.filter(
-    (val) => val !== titular && val !== "",
-  );
+  const acompanantes = todosLosNombres.filter((val) => val !== titular && val !== "");
 
   const formData = new FormData(rsvpForm);
   const mensajeUsuario = formData.get("message") || "";
   const telefono = formData.get("phone") || "";
 
-  // Armamos los datos que recibirá Make / Notion
-  const data = {
-    Nombre: titular, // Nombre principal
-    title: titular, // (Respaldo)
-    Title: titular, // (Respaldo)
+  return {
+    Nombre: titular,
+    title: titular,
+    Title: titular,
     Telefono: telefono,
-    Invitados: todosLosNombres.length, // Número de personas
-    Asistencia: formData.get("attendance"), // "si" o "no"
-    Mensaje:
-      acompanantes.length > 0
+    Invitados: todosLosNombres.length,
+    Asistencia: formData.get("attendance"),
+    Mensaje: acompanantes.length > 0
         ? `Acompañantes: ${acompanantes.join(", ")}${mensajeUsuario ? "\n\nMensaje: " + mensajeUsuario : ""}`
-        : mensajeUsuario, // Solo los nombres adicionales + mensaje
+        : mensajeUsuario,
   };
+}
 
-
+async function sendDataToMake(data) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
 
   try {
-    // --- Novedad: Timeout de 10 segundos ---
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-    // ✉️ fetch() — La función que "sale" a internet y envía los datos
-    // Es como cuando un mensajero lleva un sobre a otra dirección
     const response = await fetch(_wh, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
       signal: controller.signal
     });
     
-    clearTimeout(timeoutId); // Limpiar el timeout si terminó a tiempo
+    clearTimeout(timeoutId);
 
-    // Si la respuesta fue exitosa (código 200, 201, etc.)
     if (response.ok) {
-      // --- Novedad: Sello de guardado ---
       localStorage.setItem('rsvpStatus', 'sent');
       _lastSubmit = Date.now();
       mostrarExito();
     } else {
-      // El servidor respondió pero con un error
       throw new Error(`Error del servidor: ${response.status}`);
     }
   } catch (error) {
-    // Si hubo un problema de red u otro error inesperado
     console.error("Error al enviar:", error);
     if (error.name === 'AbortError') {
       mostrarError("Tiempo agotado. Intenta de nuevo.");
     } else {
       mostrarError();
     }
-  } finally {
-    // El "equipo de limpieza": restablece el botón si falló
-    if (localStorage.getItem('rsvpStatus') !== 'sent') {
-        submitBtn.innerHTML = originalBtnText;
-        submitBtn.disabled = false;
-    }
+  }
+}
+
+// Escuchamos el evento 'submit' refactorizado
+rsvpForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (!isSafeToSubmit()) return;
+  if (!handleValidation()) return;
+
+  toggleSubmitState(true);
+  
+  const guestData = extractGuestData();
+  await sendDataToMake(guestData);
+  
+  // Limpia el botón si no fue éxito
+  if (localStorage.getItem('rsvpStatus') !== 'sent') {
+    toggleSubmitState(false);
   }
 });
 
