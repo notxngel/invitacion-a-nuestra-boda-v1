@@ -1,7 +1,16 @@
-// script.js — Invitación de Boda de Angel y Clara
+/** 0. CONFIGURACIÓN: Fecha y Elementos Base **/
 
 // Fecha de la boda: 16 de Julio de 2026 (todo el día en general)
 const weddingDate = new Date("2026-07-16T00:00:00");
+
+// Elementos del contador cacheados para rendimiento
+const countdownElements = {
+  days: document.getElementById("days"),
+  hours: document.getElementById("hours"),
+  minutes: document.getElementById("minutes"),
+  seconds: document.getElementById("seconds"),
+  container: document.getElementById("countdown")
+};
 
 function updateCountdown() {
   const now = new Date();
@@ -14,16 +23,15 @@ function updateCountdown() {
     const minutes = Math.floor((difference / 1000 / 60) % 60);
     const seconds = Math.floor((difference / 1000) % 60);
 
-    // Actualizar el HTML
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+    // Actualizar el HTML usando las referencias cacheadas
+    if (countdownElements.days) countdownElements.days.innerText = days;
+    if (countdownElements.hours) countdownElements.hours.innerText = hours;
+    if (countdownElements.minutes) countdownElements.minutes.innerText = minutes;
+    if (countdownElements.seconds) countdownElements.seconds.innerText = seconds;
   } else {
     // Si la fecha ya pasó
-    const countdownEl = document.getElementById("countdown");
-    if (countdownEl) {
-        countdownEl.innerHTML = `
+    if (countdownElements.container) {
+        countdownElements.container.innerHTML = `
         <div style="font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: 0.1em; color: var(--color-gold); font-style: italic; text-transform:none;">
             ¡A partir de hoy, somos esposos!
         </div>
@@ -38,9 +46,7 @@ updateCountdown();
 // Repetir cada 1000ms (1 segundo)
 setInterval(updateCountdown, 1000);
 
-/* ========================================================================
-   CARRUSEL — Lógica de Botones y Swipe
-   ======================================================================== */
+/** 1. CARRUSEL: Lógica de navegación del álbum **/
 (function initCarousel() {
   const track = document.getElementById("albumTrack");
   const btnPrev = document.getElementById("btnPrev");
@@ -65,9 +71,7 @@ setInterval(updateCountdown, 1000);
   });
 })();
 
-/* ========================================================================
-   MICRO-ANIMACIONES — Timeline (Intersection Observer)
-   ======================================================================== */
+/** 2. ANIMACIONES: Intersection Observer para Timeline **/
 (function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -83,9 +87,7 @@ setInterval(updateCountdown, 1000);
   });
 })();
 
-/* ========================================================================
-   NAVBAR — Mostrar al salir del Hero
-   ======================================================================== */
+/** 3. NAVBAR: Lógica de visibilidad al hacer scroll **/
 (function initNavbarScroll() {
   const navbar = document.querySelector(".navbar");
   const heroSection = document.getElementById("home");
@@ -114,9 +116,7 @@ setInterval(updateCountdown, 1000);
   });
 })();
 
-// =============================================================
-// 2. MODAL RSVP — Abrir y Cerrar
-// =============================================================
+/** 4. MODAL: Apertura y cierre del RSVP **/
 
 function openRSVP() {
   const modal = document.getElementById("rsvpModal");
@@ -147,13 +147,11 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeRSVP();
 });
 
-// =============================================================
-// 3. SISTEMA DE CUPOS POR LINK (?c=N en la URL)
-// =============================================================
+/** 5. CUPOS: Generación dinámica de campos de invitados **/
 
 (function generarCamposDeNombres() {
   const params = new URLSearchParams(window.location.search);
-  // Cupos: mínimo 1, máximo 6. Si no hay ?c= en la URL, muestra 1 campo.
+  // Cupos: mínimo 1, máximo 4. Si no hay ?c= en la URL, muestra 1 campo.
   const cupos = Math.min(Math.max(parseInt(params.get("c")) || 1, 1), 4);
 
   const container = document.getElementById("guestNamesContainer");
@@ -182,9 +180,7 @@ document.addEventListener("keydown", (e) => {
   container.innerHTML = html;
 })();
 
-// =============================================================
-// VALIDACIONES VISUALES (INLINE)
-// =============================================================
+/** 6. VALIDACIÓN: Feedback visual inmediato en campos **/
 
 // Función reutilizable para marcar un campo como inválido
 function setInvalid(inputElement, message) {
@@ -222,10 +218,8 @@ function setupValidationListeners() {
     // Evento 'blur': se dispara cuando el usuario sale (pierde el foco) del campo
     input.addEventListener("blur", () => {
       if (input.value.trim() === "") {
-        setInvalid(
-          input,
-          "Por favor, ingresa tu nombre. Es necesario para confirmar.",
-        );
+        const msg = input.id === "phone" ? "Por favor, ingresa tu teléfono." : "Por favor, ingresa tu nombre.";
+        setInvalid(input, msg);
       }
     });
 
@@ -243,9 +237,7 @@ function setupValidationListeners() {
 // Usamos requestAnimationFrame o simplemente lo llamamos aquí abajo porque las funciones ya corrieron.
 setupValidationListeners();
 
-// =============================================================
-// 4. ENVÍO DEL FORMULARIO RSVP → MAKE → NOTION
-// =============================================================
+/** 7. FORMULARIO: Procesamiento y envío de datos (Make/Notion) **/
 
 // --- Seguridad: URL expuesta en el frontend ---
 // Make debe configurarse para aceptar llamadas solo desde notxngel.github.io
@@ -281,7 +273,8 @@ function handleValidation() {
 
   requiredInputs.forEach((input) => {
     if (input.value.trim() === "") {
-      setInvalid(input, "Por favor, ingresa tu nombre.");
+      const msg = input.id === "phone" ? "Por favor, ingresa tu teléfono." : "Por favor, ingresa tu nombre.";
+      setInvalid(input, msg);
       isValid = false;
       if (!firstInvalidInput) firstInvalidInput = input;
     }
@@ -295,7 +288,7 @@ function handleValidation() {
 }
 
 function toggleSubmitState(isSubmitting) {
-  const submitBtn = document.getElementById("submitBtn") || document.querySelector(".btn--submit");
+  const submitBtn = document.getElementById("submitBtn");
   if (!submitBtn) return;
   
   if (isSubmitting) {
@@ -385,9 +378,7 @@ rsvpForm.addEventListener("submit", async (e) => {
   }
 });
 
-// =============================================================
-// 4. FUNCIONES DE FEEDBACK (Lo que ve el usuario al enviar)
-// =============================================================
+/** 8. FEEDBACK: Mensajes de éxito, error y cierre **/
 
 function mostrarExito() {
   // Reemplazamos el contenido del modal con un mensaje de éxito
