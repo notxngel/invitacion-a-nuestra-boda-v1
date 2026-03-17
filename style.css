@@ -274,7 +274,7 @@ body {
   overflow: hidden;
 }
 
-/* Overlay oscuro (solo sombra, sin color de fondo sólido al final) */
+/* Overlay oscuro (funde progresivamente a transparente total al final) */
 .hero::after {
   content: "";
   position: absolute;
@@ -283,19 +283,19 @@ body {
     to bottom,
     rgba(0, 0, 0, 0.45) 0%,
     rgba(0, 0, 0, 0.35) 75%,
-    rgba(0, 0, 0, 0.50) 100%
+    transparent 100%
   );
   z-index: 0;
   pointer-events: none;
 }
 
-/* Imagen de fondo con máscara de transparencia suave (re-introducida para evitar la "línea") */
+/* Imagen de fondo con máscara de desvanecimiento suave (ahora sincronizada con el overlay) */
 .hero__background {
   position: absolute;
   inset: 0;
   background: url("images/hero_wedding_olive.webp") center / cover;
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   z-index: var(--z-back);
 }
 
