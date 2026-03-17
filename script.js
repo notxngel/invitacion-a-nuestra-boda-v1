@@ -12,6 +12,13 @@ const countdownElements = {
   container: document.getElementById("countdown")
 };
 
+/**
+ * Actualiza el contador de la cuenta regresiva en el DOM.
+ * Calcula la diferencia entre la fecha de la boda y el momento actual.
+ * Si la fecha ya pasó, muestra un mensaje de felicitación.
+ * 
+ * @returns {void}
+ */
 function updateCountdown() {
   const now = new Date();
   const difference = weddingDate - now;
@@ -118,6 +125,15 @@ setInterval(updateCountdown, 1000);
 
 /** 4. MODAL: Apertura y cierre del RSVP **/
 
+/**
+ * Abre el modal de confirmación (RSVP).
+ * Bloquea el scroll del fondo y muestra un mensaje de éxito si ya se envió previamente.
+ * 
+ * @example
+ * openRSVP();
+ * 
+ * @returns {void}
+ */
 function openRSVP() {
   const modal = document.getElementById("rsvpModal");
   if (modal) {
@@ -131,6 +147,12 @@ function openRSVP() {
   }
 }
 
+/**
+ * Cierra el modal de confirmación (RSVP).
+ * 
+ * @param {MouseEvent|null} e - El evento de click (opcional).
+ * @returns {void}
+ */
 function closeRSVP(e) {
   // Si se llama directamente (botón X) o si el evento es click en overlay
   if (!e || e.target.id === "rsvpModal" || e.target.closest(".modal__close")) {
@@ -183,6 +205,13 @@ document.addEventListener("keydown", (e) => {
 /** 6. VALIDACIÓN: Feedback visual inmediato en campos **/
 
 // Función reutilizable para marcar un campo como inválido
+/**
+ * Marca un elemento de entrada como inválido y muestra un mensaje de error.
+ * 
+ * @param {HTMLInputElement} inputElement - El elemento del DOM a marcar.
+ * @param {string} message - El mensaje de error a mostrar.
+ * @returns {void}
+ */
 function setInvalid(inputElement, message) {
   const errorSpan = document.getElementById(`error-${inputElement.id}`);
   inputElement.classList.add("is-invalid");
@@ -201,6 +230,12 @@ function setInvalid(inputElement, message) {
 }
 
 // Función reutilizable para limpiar los errores de un campo
+/**
+ * Limpia el estado de error de un elemento de entrada.
+ * 
+ * @param {HTMLInputElement} inputElement - El elemento del DOM a limpiar.
+ * @returns {void}
+ */
 function clearInvalid(inputElement) {
   const errorSpan = document.getElementById(`error-${inputElement.id}`);
   inputElement.classList.remove("is-invalid");
@@ -266,6 +301,12 @@ function isSafeToSubmit() {
   return true;
 }
 
+/**
+ * Valida todos los campos obligatorios del formulario RSVP.
+ * Enfoca el primer campo inválido si se encuentran errores.
+ * 
+ * @returns {boolean} True si el formulario es válido, False en caso contrario.
+ */
 function handleValidation() {
   const requiredInputs = Array.from(document.querySelectorAll(".form__input[required]"));
   let isValid = true;
@@ -287,6 +328,13 @@ function handleValidation() {
   return isValid;
 }
 
+/**
+ * Cambia el estado del botón de envío durante el proceso de procesamiento.
+ * Muestra u oculta un spinner y deshabilita/habilita el botón.
+ * 
+ * @param {boolean} isSubmitting - Indica si se está enviando el formulario.
+ * @returns {void}
+ */
 function toggleSubmitState(isSubmitting) {
   const submitBtn = document.getElementById("submitBtn");
   if (!submitBtn) return;
@@ -301,6 +349,12 @@ function toggleSubmitState(isSubmitting) {
   }
 }
 
+/**
+ * Extrae los datos de los invitados y el formulario para su envío.
+ * Organiza los nombres de acompañantes y el mensaje en un objeto estructurado.
+ * 
+ * @returns {Object} Un objeto con los campos: Nombre, Telefono, Invitados, Asistencia, Mensaje.
+ */
 function extractGuestData() {
   const nameInput = document.getElementById("guest1");
   const titular = nameInput ? nameInput.value.trim() : "";
@@ -329,6 +383,13 @@ function extractGuestData() {
   };
 }
 
+/**
+ * Envía los datos del RSVP al webhook de Make.com.
+ * Maneja el estado de éxito y error, y almacena el estado en localStorage.
+ * 
+ * @param {Object} data - Los datos extraídos del formulario.
+ * @returns {Promise<void>}
+ */
 async function sendDataToMake(data) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -380,6 +441,12 @@ rsvpForm.addEventListener("submit", async (e) => {
 
 /** 8. FEEDBACK: Mensajes de éxito, error y cierre **/
 
+/**
+ * Muestra el mensaje de éxito en el modal tras un envío exitoso.
+ * Genera botones dinámicos para añadir el evento al calendario según el dispositivo.
+ * 
+ * @returns {void}
+ */
 function mostrarExito() {
   // Reemplazamos el contenido del modal con un mensaje de éxito
   const modalContent = document.querySelector(".modal__content");
@@ -447,6 +514,12 @@ function mostrarExito() {
     `;
 }
 
+/**
+ * Muestra un mensaje de error visual en el botón de envío.
+ * 
+ * @param {string} [mensaje="Hubo un error. Intenta de nuevo"] - El mensaje de error a mostrar.
+ * @returns {void}
+ */
 function mostrarError(mensaje = "Hubo un error. Intenta de nuevo") {
   const submitBtn = document.querySelector(".btn--submit");
   if (submitBtn) {
@@ -457,6 +530,11 @@ function mostrarError(mensaje = "Hubo un error. Intenta de nuevo") {
 }
 
 // Cierra el modal y restaura el formulario a su estado original
+/**
+ * Cierra el modal de éxito y recarga la página para resetear el estado.
+ * 
+ * @returns {void}
+ */
 function cerrarYReiniciar() {
   closeRSVP();
 
