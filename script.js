@@ -30,11 +30,10 @@ function updateCountdown() {
     const minutes = Math.floor((difference / 1000 / 60) % 60);
     const seconds = Math.floor((difference / 1000) % 60);
 
-    // Actualizar el HTML usando las referencias cacheadas
-    if (countdownElements.days) countdownElements.days.innerText = days;
-    if (countdownElements.hours) countdownElements.hours.innerText = hours;
-    if (countdownElements.minutes) countdownElements.minutes.innerText = minutes;
-    if (countdownElements.seconds) countdownElements.seconds.innerText = seconds;
+    countdownElements.days?.replaceChildren(document.createTextNode(String(days)));
+    countdownElements.hours?.replaceChildren(document.createTextNode(String(hours)));
+    countdownElements.minutes?.replaceChildren(document.createTextNode(String(minutes)));
+    countdownElements.seconds?.replaceChildren(document.createTextNode(String(seconds)));
   } else {
     // Si la fecha ya pasó
     if (countdownElements.container) {
@@ -155,7 +154,7 @@ function openRSVP() {
  */
 function closeRSVP(e) {
   // Si se llama directamente (botón X) o si el evento es click en overlay
-  if (!e || e.target.id === "rsvpModal" || e.target.closest(".modal__close")) {
+  if (!e || e?.target?.id === "rsvpModal" || e?.target?.closest(".modal__close")) {
     const modal = document.getElementById("rsvpModal");
     if (modal) {
       modal.classList.remove("active");
@@ -174,7 +173,7 @@ document.addEventListener("keydown", (e) => {
 (function generarCamposDeNombres() {
   const params = new URLSearchParams(window.location.search);
   // Cupos: mínimo 1, máximo 4. Si no hay ?c= en la URL, muestra 1 campo.
-  const cupos = Math.min(Math.max(parseInt(params.get("c")) || 1, 1), 4);
+  const cupos = Math.min(Math.max(parseInt(params.get("c")) || 1, 1), CONFIG.maxCupos);
 
   const container = document.getElementById("guestNamesContainer");
   if (!container) return;
@@ -274,9 +273,7 @@ setupValidationListeners();
 
 /** 7. FORMULARIO: Procesamiento y envío de datos (Make/Notion) **/
 
-// --- Seguridad: URL expuesta en el frontend ---
-// Make debe configurarse para aceptar llamadas solo desde notxngel.github.io
-const _wh = "https://hook.us2.make.com/1csu9bqqywlg9i4fz4uxv7ge34vdvcan";
+// La URL del webhook se lee desde config.js (CONFIG.webhookURL)
 
 // Seleccionamos el formulario del HTML
 const rsvpForm = document.getElementById("rsvpForm");
@@ -287,7 +284,7 @@ let _lastSubmit = 0;
 function isSafeToSubmit() {
   // Rate limiting extraido
   const now = Date.now();
-  if (now - _lastSubmit < 30000) {
+  if (now - _lastSubmit < CONFIG.rateLimitMs) {
     mostrarError("Por favor espera unos segundos antes de intentar de nuevo.");
     return false;
   }
@@ -377,6 +374,7 @@ function extractGuestData() {
     Telefono: telefono,
     Invitados: todosLosNombres.length,
     Asistencia: formData.get("attendance"),
+    Token: CONFIG.securityToken,
     Mensaje: acompanantes.length > 0
         ? `Acompañantes: ${acompanantes.join(", ")}${mensajeUsuario ? "\n\nMensaje: " + mensajeUsuario : ""}`
         : mensajeUsuario,
@@ -392,10 +390,10 @@ function extractGuestData() {
  */
 async function sendDataToMake(data) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 10000);
+  const timeoutId = setTimeout(() => controller.abort(), CONFIG.fetchTimeoutMs);
 
   try {
-    const response = await fetch(_wh, {
+    const response = await fetch(CONFIG.webhookURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -422,7 +420,7 @@ async function sendDataToMake(data) {
 }
 
 // Escuchamos el evento 'submit' refactorizado
-rsvpForm.addEventListener("submit", async (e) => {
+rsvpForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   if (!isSafeToSubmit()) return;
@@ -453,7 +451,7 @@ function mostrarExito() {
 
   // Permite ver el botón secreto de reinicio de pruebas solo si el URL lo autoriza
   const urlParams = new URLSearchParams(window.location.search);
-  const isAdmin = urlParams.get('dbg') === 'r7xQ3';
+  const isAdmin = urlParams.get('dbg') === CONFIG.adminKey;
   const botonPruebasHTML = isAdmin 
     ? `<p style="margin-top: 1.5rem; font-size: 0.75rem; color: #d1d5db; text-decoration: underline; cursor: pointer;" onclick="localStorage.removeItem('rsvpStatus'); location.reload();">
           (Pruebas: Enviar otra respuesta)
@@ -540,7 +538,7 @@ function cerrarYReiniciar() {
 
   // Esperamos a que termine la animación de cierre antes de restaurar
   setTimeout(() => {
-    rsvpForm.reset(); // Limpia los campos del formulario
+    rsvpForm?.reset(); // Limpia los campos del formulario
     location.reload(); // Recarga para restaurar el modal limpio
   }, 400);
 }
