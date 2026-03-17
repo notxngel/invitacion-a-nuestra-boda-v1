@@ -52,9 +52,15 @@
 
 /* --- 2. BASE: Reset y Configuración Global --- */
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 5rem; /* Evita que el navbar tape los títulos al navegar */
   font-size: 100%;
+}
+
+/* scroll-behavior solo si el usuario acepta animaciones (evita lag en scroll nativo) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Reset básico para consistencia entre navegadores */
@@ -69,19 +75,10 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-text-main);
-  background: #fffbfa;
+  /* Textura directa en body en vez de pseudo-elemento fixed (evita repaint por frame) */
+  background: #fffbfa url("images/body_bg_olive_subtle.webp") repeat;
   line-height: 1.6;
   position: relative;
-}
-
-/* Pseudo-elemento fijo para la textura (evita background-attachment: fixed que bloquea el scroll) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background: url("images/body_bg_olive_subtle.webp") repeat;
-  pointer-events: none;
 }
 
 /* --- 3. UTILIDADES: Clases Globales --- */
@@ -189,9 +186,9 @@ body::before {
   transform: translate(-50%, -20px);
   width: 90%;
   max-width: 650px; /* Más compacta para un look más "app" */
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(168, 127, 59, 0.2);
   border-radius: 100px; /* Totalmente redondeado */
   box-shadow: 
@@ -277,14 +274,27 @@ body::before {
   overflow: hidden;
 }
 
-/* Elemento: Imagen de fondo con gradiente y desenfoque */
+/* Overlay oscuro + gradiente inferior (reemplaza filter+mask por rendimiento) */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.40) 65%,
+    rgba(0, 0, 0, 0.70) 85%,
+    #fffbfa 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Elemento: Imagen de fondo simple (sin filter ni mask para rendimiento) */
 .hero__background {
   position: absolute;
   inset: 0;
   background: url("images/hero_wedding_olive.webp") center / cover;
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-  filter: brightness(0.6);
   z-index: var(--z-back);
 }
 
@@ -1086,6 +1096,7 @@ body::before {
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
   animation-delay: 0.4s;
+  will-change: transform, opacity;
 }
 
 /* Clase helper: Aparece antes (para cejas/eyebrows) */
@@ -1093,6 +1104,7 @@ body::before {
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
   animation-delay: 0.2s;
+  will-change: transform, opacity;
 }
 
 /* --- 18. MEDIA: Móvil (max-width: 600px) --- */
