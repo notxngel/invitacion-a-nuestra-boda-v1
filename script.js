@@ -368,14 +368,13 @@ function extractGuestData() {
   const telefono = formData.get("phone") || "";
 
   return {
-    Nombre: titular,
+    nombre: titular,
     title: titular,
-    Title: titular,
-    Telefono: telefono,
-    Invitados: todosLosNombres.length,
-    Asistencia: formData.get("attendance"),
-    Token: CONFIG.securityToken,
-    Mensaje: acompanantes.length > 0
+    telefono: telefono,
+    invitados: todosLosNombres.length,
+    asistencia: formData.get("attendance"),
+    token: CONFIG.securityToken,
+    mensaje: acompanantes.length > 0
         ? `Acompañantes: ${acompanantes.join(", ")}${mensajeUsuario ? "\n\nMensaje: " + mensajeUsuario : ""}`
         : mensajeUsuario,
   };

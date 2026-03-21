@@ -14,23 +14,23 @@ El cuerpo de la petición contiene los siguientes campos:
 
 | Campo | Tipo | Descripción | Ejemplo |
 | :--- | :--- | :--- | :--- |
-| `Nombre` | String | Nombre del invitado titular. | `"Ana García"` |
-| `Telefono` | String | Número de contacto (WhatsApp). | `"+1 123 456 7890"` |
-| `Invitados` | Integer | Número total de personas confirmadas. | `2` |
-| `Asistencia` | String | Estado de confirmación (`si` o `no`). | `"si"` |
-| `Mensaje` | String | Texto combinado con acompañantes y deseos. | `"Acompañantes: Juan... Mensaje: Felicidades!"` |
-| `title` | String | Alias para `Nombre` (Compatibilidad Notion). | `"Ana García"` |
+| `nombre` | String | Nombre del invitado titular. | `"Ana García"` |
+| `telefono` | String | Número de contacto (WhatsApp). | `"+1 123 456 7890"` |
+| `invitados` | Integer | Número total de personas confirmadas. | `2` |
+| `asistencia` | String | Estado de confirmación (`si` o `no`). | `"si"` |
+| `mensaje` | String | Texto combinado con acompañantes y deseos. | `"Acompañantes: Juan... Mensaje: Felicidades!"` |
+| `title` | String | Alias para `nombre` (Compatibilidad Notion). | `"Ana García"` |
 
 ### Ejemplo de Petición
 
 ```json
 {
-  "Nombre": "Clara Pérez",
+  "nombre": "Clara Pérez",
   "title": "Clara Pérez",
-  "Telefono": "+1 987 654 3210",
-  "Invitados": 1,
-  "Asistencia": "si",
-  "Mensaje": "¡Allí estaré!"
+  "telefono": "+1 987 654 3210",
+  "invitados": 1,
+  "asistencia": "si",
+  "mensaje": "¡Allí estaré!"
 }
 ```
 
