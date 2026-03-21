@@ -39,7 +39,7 @@ function updateCountdown() {
     if (countdownElements.container) {
         countdownElements.container.innerHTML = `
         <div style="font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: 0.1em; color: var(--color-gold); font-style: italic; text-transform:none;">
-            ¡A partir de hoy, somos esposos!
+            ${t("countdown_passed")}
         </div>
         `;
     }
@@ -180,8 +180,8 @@ document.addEventListener("keydown", (e) => {
 
   let html = "";
   for (let i = 1; i <= cupos; i++) {
-    const label = i === 1 ? "Tu nombre completo" : `Acompañante ${i - 1}`;
-    const placeholder = i === 1 ? "Ej: Ana García" : "Nombre completo";
+    const label = i === 1 ? t("form_name") : `${t("form_companion")} ${i - 1}`;
+    const placeholder = i === 1 ? t("form_name_placeholder") : t("form_companion_placeholder");
     const required = i === 1 ? "required" : "";
     html += `
             <div class="form__group">
@@ -252,7 +252,7 @@ function setupValidationListeners() {
     // Evento 'blur': se dispara cuando el usuario sale (pierde el foco) del campo
     input.addEventListener("blur", () => {
       if (input.value.trim() === "") {
-        const msg = input.id === "phone" ? "Por favor, ingresa tu teléfono." : "Por favor, ingresa tu nombre.";
+        const msg = input.id === "phone" ? t("val_phone") : t("val_name");
         setInvalid(input, msg);
       }
     });
@@ -285,7 +285,7 @@ function isSafeToSubmit() {
   // Rate limiting extraido
   const now = Date.now();
   if (now - _lastSubmit < CONFIG.rateLimitMs) {
-    mostrarError("Por favor espera unos segundos antes de intentar de nuevo.");
+    mostrarError(t("val_rate_limit"));
     return false;
   }
 
@@ -311,7 +311,7 @@ function handleValidation() {
 
   requiredInputs.forEach((input) => {
     if (input.value.trim() === "") {
-      const msg = input.id === "phone" ? "Por favor, ingresa tu teléfono." : "Por favor, ingresa tu nombre.";
+      const msg = input.id === "phone" ? t("val_phone") : t("val_name");
       setInvalid(input, msg);
       isValid = false;
       if (!firstInvalidInput) firstInvalidInput = input;
@@ -411,7 +411,7 @@ async function sendDataToMake(data) {
   } catch (error) {
     console.error("Error al enviar:", error);
     if (error.name === 'AbortError') {
-      mostrarError("Tiempo agotado. Intenta de nuevo.");
+      mostrarError(t("error_timeout"));
     } else {
       mostrarError();
     }
@@ -453,7 +453,7 @@ function mostrarExito() {
   const isAdmin = urlParams.get('dbg') === CONFIG.adminKey;
   const botonPruebasHTML = isAdmin 
     ? `<p style="margin-top: 1.5rem; font-size: 0.75rem; color: #d1d5db; text-decoration: underline; cursor: pointer;" onclick="localStorage.removeItem('rsvpStatus'); location.reload();">
-          (Pruebas: Enviar otra respuesta)
+          ${t("success_test")}
        </p>` 
     : '';
 
@@ -468,7 +468,7 @@ function mostrarExito() {
       calendarButtonsHTML = `
             <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
                 <a href="boda.ics" class="btn btn--dark" style="background-color: #000; border-color: #000; color: white;">
-                    Añadir a Apple Calendar
+                    ${t("success_apple_cal")}
                 </a>
             </div>
       `;
@@ -476,7 +476,7 @@ function mostrarExito() {
       calendarButtonsHTML = `
             <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Angel+y+Clara&dates=20260716T210000Z/20260717T050000Z&details=%C2%A1Te+esperamos+para+celebrar+nuestra+boda!&location=Garden+Vista+Ballroom,+29+Macarthur+Ave,+Passaic,+NJ+07055" target="_blank" rel="noopener" class="btn btn--dark" style="background-color: #4285F4; border-color: #4285F4; color: white;">
-                    Añadir a Google Calendar
+                    ${t("success_google_cal")}
                 </a>
             </div>
       `;
@@ -486,14 +486,13 @@ function mostrarExito() {
         <div style="text-align: center; padding: 2rem 1rem;">
             <div style="font-size: 3rem; margin-bottom: 1rem;">💍</div>
             <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem;">
-                ¡Gracias!
+                ${t("success_title")}
             </h2>
             <p style="color: #c5a059; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1.5rem;">
-                Tu confirmación fue recibida
+                ${t("success_subtitle")}
             </p>
             <p style="color: #57534e; line-height: 1.6;">
-                Nos alegra mucho contar contigo en este día tan especial. 
-                ¡Nos vemos el 16 de julio!
+                ${t("success_text")}
             </p>
             
             ${calendarButtonsHTML}
@@ -503,7 +502,7 @@ function mostrarExito() {
                 style="margin-top: 1.5rem; color: #6B7280; text-decoration: underline; background: transparent; border: none;"
                 onclick="cerrarYReiniciar()"
             >
-                Cerrar Formulario
+                ${t("success_close")}
             </button>
             
             ${botonPruebasHTML}
@@ -517,7 +516,7 @@ function mostrarExito() {
  * @param {string} [mensaje="Hubo un error. Intenta de nuevo"] - El mensaje de error a mostrar.
  * @returns {void}
  */
-function mostrarError(mensaje = "Hubo un error. Intenta de nuevo") {
+function mostrarError(mensaje = t("error_default")) {
   const submitBtn = document.querySelector(".btn--submit");
   if (submitBtn) {
       submitBtn.textContent = mensaje;

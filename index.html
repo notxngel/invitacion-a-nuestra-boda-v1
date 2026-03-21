@@ -58,9 +58,9 @@
         <div class="navbar__container">
             <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Angel y Clara">A &amp; C</a>
             <ul class="navbar__menu" role="list">
-                <li><a href="#home" class="navbar__link">Inicio</a></li>
-                <li><a href="#photo-album" class="navbar__link">Momentos</a></li>
-                <li><a href="#details" class="navbar__link">Detalles</a></li>
+                <li><a href="#home" class="navbar__link" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="#photo-album" class="navbar__link" data-i18n="nav_moments">Momentos</a></li>
+                <li><a href="#details" class="navbar__link" data-i18n="nav_details">Detalles</a></li>
             </ul>
         </div>
     </nav>
@@ -72,32 +72,32 @@
 
         <!-- Contenido Principal -->
         <div class="hero__content">
-            <p class="hero__eyebrow bounce-in">¡NOS CASAMOS!</p>
+            <p class="hero__eyebrow bounce-in" data-i18n="hero_eyebrow">¡NOS CASAMOS!</p>
             <h1 id="hero-title" class="hero__title fade-in">Angel &amp; Clara</h1>
             <div class="hero__divider" aria-hidden="true"></div>
 
             <div class="hero__details">
-                <p class="hero__date">Julio 16, 2026</p>
-                <p class="hero__instruction">Desplázate para conocer los detalles del evento.</p>
+                <p class="hero__date" data-i18n="hero_date">Julio 16, 2026</p>
+                <p class="hero__instruction" data-i18n="hero_instruction">Desplázate para conocer los detalles del evento.</p>
             </div>
 
             <!-- Cuenta Regresiva -->
             <div id="countdown" class="countdown" aria-label="Cuenta regresiva para la boda">
                 <div class="countdown__item">
                     <span id="days" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label">Días</span>
+                    <span class="countdown__label" data-i18n="countdown_days">Días</span>
                 </div>
                 <div class="countdown__item">
                     <span id="hours" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label">Horas</span>
+                    <span class="countdown__label" data-i18n="countdown_hours">Horas</span>
                 </div>
                 <div class="countdown__item">
                     <span id="minutes" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label">Minutos</span>
+                    <span class="countdown__label" data-i18n="countdown_minutes">Minutos</span>
                 </div>
                 <div class="countdown__item">
                     <span id="seconds" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label">Segundos</span>
+                    <span class="countdown__label" data-i18n="countdown_seconds">Segundos</span>
                 </div>
             </div>
 
@@ -117,8 +117,8 @@
     <section id="photo-album" class="album" aria-labelledby="album-title">
         <div class="container">
             <div class="section-header">
-                <h2 id="album-title" class="section-header__title">Momentos que nos trajeron aquí</h2>
-                <p class="section-header__subtitle">Un día que cambio nuestras vidas para siempre</p>
+                <h2 id="album-title" class="section-header__title" data-i18n="album_title">Momentos que nos trajeron aquí</h2>
+                <p class="section-header__subtitle" data-i18n="album_subtitle">Un día que cambio nuestras vidas para siempre</p>
             </div>
 
             <!-- Contenedor del Carrusel -->
@@ -135,7 +135,7 @@
                         <div class="polaroid__frame">
                             <img src="images/theMoment.webp" alt="La gran pregunta del momento de la propuesta"
                                 loading="lazy" class="polaroid__img">
-                            <p class="polaroid__caption">La gran pregunta</p>
+                            <p class="polaroid__caption" data-i18n="caption_1">La gran pregunta</p>
                         </div>
                     </article>
 
@@ -144,7 +144,7 @@
                         <div class="polaroid__frame">
                             <img src="images/dijoquesi.webp" alt="Clara dijo que sí a la propuesta" loading="lazy"
                                 class="polaroid__img">
-                            <p class="polaroid__caption">¡Dijo que sí!</p>
+                            <p class="polaroid__caption" data-i18n="caption_2">¡Dijo que sí!</p>
                         </div>
                     </article>
 
@@ -152,7 +152,7 @@
                     <article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/Us.webp" alt="Angel y Clara juntos" loading="lazy" class="polaroid__img">
-                            <p class="polaroid__caption">Tú y yo, siempre</p>
+                            <p class="polaroid__caption" data-i18n="caption_3">Tú y yo, siempre</p>
                         </div>
                     </article>
 
@@ -161,14 +161,14 @@
                         <div class="polaroid__frame">
                             <img src="images/proposalimg2.webp" alt="Promesa eterna de amor" loading="lazy"
                                 class="polaroid__img">
-                            <p class="polaroid__caption">Para siempre</p>
+                            <p class="polaroid__caption" data-i18n="caption_4">Para siempre</p>
                         </div>
                     </article>
                     <!-- Polaroid 6: Amor -->
                     <article class="polaroid">
                         <div class="polaroid__frame">
                             <img src="images/ilove.webp" alt="Con todo mi amor" loading="lazy" class="polaroid__img">
-                            <p class="polaroid__caption">Con todo mi corazón</p>
+                            <p class="polaroid__caption" data-i18n="caption_5">Con todo mi corazón</p>
                         </div>
                     </article>
 
@@ -177,7 +177,7 @@
                         <div class="polaroid__frame">
                             <img src="images/us2.webp" alt="Juntos es mi lugar favorito" loading="lazy"
                                 class="polaroid__img">
-                            <p class="polaroid__caption">Mi lugar favorito</p>
+                            <p class="polaroid__caption" data-i18n="caption_6">Mi lugar favorito</p>
                         </div>
                     </article>
 
@@ -195,8 +195,8 @@
     <section id="details" class="details" aria-labelledby="details-title">
         <div class="container">
             <div class="section-header">
-                <h2 id="details-title" class="section-header__title">Detalles del Evento</h2>
-                <p class="section-header__subtitle">Todo lo que necesitas saber</p>
+                <h2 id="details-title" class="section-header__title" data-i18n="details_title">Detalles del Evento</h2>
+                <p class="section-header__subtitle" data-i18n="details_subtitle">Todo lo que necesitas saber</p>
             </div>
 
             <!-- TIMELINE (Línea de Tiempo Vertical) -->
@@ -207,10 +207,10 @@
                     <div class="timeline__dot" aria-hidden="true"></div>
                     <div class="timeline__card">
                         <div class="timeline__icon-header">
-                            <h3 class="timeline__event-name">Ceremonia &amp; Recepción</h3>
+                            <h3 class="timeline__event-name" data-i18n="timeline_event">Ceremonia &amp; Recepción</h3>
                         </div>
                         <p class="timeline__place">Garden Vista Ballroom</p>
-                        <p class="timeline__description">4:30 PM - Inicio puntual; los esperamos para celebrar juntos.
+                        <p class="timeline__description" data-i18n="timeline_desc">4:30 PM - Inicio puntual; los esperamos para celebrar juntos.
                         </p>
                     </div>
                 </div>
@@ -221,12 +221,12 @@
                     <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
                     <div class="timeline__card">
                         <div class="timeline__info-group timeline__info-group--spaced">
-                            <h4 class="timeline__info-title">Código de Vestimenta</h4>
-                            <p>Formal / Etiqueta Rigurosa / No usar colores verdes o blancos.</p>
+                            <h4 class="timeline__info-title" data-i18n="dress_title">Código de Vestimenta</h4>
+                            <p data-i18n="dress_desc">Formal / Etiqueta Rigurosa / No usar colores verdes o blancos.</p>
                         </div>
                         <div class="timeline__info-group">
-                            <h4 class="timeline__info-title">No Niños</h4>
-                            <p>Celebración sólo para adultos.</p>
+                            <h4 class="timeline__info-title" data-i18n="no_kids_title">No Niños</h4>
+                            <p data-i18n="no_kids_desc">Celebración sólo para adultos.</p>
                         </div>
                     </div>
                 </div>
@@ -236,8 +236,8 @@
                     <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
                     <div class="timeline__card">
                         <div class="timeline__info-group">
-                            <h4 class="timeline__info-title">Regalos</h4>
-                            <p>Lluvia de sobres.</p>
+                            <h4 class="timeline__info-title" data-i18n="gifts_title">Regalos</h4>
+                            <p data-i18n="gifts_desc">Lluvia de sobres.</p>
                         </div>
                     </div>
                 </div>
@@ -248,8 +248,8 @@
                     <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
                     <div class="timeline__card">
                         <div class="timeline__info-group">
-                            <h4 class="timeline__info-title">Cupos</h4>
-                            <p>Agradecemos respetar los cupos asignados en su invitación.</p>
+                            <h4 class="timeline__info-title" data-i18n="seats_title">Cupos</h4>
+                            <p data-i18n="seats_desc">Agradecemos respetar los cupos asignados en su invitación.</p>
                         </div>
                     </div>
                 </div>
@@ -262,8 +262,8 @@
     <section id="locations" class="locations" aria-labelledby="locations-title">
         <div class="container">
             <div class="section-header">
-                <h2 id="locations-title" class="section-header__title">¿Cómo Llegar?</h2>
-                <p class="section-header__subtitle">Te esperamos en</p>
+                <h2 id="locations-title" class="section-header__title" data-i18n="loc_title">¿Cómo Llegar?</h2>
+                <p class="section-header__subtitle" data-i18n="loc_subtitle">Te esperamos en</p>
             </div>
 
             <div class="location-card map-in">
@@ -272,7 +272,7 @@
                     <p class="location-card__address">29 Macarthur Ave, Passaic, NJ 07055</p>
                     <a href="https://maps.google.com/maps/dir//Garden+Vista+Ballroom,+Passaic,+NJ" target="_blank"
                         rel="noopener" class="btn btn--dark location-card__btn">
-                        Abrir en Google Maps
+                        <span data-i18n="loc_btn">Abrir en Google Maps</span>
                     </a>
                 </div>
                 <div class="location-card__map-container">
@@ -290,8 +290,8 @@
     <section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
         <div class="container">
             <div class="section-header">
-                <h2 id="rsvp-title" class="section-header__title">Confirmación</h2>
-                <p class="section-header__subtitle">Sera un placer compartir este momento tan especial con ustedes</p>
+                <h2 id="rsvp-title" class="section-header__title" data-i18n="rsvp_title">Confirmación</h2>
+                <p class="section-header__subtitle" data-i18n="rsvp_subtitle">Sera un placer compartir este momento tan especial con ustedes</p>
             </div>
 
             <div class="rsvp__card">
@@ -303,15 +303,15 @@
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                 </div>
-                <p class="rsvp__card-subtitle">Esperamos contar con tu presencia</p>
+                <p class="rsvp__card-subtitle" data-i18n="rsvp_card_subtitle">Esperamos contar con tu presencia</p>
                 <div class="rsvp__card-divider" aria-hidden="true"></div>
-                <p class="rsvp__card-text">
+                <p class="rsvp__card-text" data-i18n="rsvp_card_text">
                     ¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confírmarnos tu
-                    asistencia.<br>
-                    <strong>Fecha límite: 22 de Mayo</strong>
+                    asistencia.</p>
+                <p class="rsvp__card-text"><strong data-i18n="rsvp_deadline">Fecha límite: 22 de Mayo</strong>
                 </p>
                 <button class="btn btn--dark rsvp__card-btn" onclick="openRSVP()" aria-haspopup="dialog">
-                    Abrir Formulario
+                    <span data-i18n="rsvp_open_btn">Abrir Formulario</span>
                 </button>
             </div>
         </div>
@@ -325,9 +325,9 @@
                 onclick="closeRSVP(event)">&times;</button>
 
             <div class="modal__header">
-                <h2 id="modal-title" class="modal__title">Confirmación</h2>
-                <p class="modal__subtitle">Será un placer contar contigo</p>
-                <p class="modal__deadline">Por favor confirma antes del <strong>22 de Mayo</strong></p>
+                <h2 id="modal-title" class="modal__title" data-i18n="modal_title">Confirmación</h2>
+                <p class="modal__subtitle" data-i18n="modal_subtitle">Será un placer contar contigo</p>
+                <p class="modal__deadline" data-i18n="modal_deadline">Por favor confirma antes del <strong>22 de Mayo</strong></p>
             </div>
 
             <form id="rsvpForm" class="form" novalidate>
@@ -339,33 +339,33 @@
                 <div id="guestNamesContainer"></div>
 
                 <fieldset class="form__group">
-                    <legend class="form__label">¿Asistirás?</legend>
+                    <legend class="form__label" data-i18n="form_attendance">¿Asistirás?</legend>
                     <div class="form__radio-group">
                         <label class="form__radio-option">
                             <input type="radio" name="attendance" value="si" checked>
-                            <span>¡Sí, ahí estaré!</span>
+                            <span data-i18n="form_yes">¡Sí, ahí estaré!</span>
                         </label>
                         <label class="form__radio-option">
                             <input type="radio" name="attendance" value="no">
-                            <span>Lo siento, no podré ir</span>
+                            <span data-i18n="form_no">Lo siento, no podré ir</span>
                         </label>
                     </div>
                 </fieldset>
 
                 <div class="form__group">
-                    <label class="form__label" for="phone">Teléfono Móvil (WhatsApp)</label>
+                    <label class="form__label" for="phone" data-i18n="form_phone">Teléfono Móvil (WhatsApp)</label>
                     <input type="tel" class="form__input" id="phone" name="phone" inputmode="tel"
-                        placeholder="Ej. +1 123 456 7890" required>
+                        placeholder="Ej. +1 123 456 7890" data-i18n-placeholder="form_phone_placeholder" required>
                     <span class="form__error" id="error-phone"></span>
                 </div>
 
                 <div class="form__group">
-                    <label class="form__label" for="message">Mensaje (Opcional)</label>
+                    <label class="form__label" for="message" data-i18n="form_message">Mensaje (Opcional)</label>
                     <textarea class="form__input" id="message" name="message" rows="3"
-                        placeholder="Déjanos tus mejores deseos..."></textarea>
+                        placeholder="Déjanos tus mejores deseos..." data-i18n-placeholder="form_message_placeholder"></textarea>
                 </div>
 
-                <button type="submit" id="submitBtn" class="btn btn--submit">Enviar Confirmación</button>
+                <button type="submit" id="submitBtn" class="btn btn--submit" data-i18n="form_submit">Enviar Confirmación</button>
             </form>
         </div>
     </div>
@@ -373,17 +373,18 @@
     <!-- Sección: Footer -->
     <footer class="footer">
         <div class="footer__container fade-in">
-            <span class="footer__eyebrow">Con cariño y gratitud</span>
+            <span class="footer__eyebrow" data-i18n="footer_eyebrow">Con cariño y gratitud</span>
             <h2 class="footer__title">Angel <span>&amp;</span> Clara</h2>
             <div class="footer__date">16.07.2026</div>
             <div class="footer__separator"></div>
             <p class="footer__text">&copy; 2026 Angel &amp; Clara.</p>
-            <p class="footer__text footer__text--small">Hecho con amor para nuestros invitados</p>
+            <p class="footer__text footer__text--small" data-i18n="footer_made">Hecho con amor para nuestros invitados</p>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="config.js"></script>
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 
