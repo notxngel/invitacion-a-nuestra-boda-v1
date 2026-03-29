@@ -134,6 +134,12 @@ setInterval(updateCountdown, 1000);
  * @returns {void}
  */
 function openRSVP() {
+  // Bloqueo temporal por mantenimiento
+  if (document.getElementById("maintenance-overlay")) {
+    console.log("Sistema en mantenimiento. RSVP deshabilitado.");
+    return;
+  }
+
   const modal = document.getElementById("rsvpModal");
   if (modal) {
     // Verificamos si el usuario ya envió su confirmación antes
