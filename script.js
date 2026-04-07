@@ -134,6 +134,12 @@ setInterval(updateCountdown, 1000);
  * @returns {void}
  */
 function openRSVP() {
+  // Bloqueo temporal por mantenimiento
+  if (document.getElementById("maintenance-overlay")) {
+    console.log("Sistema en mantenimiento. RSVP deshabilitado.");
+    return;
+  }
+
   const modal = document.getElementById("rsvpModal");
   if (modal) {
     // Verificamos si el usuario ya envió su confirmación antes
@@ -366,8 +372,10 @@ function extractGuestData() {
   const formData = new FormData(rsvpForm);
   const mensajeUsuario = formData.get("message") || "";
   const telefono = formData.get("phone") || "";
+  const cancion = formData.get("songName") || "";
+  const artista = formData.get("songArtist") || "";
 
-  return {
+  const data = {
     nombre: titular,
     title: titular,
     telefono: telefono,
@@ -378,6 +386,14 @@ function extractGuestData() {
         ? `Acompañantes: ${acompanantes.join(", ")}${mensajeUsuario ? "\n\nMensaje: " + mensajeUsuario : ""}`
         : mensajeUsuario,
   };
+
+  // Solo incluir canción si el invitado llenó el campo
+  if (cancion) {
+    data.cancion = cancion;
+    data.artista = artista;
+  }
+
+  return data;
 }
 
 /**
