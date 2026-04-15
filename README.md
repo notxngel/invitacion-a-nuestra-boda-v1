@@ -2,19 +2,19 @@
 
 Invitación digital elegante y minimalista para la boda de Angel y Clara. Este proyecto presenta una landing page interactiva con cuenta regresiva, galería de fotos, detalles del evento y confirmación de asistencia (RSVP) integrada.
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 - **Frontend**: HTML5 semántico, CSS3 (Metodología BEM, Variables CSS), JavaScript Vanilla.
 - **Fuentes**: Playfair Display (Serif), Lato (Sans-serif) vía Google Fonts.
 - **Integración**: Make.com (Webhooks) para procesamiento de RSVP.
 - **Diseño**: Responsivo, minimalista con temática verde oliva y oro.
 
-## 📋 Requisitos Previos
+## Requisitos Previos
 
 - Cualquier navegador web moderno (Chrome, Firefox, Safari, Edge).
 - Servidor web estático (ej. Live Server de VS Code, Nginx, Apache, GitHub Pages).
 
-## 🚀 Instalación y Uso
+## Instalación y Uso
 
 1. **Clonar el repositorio o descargar los archivos**:
 
@@ -29,7 +29,7 @@ Invitación digital elegante y minimalista para la boda de Angel y Clara. Este p
 3. **Acceso rápido**:
    Abre el archivo `index.html` directamente en tu navegador.
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 invitacion-a-nuestra-boda-v1/
@@ -41,7 +41,7 @@ invitacion-a-nuestra-boda-v1/
 └── favicon.png         # Ícono del sitio
 ```
 
-## ⚙️ Configuración y URL Parameters
+## Configuración y URL Parameters
 
 El sistema de confirmación de asistencia utiliza parámetros en la URL para personalizar la experiencia:
 
@@ -50,7 +50,7 @@ El sistema de confirmación de asistencia utiliza parámetros en la URL para per
 | `c`       | Número de cupos permitidos (1-4).                   | `?c=2`       | No (Default: 1) |
 | `dbg`     | Modo depuración para habilitar reinicio de pruebas. | `?dbg=r7xQ3` | No              |
 
-## 🧪 Pruebas
+## Pruebas
 
 Este proyecto no cuenta con un framework de testing automatizado. Las pruebas se realizan de forma manual verificando:
 
@@ -59,7 +59,7 @@ Este proyecto no cuenta con un framework de testing automatizado. Las pruebas se
 - La validación de campos en el formulario RSVP.
 - El envío de datos al webhook configurado (`_wh` en `script.js`).
 
-## 🤝 Contribución
+## Contribución
 
 Actualmente es un proyecto de uso personal, pero si deseas sugerir mejoras:
 
