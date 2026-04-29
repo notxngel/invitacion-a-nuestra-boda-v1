@@ -13,6 +13,29 @@ const countdownElements = {
 };
 
 /**
+ * Verifica si el usuario ya envió su confirmación al cargar la página.
+ * Si es así, actualiza la tarjeta de RSVP para reflejar que ya está confirmado.
+ */
+function checkRSVPStatus() {
+    if (localStorage.getItem('rsvpStatus') === 'sent') {
+        const rsvpCard = document.querySelector('.rsvp__card');
+        const rsvpBtn = document.querySelector('.rsvp__card-btn');
+        const rsvpText = document.querySelector('.rsvp__card-text');
+        
+        if (rsvpBtn) {
+            rsvpBtn.innerHTML = `<span>${t("success_title")}</span>`;
+            // No deshabilitamos el botón para que puedan ver el mensaje de éxito otra vez si quieren
+        }
+        if (rsvpText) {
+            rsvpText.innerHTML = `<strong>${t("success_subtitle")}</strong><br>${t("success_text")}`;
+        }
+    }
+}
+
+// Ejecutar al cargar
+document.addEventListener('DOMContentLoaded', checkRSVPStatus);
+
+/**
  * Actualiza el contador de la cuenta regresiva en el DOM.
  * Calcula la diferencia entre la fecha de la boda y el momento actual.
  * Si la fecha ya pasó, muestra un mensaje de felicitación.
@@ -88,7 +111,7 @@ setInterval(updateCountdown, 1000);
     });
   }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
 
-  document.querySelectorAll(".timeline__row, .map-in").forEach(el => {
+  document.querySelectorAll(".timeline__row, .fade-up").forEach(el => {
     observer.observe(el);
   });
 })();
@@ -114,11 +137,36 @@ setInterval(updateCountdown, 1000);
         } else if (scrollY < 100) {
           // Se oculta solo al regresar completamente arriba
           navbar.classList.remove("is-visible");
+          navbar.classList.remove("is-open");
+          const menuBtn = document.querySelector('.navbar__menu-btn');
+          if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
         }
         isTicking = false;
       });
       isTicking = true;
     }
+  });
+})();
+
+/** 3.5 NAVBAR: Lógica de Menú Desplegable **/
+(function initNavbarDropdown() {
+  const navbar = document.querySelector(".navbar");
+  const menuBtn = document.querySelector(".navbar__menu-btn");
+  const links = document.querySelectorAll(".navbar__link");
+
+  if (!menuBtn || !navbar) return;
+
+  menuBtn.addEventListener("click", () => {
+    const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+    menuBtn.setAttribute("aria-expanded", !isExpanded);
+    navbar.classList.toggle("is-open");
+  });
+
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      menuBtn.setAttribute("aria-expanded", "false");
+      navbar.classList.remove("is-open");
+    });
   });
 })();
 
@@ -284,6 +332,12 @@ const rsvpForm = document.getElementById("rsvpForm");
 let _lastSubmit = 0;
 
 function isSafeToSubmit() {
+  // Evitar doble envío si ya se marcó como enviado
+  if (localStorage.getItem('rsvpStatus') === 'sent') {
+    mostrarExito();
+    return false;
+  }
+
   // Rate limiting extraido
   const now = Date.now();
   if (now - _lastSubmit < CONFIG.rateLimitMs) {
@@ -552,3 +606,20 @@ function cerrarYReiniciar() {
     location.reload(); // Recarga para restaurar el modal limpio
   }, 400);
 }
+
+/** 9. CUSTOM CURSOR: Cursor personalizado e interactivo **/
+(function initCustomCursor() {
+  const cursor = document.querySelector('.custom-cursor');
+  if (!cursor) return;
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  const interactives = document.querySelectorAll('a, button, input, textarea');
+  interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+})();

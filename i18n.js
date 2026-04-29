@@ -24,7 +24,7 @@ const I18N = {
 
     // Album
     album_title: "Momentos que nos trajeron aquí",
-    album_subtitle: "Un día que cambio nuestras vidas para siempre",
+    album_subtitle: "Un día que cambió nuestras vidas para siempre",
     caption_1: "La gran pregunta",
     caption_2: "¡Dijo que sí!",
     caption_3: "Tú y yo, siempre",
@@ -32,19 +32,21 @@ const I18N = {
     caption_5: "Con todo mi corazón",
     caption_6: "Mi lugar favorito",
 
-    // Details
-    details_title: "Detalles del Evento",
+    // Details (Now FAQ)
+    details_title: "Preguntas Frecuentes",
     details_subtitle: "Todo lo que necesitas saber",
-    timeline_event: "Ceremonia & Recepción",
-    timeline_desc: "4:30 PM - Inicio puntual; los esperamos para celebrar juntos.",
-    dress_title: "Código de Vestimenta",
-    dress_desc: "Formal / Etiqueta Rigurosa / No usar colores verdes o blancos.",
-    no_kids_title: "No Niños",
-    no_kids_desc: "Celebración sólo para adultos.",
-    gifts_title: "Regalos",
-    gifts_desc: "Lluvia de sobres.",
-    seats_title: "Cupos",
-    seats_desc: "Agradecemos respetar los cupos asignados en su invitación.",
+    faq_q_arrival: "¿A qué hora debo llegar?",
+    faq_a_arrival: "La ceremonia comenzará puntualmente a las 4:30 PM. Te recomendamos llegar 15-20 minutos antes para que puedas acomodarte con calma.",
+    faq_q_parking: "¿Hay estacionamiento?",
+    faq_a_parking: "¡Sí! El Garden Vista Ballroom cuenta con servicio de Valet Parking gratuito para todos nuestros invitados para su mayor comodidad.",
+    faq_q_kids: "¿Puedo llevar niños?",
+    faq_a_kids: "Adoramos a sus pequeños, pero hemos decidido tener una celebración exclusiva para adultos. ¡Esperamos que puedan disfrutar de una noche de fiesta con nosotros!",
+    faq_q_dresscode: "¿Cuál es el código de vestimenta?",
+    faq_a_dresscode: "Formal / Etiqueta Rigurosa. Les pedimos amablemente evitar el color blanco (reservado para la novia) y el verde oliva (reservado para nuestro cortejo).",
+    faq_q_gifts: "¿Tienen mesa de regalos?",
+    faq_a_gifts: "Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros, tendremos una 'Lluvia de Sobres' el día del evento.",
+    faq_q_seats: "¿Cómo funcionan los cupos?",
+    faq_a_seats: "Hemos reservado un número específico de asientos para cada invitación. Al ingresar tu nombre en el formulario de confirmación, podrás ver tus cupos asignados.",
 
     // Locations
     loc_title: "¿Cómo Llegar?",
@@ -53,7 +55,7 @@ const I18N = {
 
     // RSVP
     rsvp_title: "Confirmación",
-    rsvp_subtitle: "Sera un placer compartir este momento tan especial con ustedes",
+    rsvp_subtitle: "Será un placer compartir este momento tan especial con ustedes",
     rsvp_card_subtitle: "Esperamos contar con tu presencia",
     rsvp_card_text: "¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confírmarnos tu asistencia.",
     rsvp_deadline: "Fecha límite: 22 de Mayo",
@@ -103,7 +105,7 @@ const I18N = {
     // Navbar
     nav_home: "Home",
     nav_moments: "Moments",
-    nav_details: "Details",
+    nav_details: "FAQ",
 
     // Hero
     hero_eyebrow: "WE'RE GETTING MARRIED!",
@@ -125,19 +127,21 @@ const I18N = {
     caption_5: "With all my heart",
     caption_6: "My favorite place",
 
-    // Details
-    details_title: "Event Details",
+    // Details (FAQ)
+    details_title: "Frequently Asked Questions",
     details_subtitle: "Everything you need to know",
-    timeline_event: "Ceremony & Reception",
-    timeline_desc: "4:30 PM - Doors open; we look forward to celebrating with you.",
-    dress_title: "Dress Code",
-    dress_desc: "Formal / Black Tie / No green or white colors, please.",
-    no_kids_title: "Adults Only",
-    no_kids_desc: "This is an adults-only celebration.",
-    gifts_title: "Gifts",
-    gifts_desc: "Cash gifts are preferred.",
-    seats_title: "Seats",
-    seats_desc: "Please respect the number of seats assigned in your invitation.",
+    faq_q_arrival: "What time should I arrive?",
+    faq_a_arrival: "The ceremony will start promptly at 4:30 PM. We recommend arriving 15-20 minutes early so you can settle in comfortably.",
+    faq_q_parking: "Is there parking available?",
+    faq_a_parking: "Yes! Garden Vista Ballroom offers complimentary Valet Parking service for all our guests for your convenience.",
+    faq_q_kids: "Can I bring my children?",
+    faq_a_kids: "We love your little ones, but we have decided to have an adults-only celebration. We hope you can enjoy a night of celebration with us!",
+    faq_q_dresscode: "What is the dress code?",
+    faq_a_dresscode: "Formal / Black Tie. We kindly ask you to avoid wearing white (reserved for the bride) and olive green (reserved for our wedding party).",
+    faq_q_gifts: "Do you have a gift registry?",
+    faq_a_gifts: "Your presence is our best gift. If you wish to give us something extra, we will have a 'Card Box' (Lluvia de Sobres) on the day of the event.",
+    faq_q_seats: "How do assigned seats work?",
+    faq_a_seats: "We have reserved a specific number of seats for each invitation. When you enter your name in the RSVP form, you will see your assigned number of guests.",
 
     // Locations
     loc_title: "How to Get There",

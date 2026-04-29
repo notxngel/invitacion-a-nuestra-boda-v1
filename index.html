@@ -41,11 +41,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Pinyon+Script&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
         <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Pinyon+Script&display=swap"
             rel="stylesheet">
     </noscript>
     <!-- Estilos -->
@@ -59,7 +59,17 @@
     <!-- Sección: Navbar -->
     <nav class="navbar" aria-label="Navegación principal">
         <div class="navbar__container">
-            <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Angel y Clara">A &amp; C</a>
+            <!-- Botón Hamburguesa -->
+            <button class="navbar__menu-btn" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Monograma Central -->
+            <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Angel y Clara">Angel <span class="navbar__logo-amp">&amp;</span> Clara</a>
+            
+            <!-- Menú Desplegable -->
             <ul class="navbar__menu" role="list">
                 <li><a href="#home" class="navbar__link" data-i18n="nav_home">Inicio</a></li>
                 <li><a href="#photo-album" class="navbar__link" data-i18n="nav_moments">Momentos</a></li>
@@ -120,10 +130,10 @@
     <!-- Sección: Album (Galería de Fotos) -->
     <section id="photo-album" class="album" aria-labelledby="album-title">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-up">
                 <h2 id="album-title" class="section-header__title" data-i18n="album_title">Momentos que nos trajeron
                     aquí</h2>
-                <p class="section-header__subtitle" data-i18n="album_subtitle">Un día que cambio nuestras vidas para
+                <p class="section-header__subtitle" data-i18n="album_subtitle">Un día que cambió nuestras vidas para
                     siempre</p>
             </div>
 
@@ -197,70 +207,92 @@
         </div>
     </section>
 
-    <!-- Sección: Detalles (Cronograma) -->
+    <!-- Sección: Detalles (Preguntas Frecuentes) -->
     <section id="details" class="details" aria-labelledby="details-title">
         <div class="container">
-            <div class="section-header">
-                <h2 id="details-title" class="section-header__title" data-i18n="details_title">Detalles del Evento</h2>
+            <div class="section-header fade-up">
+                <h2 id="details-title" class="section-header__title" data-i18n="details_title">Preguntas Frecuentes</h2>
                 <p class="section-header__subtitle" data-i18n="details_subtitle">Todo lo que necesitas saber</p>
             </div>
 
-            <!-- TIMELINE (Línea de Tiempo Vertical) -->
-            <div class="timeline" role="list" aria-label="Programa del día">
-                <!-- 1. Ceremonia y Recepción -->
-                <div class="timeline__row" role="listitem">
-                    <div class="timeline__time" aria-label="Hora del evento">4:30 PM</div>
-                    <div class="timeline__dot" aria-hidden="true"></div>
-                    <div class="timeline__card">
-                        <div class="timeline__icon-header">
-                            <h3 class="timeline__event-name" data-i18n="timeline_event">Ceremonia &amp; Recepción</h3>
-                        </div>
-                        <p class="timeline__place">Garden Vista Ballroom</p>
-                        <p class="timeline__description" data-i18n="timeline_desc">4:30 PM - Inicio puntual; los
-                            esperamos para celebrar juntos.
-                        </p>
+            <div class="faq fade-up">
+                <!-- Pregunta 1 -->
+                <details class="faq__item">
+                    <summary class="faq__question">
+                        <span data-i18n="faq_q_arrival">¿A qué hora debo llegar?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="faq__answer">
+                        <p data-i18n="faq_a_arrival">La ceremonia comenzará puntualmente a las 4:30 PM. Te recomendamos llegar 15-20 minutos antes para que puedas acomodarte con calma.</p>
                     </div>
-                </div>
+                </details>
 
-                <!-- 3. Información Adicional -->
-                <div class="timeline__row timeline__row--info" role="listitem">
-                    <div class="timeline__time">Info</div>
-                    <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
-                    <div class="timeline__card">
-                        <div class="timeline__info-group timeline__info-group--spaced">
-                            <h4 class="timeline__info-title" data-i18n="dress_title">Código de Vestimenta</h4>
-                            <p data-i18n="dress_desc">Formal / Etiqueta Rigurosa / No usar colores verdes o blancos.</p>
-                        </div>
-                        <div class="timeline__info-group">
-                            <h4 class="timeline__info-title" data-i18n="no_kids_title">No Niños</h4>
-                            <p data-i18n="no_kids_desc">Celebración sólo para adultos.</p>
-                        </div>
+                <!-- Pregunta 2 -->
+                <details class="faq__item">
+                    <summary class="faq__question">
+                        <span data-i18n="faq_q_parking">¿Hay estacionamiento?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="faq__answer">
+                        <p data-i18n="faq_a_parking">¡Sí! El Garden Vista Ballroom cuenta con servicio de Valet Parking gratuito para todos nuestros invitados para su mayor comodidad.</p>
                     </div>
-                </div>
-                <!-- 4. Regalos -->
-                <div class="timeline__row timeline__row--info" role="listitem">
-                    <div class="timeline__time">Info</div>
-                    <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
-                    <div class="timeline__card">
-                        <div class="timeline__info-group">
-                            <h4 class="timeline__info-title" data-i18n="gifts_title">Regalos</h4>
-                            <p data-i18n="gifts_desc">Lluvia de sobres.</p>
-                        </div>
-                    </div>
-                </div>
+                </details>
 
-                <!-- 7. Cupos -->
-                <div class="timeline__row timeline__row--info" role="listitem">
-                    <div class="timeline__time">Info</div>
-                    <div class="timeline__dot timeline__dot--gold" aria-hidden="true"></div>
-                    <div class="timeline__card">
-                        <div class="timeline__info-group">
-                            <h4 class="timeline__info-title" data-i18n="seats_title">Cupos</h4>
-                            <p data-i18n="seats_desc">Agradecemos respetar los cupos asignados en su invitación.</p>
-                        </div>
+                <!-- Pregunta 3 -->
+                <details class="faq__item">
+                    <summary class="faq__question">
+                        <span data-i18n="faq_q_kids">¿Puedo llevar niños?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="faq__answer">
+                        <p data-i18n="faq_a_kids">Adoramos a sus pequeños, pero hemos decidido tener una celebración exclusiva para adultos. ¡Esperamos que puedan disfrutar de una noche de fiesta con nosotros!</p>
                     </div>
-                </div>
+                </details>
 
+                <!-- Pregunta 4 -->
+                <details class="faq__item">
+                    <summary class="faq__question">
+                        <span data-i18n="faq_q_dresscode">¿Cuál es el código de vestimenta?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="faq__answer">
+                        <p data-i18n="faq_a_dresscode">Formal / Etiqueta Rigurosa. Les pedimos amablemente evitar el color blanco (reservado para la novia) y el verde oliva (reservado para nuestro cortejo).</p>
+                    </div>
+                </details>
+
+                <!-- Pregunta 5 -->
+                <details class="faq__item">
+                    <summary class="faq__question">
+                        <span data-i18n="faq_q_gifts">¿Tienen mesa de regalos?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="faq__answer">
+                        <p data-i18n="faq_a_gifts">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros, tendremos una 'Lluvia de Sobres' el día del evento.</p>
+                    </div>
+                </details>
+
+                <!-- Pregunta 6 -->
+                <details class="faq__item">
+                    <summary class="faq__question">
+                        <span data-i18n="faq_q_seats">¿Cómo funcionan los cupos?</span>
+                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </summary>
+                    <div class="faq__answer">
+                        <p data-i18n="faq_a_seats">Hemos reservado un número específico de asientos para cada invitación. Al ingresar tu nombre en el formulario de confirmación, podrás ver tus cupos asignados.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
@@ -268,12 +300,12 @@
     <!-- Sección: Ubicaciones (Mapas) -->
     <section id="locations" class="locations" aria-labelledby="locations-title">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-up">
                 <h2 id="locations-title" class="section-header__title" data-i18n="loc_title">¿Cómo Llegar?</h2>
                 <p class="section-header__subtitle" data-i18n="loc_subtitle">Te esperamos en</p>
             </div>
 
-            <div class="location-card map-in">
+            <div class="location-card fade-up">
                 <div class="location-card__header">
                     <h3 class="location-card__title">Garden Vista Ballroom</h3>
                     <p class="location-card__address">29 Howe Ave, Passaic, NJ 07055</p>
@@ -296,13 +328,13 @@
     <!-- Sección: RSVP (Confirmación) -->
     <section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-up">
                 <h2 id="rsvp-title" class="section-header__title" data-i18n="rsvp_title">Confirmación</h2>
-                <p class="section-header__subtitle" data-i18n="rsvp_subtitle">Sera un placer compartir este momento tan
+                <p class="section-header__subtitle" data-i18n="rsvp_subtitle">Será un placer compartir este momento tan
                     especial con ustedes</p>
             </div>
 
-            <div class="rsvp__card">
+            <div class="rsvp__card fade-up">
                 <div class="rsvp__card-accent" aria-hidden="true"></div>
                 <div class="rsvp__card-icon" aria-hidden="true">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
@@ -424,6 +456,9 @@
             </p>
         </div>
     </footer>
+
+    <!-- Cursor Personalizado -->
+    <div class="custom-cursor"></div>
 
     <!-- JavaScript -->
     <script src="config.js"></script>
