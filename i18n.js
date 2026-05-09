@@ -44,7 +44,7 @@ const I18N = {
     faq_q_dresscode: "¿Cuál es el código de vestimenta?",
     faq_a_dresscode: "Formal / Etiqueta Rigurosa. Les pedimos amablemente evitar el color blanco (reservado para la novia) y el verde oliva (reservado para nuestro cortejo).",
     faq_q_gifts: "¿Tienen mesa de regalos?",
-    faq_a_gifts: "Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros, tendremos una 'Lluvia de Sobres' el día del evento.",
+    faq_a_gifts: "Si deseas tener un detalle con nosotros, tendremos una 'Lluvia de Sobres' el día del evento.",
     faq_q_seats: "¿Cómo funcionan los cupos?",
     faq_a_seats: "Hemos reservado un número específico de asientos para cada invitación. Al ingresar tu nombre en el formulario de confirmación, podrás ver tus cupos asignados.",
 
