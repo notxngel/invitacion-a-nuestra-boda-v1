@@ -1627,3 +1627,147 @@ body::before {
     display: none;
   }
 }
+
+/* --- PÁGINA DE CIERRE (closed-page) --- */
+
+.closed-page {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-lg);
+  overflow: hidden;
+  background: url("images/hero_wedding_olive.webp") center/cover no-repeat;
+}
+
+.closed-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 28, 18, 0.65);
+  backdrop-filter: blur(2px);
+}
+
+.closed-page__content {
+  position: relative;
+  text-align: center;
+  color: var(--color-white);
+  max-width: 680px;
+  width: 100%;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.closed-page__monogram {
+  font-family: var(--font-names);
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--color-gold);
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.closed-page__monogram span {
+  font-family: var(--font-names);
+  color: var(--color-gold);
+}
+
+.closed-page__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin: 0 auto var(--space-xl);
+  opacity: 0.55;
+}
+
+.closed-page__divider::before,
+.closed-page__divider::after {
+  content: "";
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.closed-page__divider-leaf {
+  font-size: 0.6rem;
+  color: var(--color-gold);
+  letter-spacing: 0;
+}
+
+.closed-page__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  margin-bottom: var(--space-xl);
+  opacity: 0.95;
+}
+
+.closed-page__message {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.9;
+  opacity: 0.8;
+  margin: 0 auto var(--space-xl);
+  max-width: 520px;
+}
+
+.closed-page__event-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: var(--space-2xl);
+}
+
+.closed-page__sep {
+  opacity: 0.4;
+}
+
+.closed-page__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.closed-page__footer-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+.closed-page__footer-names {
+  font-family: var(--font-names);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--color-gold);
+  opacity: 0.75;
+  line-height: 1;
+}
+
+@media (max-width: 480px) {
+  .closed-page__event-info {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .closed-page__sep {
+    display: none;
+  }
+}

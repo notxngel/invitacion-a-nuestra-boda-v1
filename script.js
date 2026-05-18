@@ -1,3 +1,22 @@
+/** 0. MODO CIERRE: Activación automática por fecha **/
+
+(function checkClosedMode() {
+  const now = new Date();
+  const closedDate = new Date(CONFIG.rsvpClosedDate + "T00:00:00");
+  if (now < closedDate) return;
+
+  const closedPage = document.getElementById("closed-page");
+  if (closedPage) closedPage.hidden = false;
+
+  const hideSelectors = [".navbar", "#home", "#photo-album", "#details", "#locations", "#rsvp", ".footer", ".custom-cursor"];
+  hideSelectors.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) el.hidden = true;
+  });
+
+  document.body.style.overflow = "hidden";
+})();
+
 /** 0. CONFIGURACIÓN: Fecha y Elementos Base **/
 
 // Fecha de la boda: 16 de Julio de 2026 (todo el día en general)
