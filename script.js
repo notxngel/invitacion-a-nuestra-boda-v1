@@ -3,7 +3,8 @@
 (function checkClosedMode() {
   const now = new Date();
   const closedDate = new Date(CONFIG.rsvpClosedDate + "T00:00:00");
-  if (now < closedDate) return;
+  const isPreview = new URLSearchParams(window.location.search).get("preview") === "cerrada";
+  if (now < closedDate && !isPreview) return;
 
   const closedPage = document.getElementById("closed-page");
   if (closedPage) closedPage.hidden = false;
