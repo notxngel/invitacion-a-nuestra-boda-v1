@@ -87,10 +87,10 @@ const I18N = {
     songs_artist_placeholder: "Ej: Elevation Worship",
 
     // Zelle
-    zelle_label: "Lluvia de Sobres · Zelle",
+    zelle_label: "Detalle especial · Zelle",
     zelle_copy: "Copiar",
     zelle_copied: "¡Copiado!",
-    zelle_note: "Opcional · Si deseas tener un detalle con nosotros",
+    zelle_note: "Si quieres acompañar este día con un detalle, aquí puedes hacerlo.",
 
     // Validation
     val_name: "Por favor, ingresa tu nombre.",
@@ -203,7 +203,7 @@ const I18N = {
     zelle_label: "Gift · Zelle",
     zelle_copy: "Copy",
     zelle_copied: "Copied!",
-    zelle_note: "Optional · If you'd like to send us a gift",
+    zelle_note: "you can have a gift with us.",
 
     // Validation
     val_name: "Please enter your name.",
