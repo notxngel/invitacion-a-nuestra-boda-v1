@@ -371,6 +371,22 @@
                         Mayo</strong></p>
             </div>
 
+            <!-- Zelle -->
+            <div class="modal__zelle">
+                <p class="modal__zelle-label" data-i18n="zelle_label">Lluvia de Sobres · Zelle</p>
+                <div class="modal__zelle-card">
+                    <span class="modal__zelle-number" id="zelleDisplay"></span>
+                    <button class="modal__zelle-copy" type="button" onclick="copyZelle()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span data-i18n="zelle_copy">Copiar</span>
+                    </button>
+                </div>
+                <p class="modal__zelle-note" data-i18n="zelle_note">Opcional · Si deseas tener un detalle con nosotros</p>
+            </div>
+
             <form id="rsvpForm" class="form" novalidate>
                 <!-- Honeypot anti-bot (campo invisible para humanos) -->
                 <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
@@ -436,6 +452,16 @@
                     <textarea class="form__input" id="message" name="message" rows="2"
                         placeholder="Déjanos tus mejores deseos..."
                         data-i18n-placeholder="form_message_placeholder"></textarea>
+                </div>
+
+                <div class="form__divider" aria-hidden="true"></div>
+
+                <div class="form__group">
+                    <label class="form__checkbox-option">
+                        <input type="checkbox" class="form__checkbox-input" id="readDetails" name="readDetails">
+                        <span data-i18n="form_read_details">He leído todos los detalles del evento (horario, dress code, estacionamiento y política de niños)</span>
+                    </label>
+                    <span class="form__error" id="error-readDetails"></span>
                 </div>
 
                 <button type="submit" id="submitBtn" class="btn btn--submit" data-i18n="form_submit">Enviar

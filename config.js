@@ -12,5 +12,6 @@ const CONFIG = Object.freeze({
   maxCupos: 4,
   rateLimitMs: 30000,
   fetchTimeoutMs: 10000,
-  securityToken: "boda-angel-clara-2026"
+  securityToken: "boda-angel-clara-2026",
+  zellePhone: "(973) 955-8525"
 });

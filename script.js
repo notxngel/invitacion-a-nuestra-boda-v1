@@ -35,6 +35,37 @@ function checkRSVPStatus() {
 // Ejecutar al cargar
 document.addEventListener('DOMContentLoaded', checkRSVPStatus);
 
+/** ZELLE: Poblar número desde config e inicializar copiado **/
+function initZelle() {
+  const el = document.getElementById("zelleDisplay");
+  if (el) el.textContent = CONFIG.zellePhone;
+}
+
+function copyZelle() {
+  const copySpan = document.querySelector(".modal__zelle-copy span[data-i18n]");
+
+  const onSuccess = () => {
+    if (copySpan) {
+      copySpan.textContent = t("zelle_copied");
+      setTimeout(() => { copySpan.textContent = t("zelle_copy"); }, 2000);
+    }
+  };
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(CONFIG.zellePhone).then(onSuccess).catch(() => {});
+  } else {
+    const tmp = document.createElement("input");
+    tmp.value = CONFIG.zellePhone;
+    document.body.appendChild(tmp);
+    tmp.select();
+    document.execCommand("copy");
+    document.body.removeChild(tmp);
+    onSuccess();
+  }
+}
+
+initZelle();
+
 /**
  * Actualiza el contador de la cuenta regresiva en el DOM.
  * Calcula la diferencia entre la fecha de la boda y el momento actual.
@@ -111,7 +142,7 @@ setInterval(updateCountdown, 1000);
     });
   }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
 
-  document.querySelectorAll(".timeline__row, .fade-up").forEach(el => {
+  document.querySelectorAll(".fade-up").forEach(el => {
     observer.observe(el);
   });
 })();
@@ -317,9 +348,23 @@ function setupValidationListeners() {
   });
 }
 
-// Ejecutar la asignación de espías apenas se crea el HTML en "generarCamposDeNombres()"
-// Usamos requestAnimationFrame o simplemente lo llamamos aquí abajo porque las funciones ya corrieron.
+// Escuchar cambio en checkbox para limpiar error en tiempo real
+function setupCheckboxListener() {
+  const readCheckbox = document.getElementById("readDetails");
+  if (!readCheckbox) return;
+  readCheckbox.addEventListener("change", () => {
+    if (readCheckbox.checked) {
+      const errorSpan = document.getElementById("error-readDetails");
+      if (errorSpan) {
+        errorSpan.classList.remove("active");
+        errorSpan.innerHTML = "";
+      }
+    }
+  });
+}
+
 setupValidationListeners();
+setupCheckboxListener();
 
 /** 7. FORMULARIO: Procesamiento y envío de datos (Make/Notion) **/
 
@@ -373,6 +418,25 @@ function handleValidation() {
       if (!firstInvalidInput) firstInvalidInput = input;
     }
   });
+
+  // Validar checkbox de lectura obligatoria
+  const readCheckbox = document.getElementById("readDetails");
+  if (readCheckbox && !readCheckbox.checked) {
+    const errorSpan = document.getElementById("error-readDetails");
+    if (errorSpan) {
+      errorSpan.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        ${t("val_checkbox")}
+      `;
+      errorSpan.classList.add("active");
+    }
+    isValid = false;
+    if (!firstInvalidInput) firstInvalidInput = readCheckbox;
+  }
 
   if (!isValid) {
     firstInvalidInput.focus();
@@ -562,6 +626,18 @@ function mostrarExito() {
             </p>
             
             ${calendarButtonsHTML}
+
+            <div style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(109, 30, 212, 0.04); border: 1px solid rgba(109, 30, 212, 0.2); border-radius: 8px;">
+                <p style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: #535e4d; margin: 0 0 0.5rem 0;">${t("zelle_label")}</p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+                    <span style="font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #41533b; font-weight: 700; letter-spacing: 0.04em;">${CONFIG.zellePhone}</span>
+                    <button onclick="copyZelle()" class="modal__zelle-copy" style="background: #41533b; color: white; border: none; border-radius: 4px; padding: 0.4em 0.9em; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35em;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span data-i18n="zelle_copy">${t("zelle_copy")}</span>
+                    </button>
+                </div>
+                <p style="font-size: 0.8rem; color: #535e4d; font-style: italic; margin: 0;">${t("zelle_note")}</p>
+            </div>
 
             <button
                 class="btn"

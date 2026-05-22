@@ -78,10 +78,28 @@ const I18N = {
     form_message_placeholder: "Déjanos tus mejores deseos...",
     form_submit: "Enviar Confirmación",
 
+    // Song suggestion
+    songs_title: "Ayudanos a armar la playlist",
+    songs_subtitle: "¿Qué canciones no pueden faltar?",
+    songs_song_label: "Nombre de la canción",
+    songs_song_placeholder: "Ej: Praise",
+    songs_artist_label: "Artista (Opcional)",
+    songs_artist_placeholder: "Ej: Elevation Worship",
+
+    // Zelle
+    zelle_label: "Lluvia de Sobres · Zelle",
+    zelle_copy: "Copiar",
+    zelle_copied: "¡Copiado!",
+    zelle_note: "Opcional · Si deseas tener un detalle con nosotros",
+
     // Validation
     val_name: "Por favor, ingresa tu nombre.",
     val_phone: "Por favor, ingresa tu teléfono.",
+    val_checkbox: "Por favor confirma que leíste los detalles del evento.",
     val_rate_limit: "Por favor espera unos segundos antes de intentar de nuevo.",
+
+    // Form - detalles
+    form_read_details: "He leído todos los detalles del evento (horario, dress code, estacionamiento y política de niños)",
 
     // Success
     success_title: "¡Gracias!",
@@ -173,10 +191,28 @@ const I18N = {
     form_message_placeholder: "Send us your best wishes...",
     form_submit: "Send Confirmation",
 
+    // Song suggestion
+    songs_title: "Help us build the playlist",
+    songs_subtitle: "Which songs can't be missing?",
+    songs_song_label: "Song name",
+    songs_song_placeholder: "e.g. Praise",
+    songs_artist_label: "Artist (Optional)",
+    songs_artist_placeholder: "e.g. Elevation Worship",
+
+    // Zelle
+    zelle_label: "Gift · Zelle",
+    zelle_copy: "Copy",
+    zelle_copied: "Copied!",
+    zelle_note: "Optional · If you'd like to send us a gift",
+
     // Validation
     val_name: "Please enter your name.",
     val_phone: "Please enter your phone number.",
+    val_checkbox: "Please confirm that you've read the event details.",
     val_rate_limit: "Please wait a few seconds before trying again.",
+
+    // Form - details
+    form_read_details: "I have read all event details (schedule, dress code, parking and children's policy)",
 
     // Success
     success_title: "Thank you!",
