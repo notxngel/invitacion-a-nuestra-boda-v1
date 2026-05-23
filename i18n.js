@@ -60,6 +60,9 @@ const I18N = {
     rsvp_card_text: "¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confírmarnos tu asistencia.",
     rsvp_deadline: "Fecha límite: 22 de Mayo",
     rsvp_open_btn: "Abrir Formulario",
+    rsvp_closed_heading: "El período de confirmación ha concluido",
+    rsvp_closed_body: "Agradecemos profundamente cada muestra de amor y cariño que nos han brindado en este camino. Su presencia en nuestras vidas es, y siempre será, uno de los regalos más invaluables que podemos recibir.",
+    rsvp_closed_signature: "Con todo nuestro amor,",
 
     // Modal Form
     modal_title: "Confirmación",
@@ -173,6 +176,9 @@ const I18N = {
     rsvp_card_text: "Have you reviewed all the event details? Make sure to read them before confirming your attendance.",
     rsvp_deadline: "Deadline: May 22nd",
     rsvp_open_btn: "Open Form",
+    rsvp_closed_heading: "The RSVP period has ended",
+    rsvp_closed_body: "We are deeply grateful for every expression of love and warmth you have shared with us along this journey. Your presence in our lives is, and will always be, one of the most invaluable gifts we could ever receive.",
+    rsvp_closed_signature: "With all our love,",
 
     // Modal Form
     modal_title: "Confirmation",

@@ -37,7 +37,6 @@
         content="Nos casamos y queremos que sean parte de este día tan especial. Confirma tu asistencia.">
     <meta itemprop="image" content="https://notxngel.github.io/invitacion-a-nuestra-boda-v1/images/invitacion_sh.jpg">
     <!-- Fuentes de Google -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -50,446 +49,223 @@
     </noscript>
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #1a1a1a;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: url("images/hero_wedding_olive.webp") center / cover no-repeat;
+            filter: brightness(0.35);
+        }
+
+        /* Language switcher */
+        .lang-switch {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .lang-sep {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.6rem;
+        }
+
+        /* Page layout */
+        .closed-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .closed-content {
+            max-width: 34rem;
+            width: 100%;
+            padding: 0 1rem;
+            animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        /* Rings ornament */
+        .closed-rings {
+            color: #c9a35e;
+            opacity: 0.75;
+            margin-bottom: 2rem;
+            line-height: 0;
+        }
+
+        .closed-rings svg {
+            width: 52px;
+            height: auto;
+        }
+
+        /* Names in Pinyon Script */
+        .closed-names {
+            font-family: var(--font-names);
+            font-size: clamp(3.5rem, 12vw, 5.5rem);
+            font-weight: 400;
+            color: #fff;
+            margin: 0 0 2.25rem 0;
+            line-height: 1.05;
+            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .closed-names .amp {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 0.46em;
+            color: #c9a35e;
+            vertical-align: middle;
+            margin: 0 0.2em;
+        }
+
+        .closed-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0 auto 2rem auto;
+            max-width: 10rem;
+        }
+
+        .closed-divider::before,
+        .closed-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(201, 163, 94, 0.5);
+        }
+
+        .closed-divider-diamond {
+            color: #c9a35e;
+            font-size: 0.45rem;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+
+        .closed-heading {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(1rem, 3.5vw, 1.25rem);
+            color: #c9a35e;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.5;
+        }
+
+        .closed-body {
+            font-family: var(--font-sans);
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.82);
+            font-style: italic;
+            font-weight: 300;
+            margin: 0 0 2.5rem 0;
+        }
+
+        .closed-signature {
+            font-family: var(--font-serif);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 2;
+            margin: 0;
+        }
+
+        .closed-signature-name {
+            font-family: var(--font-names);
+            font-style: normal;
+            font-size: 2.2rem;
+            color: #fff;
+            display: block;
+            margin-top: 0.15rem;
+            line-height: 1.1;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+        }
+    </style>
 </head>
 
 <body>
 
-
-
-    <!-- Sección: Navbar -->
-    <nav class="navbar" aria-label="Navegación principal">
-        <div class="navbar__container">
-            <!-- Botón Hamburguesa -->
-            <button class="navbar__menu-btn" aria-label="Abrir menú" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Monograma Central -->
-            <a href="#home" class="navbar__logo" aria-label="Ir al inicio - Angel y Clara">Angel <span class="navbar__logo-amp">&amp;</span> Clara</a>
-            
-            <!-- Menú Desplegable -->
-            <ul class="navbar__menu" role="list">
-                <li><a href="#home" class="navbar__link" data-i18n="nav_home">Inicio</a></li>
-                <li><a href="#photo-album" class="navbar__link" data-i18n="nav_moments">Momentos</a></li>
-                <li><a href="#details" class="navbar__link" data-i18n="nav_details">Detalles</a></li>
-            </ul>
-        </div>
+    <nav class="lang-switch" aria-label="Idioma / Language">
+        <a href="?" class="lang-btn" id="btn-es">ES</a>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <a href="?lang=en" class="lang-btn" id="btn-en">EN</a>
     </nav>
 
-    <!-- Sección: Hero (Portada) -->
-    <section id="home" class="hero" aria-labelledby="hero-title">
-        <!-- Imagen de Fondo -->
-        <div class="hero__background" role="img" aria-label="Fotografía de fondo de la boda"></div>
+    <main class="closed-page">
+        <div class="closed-content">
 
-        <!-- Contenido Principal -->
-        <div class="hero__content">
-            <p class="hero__eyebrow bounce-in" data-i18n="hero_eyebrow">¡NOS CASAMOS!</p>
-            <h1 id="hero-title" class="hero__title fade-in">Angel &amp; Clara</h1>
-            <div class="hero__divider" aria-hidden="true"></div>
-
-            <div class="hero__details">
-                <p class="hero__date" data-i18n="hero_date">Julio 16, 2026</p>
-                <p class="hero__instruction" data-i18n="hero_instruction">Desplázate para conocer los detalles del
-                    evento.</p>
+            <!-- Wedding rings ornament -->
+            <div class="closed-rings" aria-hidden="true">
+                <svg width="56" height="28" viewBox="0 0 56 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="19" cy="14" r="11" stroke="currentColor" stroke-width="1.75"/>
+                    <circle cx="37" cy="14" r="11" stroke="currentColor" stroke-width="1.75"/>
+                </svg>
             </div>
 
-            <!-- Cuenta Regresiva -->
-            <div id="countdown" class="countdown" aria-label="Cuenta regresiva para la boda">
-                <div class="countdown__item">
-                    <span id="days" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label" data-i18n="countdown_days">Días</span>
-                </div>
-                <div class="countdown__item">
-                    <span id="hours" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label" data-i18n="countdown_hours">Horas</span>
-                </div>
-                <div class="countdown__item">
-                    <span id="minutes" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label" data-i18n="countdown_minutes">Minutos</span>
-                </div>
-                <div class="countdown__item">
-                    <span id="seconds" class="countdown__number" aria-live="polite">0</span>
-                    <span class="countdown__label" data-i18n="countdown_seconds">Segundos</span>
-                </div>
+            <h1 class="closed-names">Ángel <span class="amp">&amp;</span> Clara</h1>
+
+            <div class="closed-divider" aria-hidden="true">
+                <span class="closed-divider-diamond">◆</span>
             </div>
 
+            <h2 class="closed-heading" data-i18n="rsvp_closed_heading">
+                El período de confirmación ha concluido
+            </h2>
 
-        </div>
-
-        <!-- Flecha animada -->
-        <div class="hero__scroll-indicator" aria-hidden="true">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
-                </path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Sección: Album (Galería de Fotos) -->
-    <section id="photo-album" class="album" aria-labelledby="album-title">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2 id="album-title" class="section-header__title" data-i18n="album_title">Momentos que nos trajeron
-                    aquí</h2>
-                <p class="section-header__subtitle" data-i18n="album_subtitle">Un día que cambió nuestras vidas para
-                    siempre</p>
-            </div>
-
-            <!-- Contenedor del Carrusel -->
-            <div class="album__slider" id="albumSlider">
-                <button class="album__btn album__btn--prev" id="btnPrev" aria-label="Anterior">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                </button>
-                <div class="album__track" id="albumTrack">
-
-                    <!-- Polaroid 1: La gran pregunta -->
-                    <article class="polaroid">
-                        <div class="polaroid__frame">
-                            <img src="images/theMoment.webp" alt="La gran pregunta del momento de la propuesta"
-                                loading="lazy" class="polaroid__img">
-                            <p class="polaroid__caption" data-i18n="caption_1">La gran pregunta</p>
-                        </div>
-                    </article>
-
-                    <!-- Polaroid 2: Dijo que sí -->
-                    <article class="polaroid">
-                        <div class="polaroid__frame">
-                            <img src="images/dijoquesi.webp" alt="Clara dijo que sí a la propuesta" loading="lazy"
-                                class="polaroid__img">
-                            <p class="polaroid__caption" data-i18n="caption_2">¡Dijo que sí!</p>
-                        </div>
-                    </article>
-
-                    <!-- Polaroid 3: Nosotros (CENTRO) -->
-                    <article class="polaroid">
-                        <div class="polaroid__frame">
-                            <img src="images/Us.webp" alt="Angel y Clara juntos" loading="lazy" class="polaroid__img">
-                            <p class="polaroid__caption" data-i18n="caption_3">Tú y yo, siempre</p>
-                        </div>
-                    </article>
-
-                    <!-- Polaroid 4: Promesa -->
-                    <article class="polaroid">
-                        <div class="polaroid__frame">
-                            <img src="images/proposalimg2.webp" alt="Promesa eterna de amor" loading="lazy"
-                                class="polaroid__img">
-                            <p class="polaroid__caption" data-i18n="caption_4">Para siempre</p>
-                        </div>
-                    </article>
-                    <!-- Polaroid 6: Amor -->
-                    <article class="polaroid">
-                        <div class="polaroid__frame">
-                            <img src="images/ilove.webp" alt="Con todo mi amor" loading="lazy" class="polaroid__img">
-                            <p class="polaroid__caption" data-i18n="caption_5">Con todo mi corazón</p>
-                        </div>
-                    </article>
-
-                    <!-- Polaroid 7: Juntos -->
-                    <article class="polaroid">
-                        <div class="polaroid__frame">
-                            <img src="images/us2.webp" alt="Juntos es mi lugar favorito" loading="lazy"
-                                class="polaroid__img">
-                            <p class="polaroid__caption" data-i18n="caption_6">Mi lugar favorito</p>
-                        </div>
-                    </article>
-
-                </div>
-                <button class="album__btn album__btn--next" id="btnNext" aria-label="Siguiente">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Detalles (Preguntas Frecuentes) -->
-    <section id="details" class="details" aria-labelledby="details-title">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2 id="details-title" class="section-header__title" data-i18n="details_title">Preguntas Frecuentes</h2>
-                <p class="section-header__subtitle" data-i18n="details_subtitle">Todo lo que necesitas saber</p>
-            </div>
-
-            <div class="faq fade-up">
-                <!-- Pregunta 1 -->
-                <details class="faq__item">
-                    <summary class="faq__question">
-                        <span data-i18n="faq_q_arrival">¿A qué hora debo llegar?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <div class="faq__answer">
-                        <p data-i18n="faq_a_arrival">La ceremonia comenzará puntualmente a las 5:00 PM. Sin embargo, les agradeceríamos llegar a las 4:30 PM para que podamos comenzar con la celebración de forma organizada.</p>
-                    </div>
-                </details>
-
-                <!-- Pregunta 2 -->
-                <details class="faq__item">
-                    <summary class="faq__question">
-                        <span data-i18n="faq_q_parking">¿Hay estacionamiento?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <div class="faq__answer">
-                        <p data-i18n="faq_a_parking">¡Sí! El Garden Vista Ballroom cuenta con servicio de Valet Parking gratuito para todos nuestros invitados para su mayor comodidad.</p>
-                    </div>
-                </details>
-
-                <!-- Pregunta 3 -->
-                <details class="faq__item">
-                    <summary class="faq__question">
-                        <span data-i18n="faq_q_kids">¿Puedo llevar niños?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <div class="faq__answer">
-                        <p data-i18n="faq_a_kids">Adoramos a sus pequeños, pero hemos decidido tener una celebración exclusiva para adultos. ¡Esperamos que puedan disfrutar de una noche de fiesta con nosotros!</p>
-                    </div>
-                </details>
-
-                <!-- Pregunta 4 -->
-                <details class="faq__item">
-                    <summary class="faq__question">
-                        <span data-i18n="faq_q_dresscode">¿Cuál es el código de vestimenta?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <div class="faq__answer">
-                        <p data-i18n="faq_a_dresscode">Formal. Les pedimos amablemente evitar el color blanco (reservado para la novia) y el verde oliva (reservado para nuestro cortejo).</p>
-                    </div>
-                </details>
-
-                <!-- Pregunta 5 -->
-                <details class="faq__item">
-                    <summary class="faq__question">
-                        <span data-i18n="faq_q_gifts">¿Tienen mesa de regalos?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <div class="faq__answer">
-                        <p data-i18n="faq_a_gifts">Si deseas tener un detalle con nosotros, tendremos una 'Lluvia de Sobres' el día del evento.</p>
-                    </div>
-                </details>
-
-                <!-- Pregunta 6 -->
-                <details class="faq__item">
-                    <summary class="faq__question">
-                        <span data-i18n="faq_q_seats">¿Cómo funcionan los cupos?</span>
-                        <svg class="faq__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </summary>
-                    <div class="faq__answer">
-                        <p data-i18n="faq_a_seats">Hemos reservado un número específico de asientos para cada invitación. Al ingresar tu nombre en el formulario de confirmación, podrás ver tus cupos asignados.</p>
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Ubicaciones (Mapas) -->
-    <section id="locations" class="locations" aria-labelledby="locations-title">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2 id="locations-title" class="section-header__title" data-i18n="loc_title">¿Cómo Llegar?</h2>
-                <p class="section-header__subtitle" data-i18n="loc_subtitle">Te esperamos en</p>
-            </div>
-
-            <div class="location-card fade-up">
-                <div class="location-card__header">
-                    <h3 class="location-card__title">Garden Vista Ballroom</h3>
-                    <p class="location-card__address">29 Howe Ave, Passaic, NJ 07055</p>
-                    <a href="https://maps.google.com/maps/dir//Garden+Vista+Ballroom,+Passaic,+NJ" target="_blank"
-                        rel="noopener" class="btn btn--dark location-card__btn">
-                        <span data-i18n="loc_btn">Abrir en Google Maps</span>
-                    </a>
-                </div>
-                <div class="location-card__map-container">
-                    <iframe
-                        src="https://maps.google.com/maps?q=Garden%20Vista%20Ballroom,%20Passaic,%20NJ&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        class="location-card__iframe" title="Mapa de Garden Vista Ballroom">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: RSVP (Confirmación) -->
-    <section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
-        <div class="container">
-            <div class="section-header fade-up">
-                <h2 id="rsvp-title" class="section-header__title" data-i18n="rsvp_title">Confirmación</h2>
-                <p class="section-header__subtitle" data-i18n="rsvp_subtitle">Será un placer compartir este momento tan
-                    especial con ustedes</p>
-            </div>
-
-            <div class="rsvp__card fade-up">
-                <div class="rsvp__card-accent" aria-hidden="true"></div>
-                <div class="rsvp__card-icon" aria-hidden="true">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                </div>
-                <p class="rsvp__card-subtitle" data-i18n="rsvp_card_subtitle">Esperamos contar con tu presencia</p>
-                <div class="rsvp__card-divider" aria-hidden="true"></div>
-                <p class="rsvp__card-text" data-i18n="rsvp_card_text">
-                    ¿Ya revisaste todos los detalles del evento? Asegúrate de leerlos antes de confírmarnos tu
-                    asistencia.</p>
-                <p class="rsvp__card-text"><strong data-i18n="rsvp_deadline">Fecha límite: 22 de Mayo</strong>
-                </p>
-                <button class="btn btn--dark rsvp__card-btn" onclick="openRSVP()" aria-haspopup="dialog">
-                    <span data-i18n="rsvp_open_btn">Abrir Formulario</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Modal RSVP -->
-    <div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
-        onclick="closeRSVP(event)">
-        <div class="modal__content">
-            <button class="modal__close" aria-label="Cerrar formulario de confirmación"
-                onclick="closeRSVP(event)">&times;</button>
-
-            <div class="modal__header">
-                <h2 id="modal-title" class="modal__title" data-i18n="modal_title">Confirmación</h2>
-                <p class="modal__subtitle" data-i18n="modal_subtitle">Será un placer contar contigo</p>
-                <p class="modal__deadline" data-i18n="modal_deadline">Por favor confirma antes del <strong>22 de
-                        Mayo</strong></p>
-            </div>
-
-            <!-- Zelle -->
-            <div class="modal__zelle">
-                <p class="modal__zelle-label" data-i18n="zelle_label">Detalle especial · Zelle</p>
-                <div class="modal__zelle-card">
-                    <span class="modal__zelle-number" id="zelleDisplay"></span>
-                    <button class="modal__zelle-copy" type="button" onclick="copyZelle()">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        <span data-i18n="zelle_copy">Copiar</span>
-                    </button>
-                </div>
-                <p class="modal__zelle-note" data-i18n="zelle_note">Si quieres acompañar este día con un detalle, aquí puedes hacerlo.</p>
-            </div>
-
-            <form id="rsvpForm" class="form" novalidate>
-                <!-- Honeypot anti-bot (campo invisible para humanos) -->
-                <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
-                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-                </div>
-                <!-- Campos de nombre generados según cupos del link (?c=N) -->
-                <div id="guestNamesContainer"></div>
-
-                <fieldset class="form__group">
-                    <legend class="form__label" data-i18n="form_attendance">¿Asistirás?</legend>
-                    <div class="form__radio-group">
-                        <label class="form__radio-option">
-                            <input type="radio" name="attendance" value="si" checked>
-                            <span data-i18n="form_yes">¡Sí, ahí estaré!</span>
-                        </label>
-                        <label class="form__radio-option">
-                            <input type="radio" name="attendance" value="no">
-                            <span data-i18n="form_no">Lo siento, no podré ir</span>
-                        </label>
-                    </div>
-                </fieldset>
-
-                <div class="form__group">
-                    <label class="form__label" for="phone" data-i18n="form_phone">Teléfono Móvil (WhatsApp)</label>
-                    <input type="tel" class="form__input" id="phone" name="phone" inputmode="tel"
-                        placeholder="Ej. +1 123 456 7890" data-i18n-placeholder="form_phone_placeholder" required>
-                    <span class="form__error" id="error-phone"></span>
-                </div>
-
-                <!-- Sugerencia de Canción -->
-                <div class="form__divider" aria-hidden="true"></div>
-                <div class="form__song-header">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M9 18V5l12-2v13"></path>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <circle cx="18" cy="16" r="3"></circle>
-                    </svg>
-                    <span data-i18n="songs_title">Ayudanos a armar la playlist</span>
-                </div>
-                <p class="form__song-subtitle" data-i18n="songs_subtitle">¿Qué canciones no pueden faltar?</p>
-
-                <div class="form__group">
-                    <label class="form__label" for="songName" data-i18n="songs_song_label">Nombre de la
-                        canción</label>
-                    <input class="form__input" type="text" id="songName" name="songName"
-                        placeholder="Ej: Praise" data-i18n-placeholder="songs_song_placeholder"
-                        autocomplete="off">
-                </div>
-
-                <div class="form__group">
-                    <label class="form__label" for="songArtist" data-i18n="songs_artist_label">Artista
-                        (Opcional)</label>
-                    <input class="form__input" type="text" id="songArtist" name="songArtist"
-                        placeholder="Ej: Elevation Worship" data-i18n-placeholder="songs_artist_placeholder"
-                        autocomplete="off">
-                </div>
-
-                <div class="form__divider" aria-hidden="true"></div>
-
-                <div class="form__group">
-                    <label class="form__label" for="message" data-i18n="form_message">Mensaje (Opcional)</label>
-                    <textarea class="form__input" id="message" name="message" rows="2"
-                        placeholder="Déjanos tus mejores deseos..."
-                        data-i18n-placeholder="form_message_placeholder"></textarea>
-                </div>
-
-                <div class="form__divider" aria-hidden="true"></div>
-
-                <div class="form__group">
-                    <label class="form__checkbox-option">
-                        <input type="checkbox" class="form__checkbox-input" id="readDetails" name="readDetails">
-                        <span data-i18n="form_read_details">He leído todos los detalles del evento (horario, dress code, estacionamiento y política de niños)</span>
-                    </label>
-                    <span class="form__error" id="error-readDetails"></span>
-                </div>
-
-                <button type="submit" id="submitBtn" class="btn btn--submit" data-i18n="form_submit">Enviar
-                    Confirmación</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Sección: Footer -->
-    <footer class="footer">
-        <div class="footer__container fade-in">
-            <span class="footer__eyebrow" data-i18n="footer_eyebrow">Con cariño y gratitud</span>
-            <h2 class="footer__title">Angel <span>&amp;</span> Clara</h2>
-            <div class="footer__date">16.07.2026</div>
-            <div class="footer__separator"></div>
-            <p class="footer__text">&copy; 2026 Angel &amp; Clara.</p>
-            <p class="footer__text footer__text--small" data-i18n="footer_made">Hecho con amor para nuestros invitados
+            <p class="closed-body" data-i18n="rsvp_closed_body">
+                Agradecemos profundamente cada muestra de amor y cariño que nos han brindado en este camino. Su
+                presencia en nuestras vidas es, y siempre será, uno de los regalos más invaluables que podemos recibir.
             </p>
+
+            <p class="closed-signature">
+                <span data-i18n="rsvp_closed_signature">Con todo nuestro amor,</span>
+                <em class="closed-signature-name">Ángel &amp; Clara</em>
+            </p>
+
         </div>
-    </footer>
+    </main>
 
-    <!-- Cursor Personalizado -->
-    <div class="custom-cursor"></div>
-
-    <!-- JavaScript -->
-    <script src="config.js"></script>
     <script src="i18n.js"></script>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById(LANG === 'en' ? 'btn-en' : 'btn-es').classList.add('active');
+    </script>
+
 </body>
 
 </html>
