@@ -155,7 +155,7 @@ const I18N = {
     faq_q_kids: "Can I bring my children?",
     faq_a_kids: "We love your little ones, but we have decided to have an adults-only celebration. We hope you can enjoy a night of celebration with us!",
     faq_q_dresscode: "What is the dress code?",
-    faq_a_dresscode: "Formal / Black Tie. We kindly ask you to avoid wearing white (reserved for the bride) and olive green (reserved for our wedding party).",
+    faq_a_dresscode: "Formal. We kindly ask you to avoid wearing white (reserved for the bride) and olive green (reserved for our wedding party).",
     faq_q_gifts: "Do you have a gift registry?",
     faq_a_gifts: "Your presence is our best gift. If you wish to give us something extra, we will have a 'Card Box' (Lluvia de Sobres) on the day of the event.",
     faq_q_seats: "How do assigned seats work?",
