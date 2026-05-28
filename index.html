@@ -216,6 +216,58 @@
             line-height: 1.1;
             text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
         }
+
+        /* Location card — solo visible para registrados */
+        .closed-location {
+            display: none;
+            margin: 0 0 2.5rem 0;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(201, 163, 94, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+        }
+
+        .closed-location.is-visible {
+            display: block;
+        }
+
+        .closed-location-name {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1rem;
+            color: #c9a35e;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .closed-location-address {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+        }
+
+        .closed-map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #fff;
+            background: rgba(201, 163, 94, 0.2);
+            border: 1px solid rgba(201, 163, 94, 0.5);
+            border-radius: 2rem;
+            padding: 0.45rem 1rem;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .closed-map-btn:hover {
+            background: rgba(201, 163, 94, 0.35);
+            border-color: rgba(201, 163, 94, 0.8);
+        }
     </style>
 </head>
 
@@ -244,14 +296,30 @@
                 <span class="closed-divider-diamond">◆</span>
             </div>
 
-            <h2 class="closed-heading" data-i18n="rsvp_closed_heading">
+            <h2 class="closed-heading" id="closed-heading">
                 El período de confirmación ha concluido
             </h2>
 
-            <p class="closed-body" data-i18n="rsvp_closed_body">
+            <p class="closed-body" id="closed-body">
                 Agradecemos profundamente cada muestra de amor y cariño que nos han brindado en este camino. Su
                 presencia en nuestras vidas es, y siempre será, uno de los regalos más invaluables que podemos recibir.
             </p>
+
+            <!-- Solo visible para invitados registrados -->
+            <div class="closed-location" id="closed-location">
+                <p class="closed-location-name" id="closed-location-name">Garden Vista Ballroom</p>
+                <p class="closed-location-address" id="closed-location-address">29 Macarthur Ave, Passaic, NJ 07055</p>
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Garden+Vista+Ballroom+29+Macarthur+Ave+Passaic+NJ+07055"
+                    target="_blank"
+                    rel="noopener"
+                    class="closed-map-btn"
+                    id="closed-map-btn"
+                >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="closed-map-btn-text">Abrir en Google Maps</span>
+                </a>
+            </div>
 
             <p class="closed-signature">
                 <span data-i18n="rsvp_closed_signature">Con todo nuestro amor,</span>
@@ -264,6 +332,25 @@
     <script src="i18n.js"></script>
     <script>
         document.getElementById(LANG === 'en' ? 'btn-en' : 'btn-es').classList.add('active');
+
+        const isRegistered = localStorage.getItem('rsvpStatus') === 'sent';
+
+        const heading = document.getElementById('closed-heading');
+        const body    = document.getElementById('closed-body');
+        const loc     = document.getElementById('closed-location');
+        const mapBtn  = document.getElementById('closed-map-btn');
+
+        if (isRegistered) {
+            heading.textContent = t('rsvp_registered_heading');
+            body.textContent    = t('rsvp_registered_body');
+            document.getElementById('closed-location-name').textContent    = t('rsvp_map_label');
+            document.getElementById('closed-location-address').textContent = t('rsvp_map_address');
+            document.getElementById('closed-map-btn-text').textContent     = t('rsvp_map_btn');
+            loc.classList.add('is-visible');
+        } else {
+            heading.textContent = t('rsvp_unregistered_heading');
+            body.textContent    = t('rsvp_unregistered_body');
+        }
     </script>
 
 </body>
