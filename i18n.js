@@ -64,6 +64,17 @@ const I18N = {
     rsvp_closed_body: "Agradecemos profundamente cada muestra de amor y cariño que nos han brindado en este camino. Su presencia en nuestras vidas es, y siempre será, uno de los regalos más invaluables que podemos recibir.",
     rsvp_closed_signature: "Con todo nuestro amor,",
 
+    // Para quienes SÍ se registraron
+    rsvp_registered_heading: "¡Nos vemos muy pronto!",
+    rsvp_registered_body: "Gracias a todos los que se pudieron registrar — estamos felices y con mucha emoción de verlos ahí. A continuación encontrarás cómo llegar al lugar.",
+    rsvp_map_label: "Garden Vista Ballroom",
+    rsvp_map_address: "29 Macarthur Ave, Passaic, NJ 07055",
+    rsvp_map_btn: "Abrir en Google Maps",
+
+    // Para quienes NO se registraron
+    rsvp_unregistered_heading: "El período de confirmación ha concluido",
+    rsvp_unregistered_body: "Gracias a todos los que se pudieron registrar — estamos felices y con mucha emoción por verlos ahí. ¡Será una noche que jamás olvidaremos!",
+
     // Modal Form
     modal_title: "Confirmación",
     modal_subtitle: "Será un placer contar contigo",
@@ -179,6 +190,17 @@ const I18N = {
     rsvp_closed_heading: "The RSVP period has ended",
     rsvp_closed_body: "We are deeply grateful for every expression of love and warmth you have shared with us along this journey. Your presence in our lives is, and will always be, one of the most invaluable gifts we could ever receive.",
     rsvp_closed_signature: "With all our love,",
+
+    // For those who DID register
+    rsvp_registered_heading: "See you very soon!",
+    rsvp_registered_body: "Thank you to everyone who was able to register — we are so happy and excited to see you there. Below you'll find directions to the venue.",
+    rsvp_map_label: "Garden Vista Ballroom",
+    rsvp_map_address: "29 Macarthur Ave, Passaic, NJ 07055",
+    rsvp_map_btn: "Open in Google Maps",
+
+    // For those who did NOT register
+    rsvp_unregistered_heading: "The RSVP period has ended",
+    rsvp_unregistered_body: "Thank you to everyone who was able to register — we are so happy and so excited to see you there. It's going to be a night we'll never forget!",
 
     // Modal Form
     modal_title: "Confirmation",
