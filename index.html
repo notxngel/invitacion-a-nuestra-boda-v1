@@ -305,8 +305,8 @@
                 presencia en nuestras vidas es, y siempre será, uno de los regalos más invaluables que podemos recibir.
             </p>
 
-            <!-- Solo visible para invitados registrados -->
-            <div class="closed-location" id="closed-location">
+            <!-- Mapa visible para todos -->
+            <div class="closed-location is-visible" id="closed-location">
                 <p class="closed-location-name" id="closed-location-name">Garden Vista Ballroom</p>
                 <p class="closed-location-address" id="closed-location-address">29 Macarthur Ave, Passaic, NJ 07055</p>
                 <a
@@ -337,16 +337,10 @@
 
         const heading = document.getElementById('closed-heading');
         const body    = document.getElementById('closed-body');
-        const loc     = document.getElementById('closed-location');
-        const mapBtn  = document.getElementById('closed-map-btn');
 
         if (isRegistered) {
             heading.textContent = t('rsvp_registered_heading');
             body.textContent    = t('rsvp_registered_body');
-            document.getElementById('closed-location-name').textContent    = t('rsvp_map_label');
-            document.getElementById('closed-location-address').textContent = t('rsvp_map_address');
-            document.getElementById('closed-map-btn-text').textContent     = t('rsvp_map_btn');
-            loc.classList.add('is-visible');
         } else {
             heading.textContent = t('rsvp_unregistered_heading');
             body.textContent    = t('rsvp_unregistered_body');
