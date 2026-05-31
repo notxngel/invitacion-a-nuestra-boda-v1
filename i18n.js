@@ -75,6 +75,21 @@ const I18N = {
     rsvp_unregistered_heading: "El período de confirmación ha concluido",
     rsvp_unregistered_body: "Gracias a todos los que se pudieron registrar — estamos felices y con mucha emoción por verlos ahí. ¡Será una noche que jamás olvidaremos!",
 
+    // Tarjetas de detalles del evento (solo registrados)
+    detail_label_date:      "Fecha",
+    detail_value_date:      "Jueves, 16 de Julio de 2026",
+    detail_label_time:      "Horario",
+    detail_value_time:      "Llegada 4:30 PM",
+    detail_note_time:       "Ceremonia a las 5:00 PM",
+    detail_label_dresscode: "Vestimenta",
+    detail_value_dresscode: "Formal / Etiqueta Rigurosa",
+    detail_note_dresscode:  "Evitar blanco y verde oliva",
+    detail_label_parking:   "Estacionamiento",
+    detail_value_parking:   "Valet Parking gratuito",
+    detail_label_kids:      "Política de niños",
+    detail_value_kids:      "Solo adultos",
+    detail_note_kids:       "Celebración exclusiva para adultos",
+
     // Modal Form
     modal_title: "Confirmación",
     modal_subtitle: "Será un placer contar contigo",
@@ -201,6 +216,21 @@ const I18N = {
     // For those who did NOT register
     rsvp_unregistered_heading: "The RSVP period has ended",
     rsvp_unregistered_body: "Thank you to everyone who was able to register — we are so happy and so excited to see you there. It's going to be a night we'll never forget!",
+
+    // Event detail cards (registered only)
+    detail_label_date:      "Date",
+    detail_value_date:      "Thursday, July 16th, 2026",
+    detail_label_time:      "Schedule",
+    detail_value_time:      "Arrival at 4:30 PM",
+    detail_note_time:       "Ceremony starts at 5:00 PM",
+    detail_label_dresscode: "Dress Code",
+    detail_value_dresscode: "Formal / Black Tie",
+    detail_note_dresscode:  "Avoid white and olive green",
+    detail_label_parking:   "Parking",
+    detail_value_parking:   "Free Valet Parking",
+    detail_label_kids:      "Children policy",
+    detail_value_kids:      "Adults only",
+    detail_note_kids:       "This is an adults-only celebration",
 
     // Modal Form
     modal_title: "Confirmation",
