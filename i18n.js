@@ -61,7 +61,7 @@ const I18N = {
     rsvp_deadline: "Fecha límite: 22 de Mayo",
     rsvp_open_btn: "Abrir Formulario",
     rsvp_closed_heading: "El período de confirmación ha concluido",
-    rsvp_closed_body: "Agradecemos profundamente cada muestra de amor y cariño que nos han brindado en este camino. Su presencia en nuestras vidas es, y siempre será, uno de los regalos más invaluables que podemos recibir.",
+    rsvp_closed_body: "Gracias por su puntualidad y responsabilidad al registrarse. Estamos llenos de emoción y gratitud al saber que los veremos pronto — ¡los esperamos con el corazón abierto!",
     rsvp_closed_signature: "Con todo nuestro amor,",
 
     // Para quienes SÍ se registraron
@@ -203,7 +203,7 @@ const I18N = {
     rsvp_deadline: "Deadline: May 22nd",
     rsvp_open_btn: "Open Form",
     rsvp_closed_heading: "The RSVP period has ended",
-    rsvp_closed_body: "We are deeply grateful for every expression of love and warmth you have shared with us along this journey. Your presence in our lives is, and will always be, one of the most invaluable gifts we could ever receive.",
+    rsvp_closed_body: "Thank you for your punctuality and responsibility in registering. We are filled with excitement and gratitude knowing we will see you soon — we await you with open hearts!",
     rsvp_closed_signature: "With all our love,",
 
     // For those who DID register
